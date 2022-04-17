@@ -44,29 +44,11 @@ class OtpCubit extends Cubit<OtpState> {
     });
   }
 
-  void userOtpDestroy({
-    @required String id,
-  }) {
-    emit(Otploading());
-    DioHelper.postData(url: destroyOTP, data: {'id': id}).then((value) {
-      model = OtpModel.fromJson(value.data);
-      print(model.status);
-      print(model.message);
-      //print(model.data.token);
-      print(value.data);
-
-      emit(Otpsuccess(model));
-    }).catchError((error) {
-      emit(Otperror(error.toString()));
-      print(error.toString());
-    });
-  }
-
   void userOtpResend({
     @required String id,
   }) {
     emit(Otploading());
-    DioHelper.postData(url: destroyOTP, data: {'id': id}).then((value) {
+    DioHelper.postData(url: ResendOtp, data: {'id': id}).then((value) {
       model = OtpModel.fromJson(value.data);
       print(model.status);
       print(model.message);

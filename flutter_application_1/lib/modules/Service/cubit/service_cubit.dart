@@ -51,19 +51,20 @@ class ServiceCubit extends Cubit<ServiceState> {
 
   ServiceModel model;
   void userService({
-    @required String client_id,
-    @required String company_id,
+    String client_id,
+    // @required String company_id,
     @required String price,
     @required String service_code,
   }) {
     emit(Serviceloading());
     DioHelper.postData(
-      url: REIGSTERs,
+      url: Payment,
       data: {
-        'client_id': client_id,
-        'company_id': company_id,
-        'price': price,
-        'service_code': service_code,
+        'client_id': '209ba818e6ce46d1986f',
+        // 'company_id': company_id,
+        'price': int.parse(price),
+        'service_code': int.parse(service_code),
+        'feeds': 1,
       },
     ).then((value) {
       model = ServiceModel.fromJson(value.data);

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 
 import 'package:flutter_application_1/modules/Service/cubit/service_cubit.dart';
+import 'package:flutter_application_1/modules/payment/Payment.dart';
 
 import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,10 +27,12 @@ class Service_Screen extends StatelessWidget {
         listener: (BuildContext context, state) {
           if (state is Servicesuccess) {
             if (state.model.status) {
+              var client_id = Gloablvar.id;
+
               print(state.model.message);
               //print(state.model.data.token);
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => Homelayout()));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Payment()));
             } else {
               print(state.model.message);
               Fluttertoast.showToast(
@@ -52,7 +55,8 @@ class Service_Screen extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   icon: Icon(Icons.arrow_back)),
-              title: Text(cubit.ChosseService[Global.indexOfServices]),
+              title:
+                  Text(cubit.ChosseService[Global.indexOfServices].toString()),
             ),
             body: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -70,7 +74,8 @@ class Service_Screen extends StatelessWidget {
                           }
                           return null;
                         },
-                        label: cubit.Servicecode[Global.indexOfServices]),
+                        label: cubit.Servicecode[Global.indexOfServices]
+                            .toString()),
                     SizedBox(
                       height: 18,
                     ),
@@ -93,7 +98,8 @@ class Service_Screen extends StatelessWidget {
                           }
                           return null;
                         },
-                        label: cubit.ServicCompany[Global.indexOfServices]),
+                        label: cubit.ServicCompany[Global.indexOfServices]
+                            .toString()),
                     SizedBox(
                       height: 18,
                     ),
@@ -120,7 +126,13 @@ class Service_Screen extends StatelessWidget {
                               // password: passwordController.text
                               service_code: number.text,
                               price: pricenumber.text,
+                              // company_id: text.text,
+                              client_id: Gloablvar.id,
                             );
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => Payment()));
                           }
                         }),
                   ],

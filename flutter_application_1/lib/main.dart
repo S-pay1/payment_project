@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
+import 'package:flutter_application_1/modules/wallet_screen/wallet.dart';
 import 'package:flutter_application_1/shared/bloc_observer.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               centerTitle: true,
               foregroundColor: Color(0xff004B7d))),
-      home: SignUp(),
+      home: Homelayout(),
     );
   }
 }

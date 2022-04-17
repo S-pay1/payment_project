@@ -67,10 +67,11 @@ class genrate extends StatelessWidget {
                   defaultButton(
                       function: () {
                         if (_formKey.currentState.validate()) {
-                          print(phoneController.text);
-                          print(text.text);
-                          genratepass().generatePassword(
-                              text.toString(), phoneController);
+                          // print(phoneController.text);
+                          // print(text.text);
+                          // genratepass().generatePassword(
+                          //     text.toString(), phoneController.toString())
+                          debugPrint(generateRandomString.toString());
 
                           // Navigator.pushReplacement(
                           //     context,

@@ -17,19 +17,36 @@ class Global {
   static int indexOfServices;
 }
 
-class genratepass {
-  // ignore: avoid_types_as_parameter_names
-  Function generatePassword(String char, nummm) {
-    var _chars = char.toString() + nummm.toString();
-    var hhh = getRandomString(_chars, 16);
-    print(hhh);
-    print(_chars);
-  }
+// class genratepass {
+//   // ignore: avoid_types_as_parameter_names
+//   Function generatePassword(String char, nummm) {
+//     var _chars = char.toString() + nummm.toString();
 
-  Random _rnd = Random();
-  Random rnd = new Random(new DateTime.now().millisecondsSinceEpoch);
+//     // List<String> RAD = [char.toString(), nummm.toString()];
+//     // List<String> RAD = ['EZZ', '10'];
+//     // const _chars = 'ezzahmed0101215';
+//     // var _chars = RAD.join().toString();
+//     // RAD.shuffle();
 
-  String getRandomString(String _chars, int length) =>
-      String.fromCharCodes(Iterable.generate(
-          length, (_) => _chars.codeUnitAt(rnd.nextInt(_chars.length))));
+//     var hhh = getRandomString(_chars, 16);
+//     print(hhh);
+//     print(_chars);
+//   }
+
+//   Random _rnd = Random();
+//   // Random rnd = new Random(new DateTime.now().millisecondsSinceEpoch);
+
+//   String getRandomString(String _chars, int length) =>
+//       String.fromCharCodes(Iterable.generate(
+//           length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+// }
+
+String generateRandomString(String char, nummm, int length) {
+  final _random = Random();
+  var _availableChars = char.toString() + nummm.toString();
+  final randomString = List.generate(length,
+          (index) => _availableChars[_random.nextInt(_availableChars.length)])
+      .join();
+
+  return randomString;
 }

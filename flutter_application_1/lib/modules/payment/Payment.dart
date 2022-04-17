@@ -16,7 +16,11 @@ class _PaymentState extends State<Payment> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
         title: Text(
           'Payment',
           style: TextStyle(
@@ -27,19 +31,126 @@ class _PaymentState extends State<Payment> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            SizedBox(
-              height: 20.0,
-            ),
-            defaultButton(
-                function: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Paywithwallet()));
-                },
-                text: 'pay'),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: 40,
+              ),
+              Row(
+                children: [Text('Date')],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text('25/11/2020'),
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xff003B75), width: 2),
+                ),
+                height: 50,
+                width: 500,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [Text('Service name')],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text('gas'),
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xff003B75), width: 2),
+                ),
+                height: 50,
+                width: 500,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [Text('price')],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text('100 EG'),
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xff003B75), width: 2),
+                ),
+                height: 50,
+                width: 500,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [Text('Feeds')],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text('2 EG'),
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xff003B75), width: 2),
+                ),
+                height: 50,
+                width: 500,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [Text('Total')],
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text('102 EG'),
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Color(0xff003B75), width: 2),
+                ),
+                height: 50,
+                width: 500,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              defaultButton(
+                  function: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Paywithwallet()));
+                  },
+                  text: 'pay'),
+            ],
+          ),
         ),
       ),
     );
