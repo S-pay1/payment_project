@@ -68,6 +68,8 @@
 //     return data;
 //   }
 // }
+import 'dart:ffi';
+
 class ServiceModel {
   bool status;
   String message;
@@ -82,11 +84,24 @@ class ServiceModel {
 
 class UserData {
   String client_id;
+  double feeds;
+  int service_code;
+  double total;
+  int price;
+  String date;
+  // String company_name;
   // String name;
   // String phone;
 
   UserData.fromJason(Map<String, dynamic> json) {
     client_id = json['client_id'];
+    total = double.tryParse(json['receipt']['total']);
+    service_code = json['service_code'];
+    price = int.tryParse(json["price"]);
+    feeds = double.tryParse(json['receipt']['feeds']);
+    date = json['receipt']['date'] as String;
+    // company_name = json['company_name'];
+
     // name = json['name'];
     // phone = json['phone'];
   }

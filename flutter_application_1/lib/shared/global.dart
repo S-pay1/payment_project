@@ -11,6 +11,11 @@ class Gloablvar {
   static String id;
   static String phone;
   static String name;
+  static double total;
+  static int service_code;
+  static int price;
+  static double feeds;
+  static String date;
 }
 
 class Global {

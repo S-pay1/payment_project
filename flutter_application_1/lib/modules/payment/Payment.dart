@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/payment/pay_with_wallet.dart';
 
 import 'package:flutter_application_1/shared/components/components.dart';
+import 'package:flutter_application_1/shared/global.dart';
 
 class Payment extends StatefulWidget {
   @override
@@ -14,6 +15,8 @@ class Payment extends StatefulWidget {
 class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
+    var feed = Gloablvar.feeds;
+    print(feed);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -47,7 +50,7 @@ class _PaymentState extends State<Payment> {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text('25/11/2020'),
+                  child: Text(Gloablvar.date),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),
@@ -87,7 +90,7 @@ class _PaymentState extends State<Payment> {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text('100 EG'),
+                  child: Text(Gloablvar.price.toString() + ' EG'),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),
@@ -107,7 +110,7 @@ class _PaymentState extends State<Payment> {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text('2 EG'),
+                  child: Text(feed.toString() + ' EG'),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),
@@ -119,6 +122,7 @@ class _PaymentState extends State<Payment> {
                 height: 20,
               ),
               Row(
+                // ignore: prefer_const_literals_to_create_immutables
                 children: [Text('Total')],
               ),
               SizedBox(
@@ -127,7 +131,7 @@ class _PaymentState extends State<Payment> {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text('102 EG'),
+                  child: Text(Gloablvar.total.toString() + '  EG'),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),

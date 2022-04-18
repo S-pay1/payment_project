@@ -28,6 +28,12 @@ class Service_Screen extends StatelessWidget {
           if (state is Servicesuccess) {
             if (state.model.status) {
               var client_id = Gloablvar.id;
+              Gloablvar.feeds = state.model.data.feeds;
+              Gloablvar.price = state.model.data.price;
+              Gloablvar.service_code = state.model.data.service_code;
+              Gloablvar.total = state.model.data.total;
+              Gloablvar.date = state.model.data.date;
+              print(state.model.data.feeds);
 
               print(state.model.message);
               //print(state.model.data.token);
@@ -124,11 +130,12 @@ class Service_Screen extends StatelessWidget {
                             ServiceCubit.get(context).userService(
                               // phone: phoneController.text,
                               // password: passwordController.text
-                              service_code: number.text,
-                              price: pricenumber.text,
+                              service_code: int.parse(number.text),
+                              price: int.parse(pricenumber.text),
                               // company_id: text.text,
                               client_id: Gloablvar.id,
                             );
+                            print(Gloablvar.feeds);
                             // Navigator.push(
                             //     context,
                             //     MaterialPageRoute(
