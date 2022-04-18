@@ -5,3 +5,4 @@ const CHEAKOTP = 'checkOtp';
 
 const Payment = "payments";
 const ResendOtp = "resend";
+const company = "companies";
