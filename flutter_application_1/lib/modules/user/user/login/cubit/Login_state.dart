@@ -19,3 +19,5 @@ class loginerror extends loginState {
 }
 
 class loginpaswwordChange extends loginState {}
+
+class Getmac extends loginState {}

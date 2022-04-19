@@ -13,11 +13,33 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../shared/global.dart';
 
-class Service_Screen extends StatelessWidget {
+class Service_Screen extends StatefulWidget {
+  @override
+  State<Service_Screen> createState() => _Service_ScreenState();
+}
+
+class _Service_ScreenState extends State<Service_Screen> {
   var pricenumber = TextEditingController();
+
   var text = TextEditingController();
+
   var number = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
+  String selectedItemValue = '';
+
+  List itemsOfDropDown = [
+    'ezz',
+    'hesham',
+    'youssef',
+    'mo\'men',
+    'yehya',
+    'l',
+    'g',
+    't',
+    'm',
+    'y',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -85,27 +107,24 @@ class Service_Screen extends StatelessWidget {
                     SizedBox(
                       height: 18,
                     ),
-                    // DropdownButton(
-                    //   items: cubit.ServicCompany[Global.indexOfServices]
-                    //       .map((e) => DropdownMenuItem(
-                    //             child: Text("$e"),
-                    //             value:cubit.ServicCompany[Global.indexOfServices] ,
-                    //           ))
-                    //       .toList(),
-                    //   onChanged: (val) {},
-                    //   value: 'ezz',
-                    // ),
-                    defaultFormField(
-                        controller: text,
-                        type: TextInputType.text,
-                        validate: (String value) {
-                          if (value.isEmpty) {
-                            return 'Please chosse company';
-                          }
-                          return null;
-                        },
-                        label: cubit.ServicCompany[Global.indexOfServices]
-                            .toString()),
+                    DropdownButtonFormField(
+                      hint: Text('Select Company'),
+                      decoration: InputDecoration(border: OutlineInputBorder()),
+                      menuMaxHeight: 250,
+                      // enableFeedback: true,
+                      items: itemsOfDropDown
+                          .map<DropdownMenuItem<String>>((value) {
+                        return DropdownMenuItem<String>(
+                          child: Text(value),
+                          value: value,
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          selectedItemValue = value;
+                        });
+                      },
+                    ),
                     SizedBox(
                       height: 18,
                     ),

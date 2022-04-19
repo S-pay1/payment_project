@@ -5,6 +5,8 @@ import 'package:conditional_builder/conditional_builder.dart';
 import 'package:fl_toast/fl_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
+import 'package:flutter_application_1/modules/choose%20type%20of%20user/ChooseTypeOfUser.dart';
+import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
 import 'package:flutter_application_1/modules/user/user/termsuser.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -46,7 +48,10 @@ class LoginScreen extends StatelessWidget {
               appBar: AppBar(
                 leading: IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TypeOfUser()));
                     },
                     icon: Icon(Icons.arrow_back)),
                 title: Text(
@@ -125,11 +130,11 @@ class LoginScreen extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  /* Navigator.pushReplacement(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              ResetPassword()));*/
+                                              ResetPassword()));
                                 },
                                 child: Text(
                                   'Reset Now',

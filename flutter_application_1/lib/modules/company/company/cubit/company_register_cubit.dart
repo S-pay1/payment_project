@@ -16,39 +16,38 @@ class CompanySingUpCubit extends Cubit<CompanySingUpState> {
 
   CompanySignupModel model;
   void Companysignup({
-    @required String phone,
+    // @required int phone,
     @required String email,
-    @required double bank_account,
-    @required double commercial,
-    @required double tax_number,
-    @required double personal_id,
+    @required String bank_account,
+    @required String commercial,
+    @required String tax_number,
+    @required String personal_id,
+    @required String Service,
+
     // @required String password,
     @required String typeOfUser,
     @required String name,
   }) {
-    // var pas = utf8.encode(password);
-    // var hashPassword = sha256.convert(pas);
-    typeOfUser = 'Company';
+    typeOfUser = 'company';
     emit(CompanySingUploading());
+
     DioHelper.postData(
-      url: company,
+      url: REIGSTERs,
       data: {
         'email': email,
         'bank_account': bank_account,
         'commercial': commercial,
         'tax_number': tax_number,
-        'id': personal_id,
+        'personal_id': personal_id,
         'name': name,
-        'phone': phone,
-        // 'password': hashPassword.toString(),
-
-        'typeOfUser': typeOfUser.toString()
+        'typeOfUser': typeOfUser.toString(),
+        'service': Service
       },
     ).then((value) {
       model = CompanySignupModel.fromJson(value.data);
       print(model.status);
       print(model.message);
-      //print(model.data.token);
+
       print(value.data);
 
       emit(CompanySingUpsuccess(model));

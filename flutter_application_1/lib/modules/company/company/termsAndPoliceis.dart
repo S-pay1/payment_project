@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../../shared/components/components.dart';
 import 'CompanySignUp.dart';
 
@@ -14,7 +13,11 @@ class _termsAndPoliceisState extends State<termsAndPoliceis> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
         title: Text(
           'Terms and Policies  ',
           style: TextStyle(

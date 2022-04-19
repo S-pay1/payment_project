@@ -1,5 +1,9 @@
+// ignore_for_file: file_names, unused_import, unused_local_variable, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
+import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
+import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../modules/cubit/homecubit_state.dart';
@@ -17,6 +21,7 @@ class Homelayout extends StatelessWidget {
         },
         builder: (BuildContext context, state) {
           var cubit = HomecubitCubit.get(context);
+
           return Scaffold(
             extendBodyBehindAppBar: true,
             /*appBar: AppBar(
@@ -36,6 +41,7 @@ class Homelayout extends StatelessWidget {
               onTap: (index) {
                 cubit.changeindex(index);
               },
+              // ignore: prefer_const_literals_to_create_immutables
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
@@ -46,7 +52,9 @@ class Homelayout extends StatelessWidget {
                   label: 'Wallet',
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.receipt), label: 'History'),
+                  icon: Icon(Icons.receipt),
+                  label: 'History',
+                ),
               ],
             ),
           );

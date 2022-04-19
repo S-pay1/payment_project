@@ -22,36 +22,38 @@ class Global {
   static int indexOfServices;
 }
 
-// class genratepass {
-//   // ignore: avoid_types_as_parameter_names
-//   Function generatePassword(String char, nummm) {
-//     var _chars = char.toString() + nummm.toString();
+class genratepass {
+  // ignore: avoid_types_as_parameter_names
+  Function generatePassword(String char, String nummm) {
+    // var _chars = char + nummm;
 
-//     // List<String> RAD = [char.toString(), nummm.toString()];
-//     // List<String> RAD = ['EZZ', '10'];
-//     // const _chars = 'ezzahmed0101215';
-//     // var _chars = RAD.join().toString();
-//     // RAD.shuffle();
+    // List<String> _chars = [char.toString(), nummm.toString()];
+    // List<String> RAD = [char, nummm];
+    // final xx = <String>[char.toString(), nummm.toString()];
+    // xx.shuffle();
+    const _chars = 'ezzahmed0101215';
+    // var _chars = RAD.shuffle();
+    // RAD.shuffle();
 
-//     var hhh = getRandomString(_chars, 16);
-//     print(hhh);
-//     print(_chars);
-//   }
+    var hhh = getRandomString(_chars, 16);
+    print(hhh);
+    print(_chars);
+  }
 
-//   Random _rnd = Random();
-//   // Random rnd = new Random(new DateTime.now().millisecondsSinceEpoch);
+  Random _rnd = Random();
+  // Random rnd = new Random(new DateTime.now().millisecondsSinceEpoch);
 
-//   String getRandomString(String _chars, int length) =>
-//       String.fromCharCodes(Iterable.generate(
-//           length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
-// }
-
-String generateRandomString(String char, nummm, int length) {
-  final _random = Random();
-  var _availableChars = char.toString() + nummm.toString();
-  final randomString = List.generate(length,
-          (index) => _availableChars[_random.nextInt(_availableChars.length)])
-      .join();
-
-  return randomString;
+  String getRandomString(String _chars, int length) =>
+      String.fromCharCodes(Iterable.generate(
+          length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 }
+
+// static String  generateRandomString(String char, nummm, int length) {
+//   final _random = Random();
+//   var _availableChars = char.toString() + nummm.toString();
+//   final randomString = List.generate(length,
+//           (index) => _availableChars[_random.nextInt(_availableChars.length)])
+//       .join();
+
+//   return randomString;
+// }

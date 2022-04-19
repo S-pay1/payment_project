@@ -71,7 +71,11 @@ class genrate extends StatelessWidget {
                           // print(text.text);
                           // genratepass().generatePassword(
                           //     text.toString(), phoneController.toString())
-                          debugPrint(generateRandomString.toString());
+                          // print(genratepass().generatePassword(
+                          //     text.toString(), phoneController));
+
+                          print(genratepass().generatePassword(
+                              text.toString(), phoneController.toString()));
 
                           // Navigator.pushReplacement(
                           //     context,

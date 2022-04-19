@@ -3,7 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
+import 'package:flutter_application_1/layout/test.dart';
+import 'package:flutter_application_1/modules/company/company/CompanySignUp.dart';
 import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
+import 'package:flutter_application_1/modules/user/user/login/login_screen.dart';
 import 'package:flutter_application_1/modules/wallet_screen/wallet.dart';
 import 'package:flutter_application_1/shared/bloc_observer.dart';
 
@@ -13,7 +16,7 @@ import 'modules/user/user/signup/Signup.dart';
 import 'shared/dio/dio_helper.dart';
 import 'shared/styles/styles.dart';
 
-Future<void> main() {
+Future<void> main() async {
   BlocOverrides.runZoned(
     () {
       DioHelper.init();
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               centerTitle: true,
               foregroundColor: Color(0xff004B7d))),
-      home: Homelayout(),
+      home: LoginScreen(),
     );
   }
 }

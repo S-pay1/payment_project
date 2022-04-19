@@ -60,6 +60,7 @@ dependencies:
   crypto: ^3.0.1
   hash: ^1.0.4
   uuid: ^3.0.6
+  mac_address: ^1.0.0
 
 dev_dependencies:
   flutter_test:

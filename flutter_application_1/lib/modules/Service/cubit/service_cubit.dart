@@ -23,6 +23,7 @@ class ServiceCubit extends Cubit<ServiceState> {
     'phone',
     'landing',
     'wifi',
+    'other service',
   ];
   List<String> Servicecode = [
     'Service code',
@@ -31,6 +32,7 @@ class ServiceCubit extends Cubit<ServiceState> {
     'phone number',
     'landing number',
     'number',
+    'opreation number',
   ];
   List<String> ServicCompany = [
     'company',
@@ -38,6 +40,7 @@ class ServiceCubit extends Cubit<ServiceState> {
     'company',
     'Network',
     'landing number',
+    'number',
     'number',
   ];
   int indexOfServices;
@@ -62,7 +65,7 @@ class ServiceCubit extends Cubit<ServiceState> {
     DioHelper.postData(
       url: Payment,
       data: {
-        'client_id': '209ba818e6ce46d1986f',
+        'client_id': Gloablvar.id,
         // 'company_id': company_id,
         'price': price,
         'service_code': service_code,

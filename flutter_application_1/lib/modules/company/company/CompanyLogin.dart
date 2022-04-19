@@ -68,8 +68,8 @@ class companyScreen extends StatelessWidget {
                     Image(
                       image: AssetImage(
                           "assets/images/Wavy_REst-03_Single-11.jpg"),
-                      height: 300.0,
-                      width: 300.0,
+                      height: 200.0,
+                      width: 200.0,
                     ),
                     SizedBox(
                       height: 10.0,
@@ -111,23 +111,23 @@ class companyScreen extends StatelessWidget {
                     SizedBox(
                       height: 5.0,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Forget Password?',
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Reset Now',
-                            style: TextStyle(
-                              color: Colors.red,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //     Text(
+                    //       'Forget Password?',
+                    //     ),
+                    //     TextButton(
+                    //       onPressed: () {},
+                    //       child: Text(
+                    //         'Reset Now',
+                    //         style: TextStyle(
+                    //           color: Colors.red,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     SizedBox(
                       height: 20.0,
                     ),
@@ -146,15 +146,15 @@ class companyScreen extends StatelessWidget {
                       fallback: (context) => CircularProgressIndicator(),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 30,
                     ),
                     IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.fingerprint),
-                      iconSize: 60,
+                      iconSize: 50,
                     ),
                     SizedBox(
-                      height: 50.0,
+                      height: 30.0,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
