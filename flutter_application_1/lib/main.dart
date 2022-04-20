@@ -33,18 +33,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          appBarTheme: AppBarTheme(
-              backwardsCompatibility: false,
-              systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: Colors.transparent,
-                statusBarIconBrightness: Brightness.light,
-              ),
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              centerTitle: true,
-              foregroundColor: Color(0xff004B7d))),
-      home: LoginScreen(),
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+          backwardsCompatibility: false,
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.light,
+          ),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          foregroundColor: Color(0xff004B7d),
+        ),
+      ),
+      home: Homelayout(),
     );
   }
 }

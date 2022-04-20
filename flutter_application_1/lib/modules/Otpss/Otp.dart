@@ -5,7 +5,6 @@ import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 
 import 'package:flutter_application_1/modules/home_screen/home.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
-import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../shared/components/components.dart';
@@ -34,7 +33,7 @@ class Otp extends StatelessWidget {
                     return AlertDialog(
                       title: Text('error'),
                       actions: [
-                        FlatButton(
+                        TextButton(
                           onPressed: () {
                             Navigator.pushReplacement(
                                 context,

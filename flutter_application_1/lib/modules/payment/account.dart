@@ -1,6 +1,5 @@
 // ignore_for_file: missing_required_param, prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/shared/components/components.dart';
 

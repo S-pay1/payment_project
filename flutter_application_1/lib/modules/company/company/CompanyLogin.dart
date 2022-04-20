@@ -1,7 +1,7 @@
-// ignore_for_file: missing_required_param, prefer_const_constructors, must_be_immutable
+// ignore_for_file: missing_required_param, prefer_const_constructors, must_be_immutable, avoid_print
 
 import 'package:conditional_builder/conditional_builder.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
 
@@ -10,11 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../layout/home/homePageLayout.dart';
-import 'companyRecipts.dart';
+
 import 'termsAndPoliceis.dart';
 
-class companyScreen extends StatelessWidget {
-  var _formkey = GlobalKey<FormState>();
+class CompanyScreen extends StatelessWidget {
+  final _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

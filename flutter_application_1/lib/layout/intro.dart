@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../modules/choose type of user/ChooseTypeOfUser.dart';
+import '../modules/choose type of user/choosetypeofuser.dart';
 
 class Intro extends StatefulWidget {
   @override

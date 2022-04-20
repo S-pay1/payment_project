@@ -1,18 +1,18 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
-import 'package:bloc/bloc.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'pasword_state.dart';
 
-class passwordCubit extends Cubit<passwordState> {
-  passwordCubit() : super(passwordInitial());
-  static passwordCubit get(context) => BlocProvider.of(context);
+class PasswordCubit extends Cubit<passwordState> {
+  PasswordCubit() : super(passwordInitial());
+  static PasswordCubit get(context) => BlocProvider.of(context);
 
   void userpassword({
     @required String phone,

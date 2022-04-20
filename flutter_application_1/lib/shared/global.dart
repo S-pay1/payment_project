@@ -1,11 +1,9 @@
-// ignore_for_file: unused_local_variable, camel_case_types, non_constant_identifier_names
+// ignore_for_file: unused_local_variable, camel_case_types, non_constant_identifier_names, avoid_print
 
 // main() {
 //   var userid = state.model.data.id;
 // }
 import 'dart:math';
-
-import 'package:flutter/material.dart';
 
 class Gloablvar {
   static String id;

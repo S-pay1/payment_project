@@ -13,7 +13,7 @@ class Homelayout extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (BuildContext context) => HomecubitCubit(),
+      create: (BuildContext context) => HomecubitCubit()..HistoryData(),
       child: BlocConsumer<HomecubitCubit, HomecubitState>(
         listener: (BuildContext context, APPstate) {
           // ignore: todo

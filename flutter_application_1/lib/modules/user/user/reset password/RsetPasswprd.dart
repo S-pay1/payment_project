@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/user/user/reset%20password/NewPassword.dart';
 

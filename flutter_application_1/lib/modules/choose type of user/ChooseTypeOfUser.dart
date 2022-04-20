@@ -1,18 +1,15 @@
 // ignore_for_file: unnecessary_import, unused_import, prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../modules/user/user/login/login_screen.dart';
-import '../../shared/styles/colors.dart';
-import '../company/company/CompanyLogin.dart';
+import 'package:flutter_application_1/modules/company/company/companylogin.dart';
+import 'package:flutter_application_1/modules/user/user/login/login_screen.dart';
 
 class TypeOfUser extends StatefulWidget {
   @override
-  State<TypeOfUser> createState() => chooseTypeOfUser();
+  State<TypeOfUser> createState() => ChooseTypeOfUser();
 }
 
-class chooseTypeOfUser extends State<TypeOfUser> {
+class ChooseTypeOfUser extends State<TypeOfUser> {
   var phoneController = TextEditingController();
   var emailadress = TextEditingController();
   var passwordController = TextEditingController();
@@ -50,7 +47,7 @@ class chooseTypeOfUser extends State<TypeOfUser> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => companyScreen()));
+                            builder: (context) => CompanyScreen()));
                   },
                 ),
               ),

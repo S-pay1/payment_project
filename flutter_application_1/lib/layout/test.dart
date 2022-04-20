@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mac_address/mac_address.dart';
 
-class hometest extends StatefulWidget {
-  const hometest({Key key}) : super(key: key);
+class Hometest extends StatefulWidget {
+  const Hometest({Key key}) : super(key: key);
 
   @override
-  State<hometest> createState() => _hometestState();
+  State<Hometest> createState() => _HometestState();
 }
 
-class _hometestState extends State<hometest> {
+class _HometestState extends State<Hometest> {
   String _deviceMAC = 'Click the button.';
 
   @override

@@ -1,13 +1,11 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
 import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
 
-class genrate extends StatelessWidget {
-  const genrate({Key key}) : super(key: key);
+class Genrate extends StatelessWidget {
+  const Genrate({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +14,7 @@ class genrate extends StatelessWidget {
     var text = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-        ),
+        leading: Icon(Icons.arrow_back),
         title: Text('generate'),
       ),
       body: SingleChildScrollView(

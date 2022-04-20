@@ -1,17 +1,12 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
-
-import 'package:bloc/bloc.dart';
-import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/models/user_model/Register_model.dart';
+
+import 'package:flutter_application_1/models/user_model/register_model.dart';
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hash/hash.dart';
-import 'package:meta/meta.dart';
+
 import 'package:uuid/uuid.dart';
 
 part 'register_state.dart';

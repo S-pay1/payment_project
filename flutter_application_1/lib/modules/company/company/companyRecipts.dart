@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/shared/components/components.dart';
 
-
-class companyRecipts extends StatefulWidget {
+class CompanyRecipts extends StatefulWidget {
   @override
-  State<companyRecipts> createState() => _companyReciptsState();
+  State<CompanyRecipts> createState() => _CompanyReciptsState();
 }
 
-class _companyReciptsState extends State<companyRecipts> {
+class _CompanyReciptsState extends State<CompanyRecipts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

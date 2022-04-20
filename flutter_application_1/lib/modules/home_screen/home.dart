@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:ui';
 
 import '../Service/service.dart';
-import '../choose type of user/ChooseTypeOfUser.dart';
+import '../choose type of user/choosetypeofuser.dart';
 
 class home extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();

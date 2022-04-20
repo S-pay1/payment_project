@@ -3,7 +3,7 @@
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/modules/choose%20type%20of%20user/ChooseTypeOfUser.dart';
+import 'package:flutter_application_1/modules/choose%20type%20of%20user/choosetypeofuser.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_register_cubit.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_register_state.dart';
 import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';

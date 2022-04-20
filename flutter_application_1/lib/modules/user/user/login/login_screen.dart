@@ -1,11 +1,10 @@
-// ignore_for_file: unused_field, prefer_const_constructors
+// ignore_for_file: unused_field, prefer_const_constructors, avoid_print
 
 // ignore: must_be_immutable
 import 'package:conditional_builder/conditional_builder.dart';
-import 'package:fl_toast/fl_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
-import 'package:flutter_application_1/modules/choose%20type%20of%20user/ChooseTypeOfUser.dart';
+import 'package:flutter_application_1/modules/choose%20type%20of%20user/choosetypeofuser.dart';
 import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
 import 'package:flutter_application_1/modules/user/user/termsuser.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,9 +1,7 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, avoid_print
 
-import 'package:bloc/bloc.dart';
-import 'package:flutter_application_1/models/otp_model/OTP_model.dart';
+import 'package:flutter_application_1/models/otp_model/otp_model.dart';
 
-import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

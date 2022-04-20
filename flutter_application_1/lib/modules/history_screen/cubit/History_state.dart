@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_application_1/models/history_model/histoy_model.dart';
 
-@immutable
 abstract class HistoryState {}
 
 class HistoryInitial extends HistoryState {}

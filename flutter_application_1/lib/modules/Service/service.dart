@@ -1,8 +1,6 @@
-// ignore_for_file: missing_required_param, prefer_const_constructors
+// ignore_for_file: missing_required_param, prefer_const_constructors, avoid_print
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 
 import 'package:flutter_application_1/modules/Service/cubit/service_cubit.dart';
 import 'package:flutter_application_1/modules/payment/Payment.dart';

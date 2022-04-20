@@ -39,4 +39,28 @@ class HomecubitCubit extends Cubit<HomecubitState> {
 
     emit(HomecubitBottomNav());
   }
+
+  //Trying my shit
+  HistoryModel model;
+  void HistoryData() {
+    emit(Historyloading());
+
+    DioHelper.getData(
+      url: clients,
+    ).then((value) {
+      model = HistoryModel.fromJson(value.data);
+      print(model.data);
+      print(model.status);
+      print(model.message);
+      //print(model.data.token);
+      print(value.data);
+
+      // emit(Historysuccess(model));
+      emit(Historysuccess());
+    }).catchError((error) {
+      // emit(Historyerror(error.toString()));
+      emit(Historyerror());
+      print(error.toString());
+    });
+  }
 }

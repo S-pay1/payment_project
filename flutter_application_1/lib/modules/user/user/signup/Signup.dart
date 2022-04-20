@@ -1,10 +1,9 @@
-// ignore_for_file: missing_required_param, prefer_const_constructors, prefer_function_declarations_over_variables
+// ignore_for_file: missing_required_param, prefer_const_constructors, prefer_function_declarations_over_variables, avoid_print
 
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/shared/components/components.dart';
-import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -161,7 +160,7 @@ class SignUp extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => genrate()));
+                                        builder: (context) => Genrate()));
                               }
                             }),
                       ),
