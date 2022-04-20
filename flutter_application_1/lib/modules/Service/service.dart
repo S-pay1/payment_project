@@ -24,20 +24,20 @@ class _Service_ScreenState extends State<Service_Screen> {
   var number = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  String selectedItemValue = '';
+  // String selectedItemValue = ;
 
-  List itemsOfDropDown = [
-    'ezz',
-    'hesham',
-    'youssef',
-    'mo\'men',
-    'yehya',
-    'l',
-    'g',
-    't',
-    'm',
-    'y',
-  ];
+  // List itemsOfDropDown = [
+  //   'ezz',
+  //   'hesham',
+  //   'youssef',
+  //   'mo\'men',
+  //   'yehya',
+  //   'l',
+  //   'g',
+  //   't',
+  //   'm',
+  //   'y',
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +98,6 @@ class _Service_ScreenState extends State<Service_Screen> {
                           if (value.isEmpty) {
                             return 'Please Enter code';
                           }
-                          return null;
                         },
                         label: cubit.Servicecode[Global.indexOfServices]
                             .toString()),
@@ -110,18 +109,22 @@ class _Service_ScreenState extends State<Service_Screen> {
                       decoration: InputDecoration(border: OutlineInputBorder()),
                       menuMaxHeight: 250,
                       // enableFeedback: true,
-                      items: itemsOfDropDown
+                      items: cubit.itemsOfDropDown
                           .map<DropdownMenuItem<String>>((value) {
                         return DropdownMenuItem<String>(
                           child: Text(value),
                           value: value,
                         );
                       }).toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          selectedItemValue = value;
-                        });
+                      onChanged: (index) {
+                        cubit.itemsOfDropDown[Global.indexOfServices]
+                            .toString();
                       },
+                      // (value) {
+                      //   setState(() {
+                      //     selectedItemValue = value;
+                      //   });
+                      // },
                     ),
                     SizedBox(
                       height: 18,
@@ -133,7 +136,6 @@ class _Service_ScreenState extends State<Service_Screen> {
                         if (value.isEmpty) {
                           return 'Please Enter price';
                         }
-                        return null;
                       },
                       label: 'price',
                     ),
@@ -149,7 +151,7 @@ class _Service_ScreenState extends State<Service_Screen> {
                               // password: passwordController.text
                               service_code: int.parse(number.text),
                               price: int.parse(pricenumber.text),
-                              // company_id: text.text,
+                              company_id: cubit.itemsOfDropDown.toString(),
                               client_id: Gloablvar.id,
                             );
                             print(Gloablvar.feeds);

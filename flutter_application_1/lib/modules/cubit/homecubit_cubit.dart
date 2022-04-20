@@ -1,5 +1,7 @@
 // ignore_for_file: unused_import, unnecessary_import
 
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/history_model/histoy_model.dart';
@@ -44,7 +46,12 @@ class HomecubitCubit extends Cubit<HomecubitState> {
   HistoryModel model;
   void HistoryData() {
     emit(Historyloading());
-
+    // getHistoryData().then((value) {
+    //   emit(Historysuccess());
+    // }).catchError((onError) {
+    //   emit(Historyerror());
+    //   print(onError.toString());
+    // });
     DioHelper.getData(
       url: clients,
     ).then((value) {
@@ -56,11 +63,21 @@ class HomecubitCubit extends Cubit<HomecubitState> {
       print(value.data);
 
       // emit(Historysuccess(model));
-      emit(Historysuccess());
+      emit(Historysuccess(model));
     }).catchError((error) {
       // emit(Historyerror(error.toString()));
-      emit(Historyerror());
+      emit(Historyerror(error.toString()));
       print(error.toString());
     });
   }
 }
+
+  // List<HistoryModel> historyData;
+
+  // final DioHelper dioHelper;
+  // Future<List<HistoryModel>> getHistoryData() async {
+  //   final history = await dioHelper.getTheHistory();
+  //   return history.map((history) => HistoryModel.fromJson(history)).toList();
+   
+  
+

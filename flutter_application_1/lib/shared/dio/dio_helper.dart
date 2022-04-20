@@ -54,4 +54,15 @@ class DioHelper {
       data: data,
     );
   }
+
+  Future<List<dynamic>> getTheHistory() async {
+    try {
+      Response response = await dio.get('clients');
+      print(response.data);
+      return response.data;
+    } catch (e) {
+      print(e.toString());
+      return [];
+    }
+  }
 }

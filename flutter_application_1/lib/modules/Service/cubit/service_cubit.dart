@@ -43,6 +43,18 @@ class ServiceCubit extends Cubit<ServiceState> {
     'number',
     'number',
   ];
+  List itemsOfDropDown = [
+    'ezz',
+    'hesham',
+    'youssef',
+    'mo\'men',
+    'yehya',
+    'l',
+    'g',
+    't',
+    'm',
+    'y',
+  ];
   int indexOfServices;
 
   void changeindexscreen(text) {
@@ -55,7 +67,7 @@ class ServiceCubit extends Cubit<ServiceState> {
   ServiceModel model;
   void userService({
     String client_id,
-    // @required String company_id,
+    @required String company_id,
     @required int price,
     @required int service_code,
   }) {
@@ -66,7 +78,7 @@ class ServiceCubit extends Cubit<ServiceState> {
       url: Payment,
       data: {
         'client_id': Gloablvar.id,
-        // 'company_id': company_id,
+        'company_id': company_id,
         'price': price,
         'service_code': service_code,
         'feeds': feeds,

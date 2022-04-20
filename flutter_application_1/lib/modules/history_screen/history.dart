@@ -62,7 +62,7 @@ Widget Historyview(HistoryModel model) => Column(
       // ignore: prefer_const_literals_to_create_immutables
       children: [
         Text(
-          'fff',
+          model.data.id,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -73,7 +73,7 @@ Widget Historyview(HistoryModel model) => Column(
         Row(
           children: [
             Expanded(
-              child: Text('gggg', maxLines: 1),
+              child: Text(model.data.name, maxLines: 1),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -84,7 +84,7 @@ Widget Historyview(HistoryModel model) => Column(
                     BoxDecoration(color: Colors.blue, shape: BoxShape.circle),
               ),
             ),
-            Text('ffff'),
+            Text(model.data.phone),
           ],
         ),
       ],

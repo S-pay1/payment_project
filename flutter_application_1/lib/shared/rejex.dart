@@ -16,7 +16,7 @@ String fullNameValidator(String value) {
 
   RegExp regex = new RegExp(pattern);
   if (!regex.hasMatch(value)) {
-    return 'Enter Valid Phone Numer';
+    return 'Enter Valid Name';
   } else {
     return null;
   }
@@ -28,7 +28,7 @@ String EmailAdrresValidator(String value) {
 
   RegExp regex = new RegExp(pattern);
   if (!regex.hasMatch(value)) {
-    return 'Enter Valid Phone Numer';
+    return 'Enter Valid Email';
   } else {
     return null;
   }
