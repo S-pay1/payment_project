@@ -11,3 +11,5 @@ const company = "api/companies";
 const history = "clients/payments";
 var id = Gloablvar.id;
 const clients = 'api/clients';
+
+const getserve = 'companies_service';

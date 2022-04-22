@@ -104,38 +104,23 @@ class _Service_ScreenState extends State<Service_Screen> {
                     SizedBox(
                       height: 18,
                     ),
-                    defaultFormField(
-                        controller: text,
-                        type: TextInputType.number,
-                        validate: (String value) {
-                          if (value.isEmpty) {
-                            return 'Please Enter code';
-                          }
-                        },
-                        label: cubit.ServicCompany[Global.indexOfServices]
-                            .toString()),
-                    // DropdownButtonFormField(
-                    //   hint: Text('Select Company'),
-                    //   decoration: InputDecoration(border: OutlineInputBorder()),
-                    //   menuMaxHeight: 250,
-                    //   // enableFeedback: true,
-                    //   items: cubit.itemsOfDropDown
-                    //       .map<DropdownMenuItem<String>>((value) {
-                    //     return DropdownMenuItem<String>(
-                    //       child: Text(value),
-                    //       value: value,
-                    //     );
-                    //   }).toList(),
-                    //   onChanged: (index) {
-                    //     cubit.itemsOfDropDown[Global.indexOfServices]
-                    //         .toString();
-                    //   },
-                    //   // (value) {
-                    //   //   setState(() {
-                    //   //     selectedItemValue = value;
-                    //   //   });
-                    //   // },
-                    // ),
+                    DropdownButtonFormField(
+                      hint: Text('Select Company'),
+                      decoration: InputDecoration(border: OutlineInputBorder()),
+                      menuMaxHeight: 250,
+                      // enableFeedback: true,
+                      items: cubit.itemsOfDropDown
+                          .map<DropdownMenuItem<String>>((value) {
+                        return DropdownMenuItem<String>(
+                          child: Text(value),
+                          value: value,
+                        );
+                      }).toList(),
+                      onChanged: (index) {
+                        cubit.itemsOfDropDown[Global.indexOfServices]
+                            .toString();
+                      },
+                    ),
                     SizedBox(
                       height: 18,
                     ),
