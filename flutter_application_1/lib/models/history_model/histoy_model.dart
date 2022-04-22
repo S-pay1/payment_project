@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names, unused_local_variable
-
 class HistoryModel {
   bool status;
   String message;
@@ -21,7 +19,7 @@ class HistoryData {
   List<recivedata> payments = [];
   HistoryData.fromJson(Map<String, dynamic> json) {
     json['payments'].forEach((element) {
-      payments.add(element);
+      payments.add(recivedata.fromJson(element));
     });
   }
 }
@@ -35,6 +33,6 @@ class recivedata {
     id = json['id'];
     company_name = json['company_name'];
     date = json['date'];
-    total = json['total'];
+    total = json['total'].toString();
   }
 }

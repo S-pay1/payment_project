@@ -54,15 +54,16 @@ class HomecubitCubit extends Cubit<HomecubitState> {
     //   emit(Historyerror(model.toString()));
     //   print(onError.toString());
     // });
-    DioHelper.getData(url: history, query: {}).then((value) {
+    DioHelper.getData(url: history, query: {
+      'id': 'XvwO63jNPp0py3Y8Nawk',
+    }).then((value) {
       model = HistoryModel.fromJson(value.data);
-      // print(model.data.payments[0].company_name);
       // print(value.data.toString());
       // print(value);
-      // print(value.data);
+      print(value.data);
 
-      print(model.data);
-      print(model.status);
+      // print(model.data.payments);
+      //  print(model.status);
       // print(model.message);
       //print(model.data.token);
       // print(value.data.data);
