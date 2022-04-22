@@ -16,10 +16,10 @@ class History extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            leading: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.arrow_back, color: Color(0xff004B7d)),
-            ),
+            // leading: IconButton(
+            //   onPressed: () {},
+            //   icon: Icon(Icons.arrow_back, color: Color(0xff004B7d)),
+            // ),
             title: Text(
               'History',
             ),
@@ -27,8 +27,8 @@ class History extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.all(20.0),
             child: ConditionalBuilder(
-              condition: State is! HomecubitBottomNav &&
-                  HomecubitCubit.get(context).model != null,
+              condition: State is! HomecubitBottomNav ||
+                  HomecubitCubit.get(context).model.data == null,
               // HomecubitCubit.get(context).model != null,
 
               builder: (context) => ListView.separated(

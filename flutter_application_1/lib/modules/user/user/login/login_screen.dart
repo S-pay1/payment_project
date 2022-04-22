@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var phoneController = TextEditingController();
-    var emaiadress = TextEditingController();
+    // var emaiadress = TextEditingController();
     var passwordController = TextEditingController();
 
     return BlocProvider(
