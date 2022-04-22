@@ -67,7 +67,7 @@ class ServiceCubit extends Cubit<ServiceState> {
   ServiceModel model;
   void userService({
     String client_id,
-    @required String company_id,
+    String company_id,
     @required int price,
     @required int service_code,
   }) {

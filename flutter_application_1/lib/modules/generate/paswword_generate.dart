@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/modules/generate/recive_password.dart';
 import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
 
@@ -63,8 +64,13 @@ class Genrate extends StatelessWidget {
                   defaultButton(
                       function: () {
                         if (_formKey.currentState.validate()) {
-                          print(
-                              getRandomString(phoneController.text, text, 16));
+                          print(Gloablvar.passwordgenerate);
+                          Gloablvar.passwordgenerate = getRandomString(
+                              phoneController.text, text.text, 16);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Recive()));
                         }
                       },
                       text: 'submit'),

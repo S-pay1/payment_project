@@ -1,10 +1,14 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/models/user_model/register_model.dart';
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
+import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:uuid/uuid.dart';
@@ -17,18 +21,19 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   RegisterModel model;
   void userRegister({
-    @required String name,
-    @required String phone,
-    // @required String password,
-    @required String salt,
-    @required String typeOfUser,
+    String name,
+    String phone,
+    String password,
+    String salt,
+    String typeOfUser,
 
     // @required String email,
   }) {
     var uuid = Uuid();
     var salt = uuid.v4();
-    // var pas = utf8.encode(password);
-    // var hashPassword = sha256.convert(pas);
+    var pas = utf8.encode(Gloablvar.passwordgenerate);
+    var hashPassword = sha256.convert(pas);
+    var newSalt = salt.replaceAll("-", "");
     typeOfUser = 'user';
 
     emit(Registerloading());
@@ -36,10 +41,10 @@ class RegisterCubit extends Cubit<RegisterState> {
     DioHelper.postData(
       url: REIGSTERs,
       data: {
-        // 'password': hashPassword.toString() + salt,
-        'phone': phone,
-        'name': name,
-        'salt': salt,
+        'password': hashPassword.toString() + newSalt,
+        'phone': Gloablvar.phone,
+        'name': Gloablvar.name,
+        'salt': newSalt,
         'typeOfUser': typeOfUser.toString()
       },
     ).then((value) {

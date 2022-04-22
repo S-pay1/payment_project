@@ -1,11 +1,13 @@
-const LOGINs = 'login';
+import 'package:flutter_application_1/shared/global.dart';
+
+const LOGINs = 'api/login';
 //const LOGINn = 'clients';
-const REIGSTERs = 'register';
-const CHEAKOTP = 'checkOtp';
+const REIGSTERs = 'api/register';
+const CHEAKOTP = 'api/checkOtp';
 
-const Payment = "payments";
-const ResendOtp = "resend";
-const company = "companies";
-const history = "clients/{id}/payments";
-
-const clients = 'clients';
+const Payment = "api/payments";
+const ResendOtp = "api/resend";
+const company = "api/companies";
+const history = "clients/payments";
+var id = Gloablvar.id;
+const clients = 'api/clients';

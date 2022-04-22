@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
+import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 import 'package:flutter_application_1/modules/home_screen/home.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
@@ -38,7 +39,7 @@ class Otp extends StatelessWidget {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => home()));
+                                    builder: (context) => SignUp()));
                           },
                           child: Text(
                             'ok',
@@ -127,15 +128,15 @@ class Otp extends StatelessWidget {
                         text: 'verify',
                       ),
                       SizedBox(height: 5.0),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Click here to resend..',
-                          style: TextStyle(
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
+                      // TextButton(
+                      //   onPressed: () {},
+                      //   child: Text(
+                      //     'Click here to resend..',
+                      //     style: TextStyle(
+                      //       color: Colors.blue,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

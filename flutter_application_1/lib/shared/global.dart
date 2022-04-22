@@ -14,6 +14,7 @@ class Gloablvar {
   static int price;
   static double feeds;
   static String date;
+  static String passwordgenerate;
 }
 
 class Global {
@@ -24,8 +25,9 @@ class genratepass {}
 
 Random _rnd = Random();
 
-String getRandomString(String name, num, int length) {
-  String char = '${name.toString() + num.toString() + "!@#%&*"}';
+String getRandomString(String name, dynamic num, int length) {
+  String char = name + num + "!@#%&*";
+
   return String.fromCharCodes(
     Iterable.generate(
       length,

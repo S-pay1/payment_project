@@ -1,6 +1,7 @@
 //import 'package:udemy_flutter/models/user/user/login/login_model.dart';
 
 import '../../models/history_model/histoy_model.dart';
+import '../../models/user_model/Register_model.dart';
 
 abstract class HomecubitState {}
 
@@ -19,12 +20,12 @@ class HomecubitEroor extends HomecubitState {}
 class Historyloading extends HomecubitState {}
 
 class Historysuccess extends HomecubitState {
-  final HistoryModel model;
+  // final HistoryModel model;
 
-  Historysuccess(this.model);
+  // Historysuccess(this.model);
 }
 
 class Historyerror extends HomecubitState {
-  final String error;
-  Historyerror(this.error);
+  // final String error;
+  // Historyerror(this.error);
 }

@@ -104,28 +104,38 @@ class _Service_ScreenState extends State<Service_Screen> {
                     SizedBox(
                       height: 18,
                     ),
-                    DropdownButtonFormField(
-                      hint: Text('Select Company'),
-                      decoration: InputDecoration(border: OutlineInputBorder()),
-                      menuMaxHeight: 250,
-                      // enableFeedback: true,
-                      items: cubit.itemsOfDropDown
-                          .map<DropdownMenuItem<String>>((value) {
-                        return DropdownMenuItem<String>(
-                          child: Text(value),
-                          value: value,
-                        );
-                      }).toList(),
-                      onChanged: (index) {
-                        cubit.itemsOfDropDown[Global.indexOfServices]
-                            .toString();
-                      },
-                      // (value) {
-                      //   setState(() {
-                      //     selectedItemValue = value;
-                      //   });
-                      // },
-                    ),
+                    defaultFormField(
+                        controller: text,
+                        type: TextInputType.number,
+                        validate: (String value) {
+                          if (value.isEmpty) {
+                            return 'Please Enter code';
+                          }
+                        },
+                        label: cubit.ServicCompany[Global.indexOfServices]
+                            .toString()),
+                    // DropdownButtonFormField(
+                    //   hint: Text('Select Company'),
+                    //   decoration: InputDecoration(border: OutlineInputBorder()),
+                    //   menuMaxHeight: 250,
+                    //   // enableFeedback: true,
+                    //   items: cubit.itemsOfDropDown
+                    //       .map<DropdownMenuItem<String>>((value) {
+                    //     return DropdownMenuItem<String>(
+                    //       child: Text(value),
+                    //       value: value,
+                    //     );
+                    //   }).toList(),
+                    //   onChanged: (index) {
+                    //     cubit.itemsOfDropDown[Global.indexOfServices]
+                    //         .toString();
+                    //   },
+                    //   // (value) {
+                    //   //   setState(() {
+                    //   //     selectedItemValue = value;
+                    //   //   });
+                    //   // },
+                    // ),
                     SizedBox(
                       height: 18,
                     ),
@@ -151,14 +161,15 @@ class _Service_ScreenState extends State<Service_Screen> {
                               // password: passwordController.text
                               service_code: int.parse(number.text),
                               price: int.parse(pricenumber.text),
-                              company_id: cubit.itemsOfDropDown.toString(),
+
+                              // company_id: text.text,
                               client_id: Gloablvar.id,
                             );
                             print(Gloablvar.feeds);
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => Payment()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()));
                           }
                         }),
                   ],
