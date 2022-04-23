@@ -49,6 +49,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       },
     ).then((value) {
       model = RegisterModel.fromJson(value.data);
+      Gloablvar.id = model.data.id;
       print(model.status);
       print(model.message);
 

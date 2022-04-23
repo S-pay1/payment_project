@@ -93,7 +93,7 @@ class UserData {
   // String phone;
 
   UserData.fromJason(Map<String, dynamic> json) {
-    client_id = json['client_id'];
+    client_id = json['client_id'].toString();
     total = double.tryParse(json['receipt']['total']);
     service_code = json['service_code'];
     price = int.tryParse(json["price"]);

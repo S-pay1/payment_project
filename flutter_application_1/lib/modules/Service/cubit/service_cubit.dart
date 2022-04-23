@@ -1,4 +1,6 @@
-// ignore_for_file: non_constant_identifier_names, unused_local_variable, unused_element, avoid_print
+// ignore_for_file: non_constant_identifier_names, unused_local_variable, unused_element, avoid_print, void_checks
+
+import 'dart:ffi';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_application_1/models/service_model/service_model.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
+import '../../../models/service_model/get_service_model.dart';
 import '../../../shared/global.dart';
 
 part 'service_state.dart';
@@ -16,6 +19,7 @@ class ServiceCubit extends Cubit<ServiceState> {
   ServiceCubit() : super(ServiceInitial());
   static ServiceCubit get(context) => BlocProvider.of(context);
   int counterIndex;
+
   List<String> ChosseService = [
     'gas',
     'water',
@@ -42,18 +46,6 @@ class ServiceCubit extends Cubit<ServiceState> {
     'landing number',
     'number',
     'number',
-  ];
-  List itemsOfDropDown = [
-    'ezz',
-    'hesham',
-    'youssef',
-    'mo\'men',
-    'yehya',
-    'l',
-    'g',
-    't',
-    'm',
-    'y',
   ];
   int indexOfServices;
 
@@ -95,5 +87,31 @@ class ServiceCubit extends Cubit<ServiceState> {
       emit(Serviceerror(error.toString()));
       print(error.toString());
     });
+  }
+
+  DataModel Companymodel;
+  void companyData(text) {
+    // itemsOfDropDown =
+    emit(ServiceGetloading());
+
+    DioHelper.getData(url: getserve, query: {
+      'service': text,
+    }).then((value) {
+      Companymodel = DataModel.fromJson(value.data);
+      Companymodel.data.companies.forEach((element) {
+        Gloablvar.itemsOfDropDown.add(element.name);
+      });
+
+      print(value.data);
+      print(Gloablvar.itemsOfDropDown);
+      // print(Companymodel.data.companies);
+
+      emit(ServiceGetsuccess(Companymodel));
+    }).catchError((error) {
+      print('catch error');
+      emit(ServiceGeterror(error.toString()));
+      print(error.toString());
+    });
+    return;
   }
 }

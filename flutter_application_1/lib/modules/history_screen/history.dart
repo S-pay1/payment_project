@@ -87,7 +87,7 @@ Widget Historyview(HistoryModel model) {
                 ),
                 Text(
                     // model.data.payments.map((e) => e.total).toString(),
-                    e.total ?? 'null'),
+                    e.total + ' EG' ?? 'null'),
               ],
             ),
             Divider(color: Colors.grey, thickness: 2)

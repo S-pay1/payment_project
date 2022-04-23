@@ -56,6 +56,25 @@ class DioHelper {
     );
   }
 
+  static Future<Response> PutData({
+    @required String url,
+    Map<String, dynamic> query,
+    @required Map<String, dynamic> data,
+    // String lang = 'ar',
+    // String token,
+  }) async {
+    dio.options.headers = {
+      // 'lang': lang,
+      // 'Authorization': token,
+    };
+
+    return dio.put(
+      url,
+      queryParameters: query,
+      data: data,
+    );
+  }
+
   Future<List<dynamic>> getTheHistory() async {
     try {
       Response response =

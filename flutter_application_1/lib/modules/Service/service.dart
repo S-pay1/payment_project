@@ -1,6 +1,7 @@
 // ignore_for_file: missing_required_param, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/service_model/get_service_model.dart';
 
 import 'package:flutter_application_1/modules/Service/cubit/service_cubit.dart';
 import 'package:flutter_application_1/modules/payment/Payment.dart';
@@ -53,6 +54,7 @@ class _Service_ScreenState extends State<Service_Screen> {
               Gloablvar.service_code = state.model.data.service_code;
               Gloablvar.total = state.model.data.total;
               Gloablvar.date = state.model.data.date;
+
               print(state.model.data.feeds);
 
               print(state.model.message);
@@ -72,6 +74,11 @@ class _Service_ScreenState extends State<Service_Screen> {
         },
         builder: (context, state) {
           var cubit = ServiceCubit.get(context);
+          // var succes = cubit.companyData(text);
+          // print(succes);
+          DataModel Companymodel;
+          // print(cubit.itemsOfDropDown);
+
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(
@@ -109,7 +116,7 @@ class _Service_ScreenState extends State<Service_Screen> {
                       decoration: InputDecoration(border: OutlineInputBorder()),
                       menuMaxHeight: 250,
                       // enableFeedback: true,
-                      items: cubit.itemsOfDropDown
+                      items: Gloablvar.itemsOfDropDown
                           .map<DropdownMenuItem<String>>((value) {
                         return DropdownMenuItem<String>(
                           child: Text(value),
@@ -117,8 +124,7 @@ class _Service_ScreenState extends State<Service_Screen> {
                         );
                       }).toList(),
                       onChanged: (index) {
-                        cubit.itemsOfDropDown[Global.indexOfServices]
-                            .toString();
+                        Gloablvar.itemsOfDropDown[Global.indexOfServices];
                       },
                     ),
                     SizedBox(
@@ -147,7 +153,7 @@ class _Service_ScreenState extends State<Service_Screen> {
                               service_code: int.parse(number.text),
                               price: int.parse(pricenumber.text),
 
-                              // company_id: text.text,
+                              company_id: Gloablvar.itemsOfDropDown.toString(),
                               client_id: Gloablvar.id,
                             );
                             print(Gloablvar.feeds);

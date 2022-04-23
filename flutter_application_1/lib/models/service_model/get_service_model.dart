@@ -12,11 +12,15 @@ class DataModel {
 }
 
 class DataData {
+  List itemsOfDropDown = [];
   List<getdata> companies = [];
   DataData.fromJson(Map<String, dynamic> json) {
     json['companies'].forEach((element) {
       companies.add(getdata.fromJson(element));
     });
+    // json['companies'].forEach((element) {
+    //   itemsOfDropDown.add(getdata.fromJson(element));
+    // });
   }
 }
 

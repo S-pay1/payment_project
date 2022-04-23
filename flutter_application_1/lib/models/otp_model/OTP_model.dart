@@ -6,7 +6,8 @@ class OtpModel {
   OtpModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ? UserData.fromJason(json['data']) : null;
+    data = json['data'] != null ? UserData.fromJson(json['data']) : null;
+    // data = UserData.fromJson(json['data'] as Map<String, dynamic>);
   }
 }
 
@@ -14,7 +15,7 @@ class UserData {
   String id;
   String otp;
 
-  UserData.fromJason(Map<String, dynamic> json) {
+  UserData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     otp = json['otp'];
   }

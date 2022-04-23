@@ -15,6 +15,7 @@ class Gloablvar {
   static double feeds;
   static String date;
   static String passwordgenerate;
+  static List itemsOfDropDown = [];
 }
 
 class Global {

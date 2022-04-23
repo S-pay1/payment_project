@@ -35,7 +35,6 @@ class SignUp extends StatelessWidget {
         listener: (context, state) {
           if (state is Registersuccess) {
             if (state.model.status) {
-              Gloablvar.id = state.model.data.id;
               Gloablvar.name = state.model.data.name;
               Gloablvar.phone = state.model.data.phone;
               print(state.model.message);

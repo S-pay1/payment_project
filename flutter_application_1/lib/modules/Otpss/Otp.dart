@@ -6,6 +6,7 @@ import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 import 'package:flutter_application_1/modules/home_screen/home.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
+import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../shared/components/components.dart';
@@ -24,6 +25,7 @@ class Otp extends StatelessWidget {
         // ignore: void_checks
         listener: (context, state) {
           if (state is Otpsuccess) {
+            print(Gloablvar.id);
             if (state.model.status) {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Homelayout()));
@@ -121,8 +123,9 @@ class Otp extends StatelessWidget {
                       defaultButton(
                         function: () {
                           if (_formKey.currentState.validate()) {
-                            OtpCubit.get(context)
-                                .userOtpCheak(otp: OTPcontroller.text);
+                            OtpCubit.get(context).userOtpCheak(
+                              otp: OTPcontroller.text,
+                            );
                           }
                         },
                         text: 'verify',

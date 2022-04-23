@@ -87,38 +87,6 @@ Widget defaultFormField({
         border: OutlineInputBorder(),
       ),
     );
-Widget defuletGester({
-  Function onTap,
-  @required String text,
-  @required image,
-}) =>
-    GestureDetector(
-      onTap: onTap,
-      child: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // ignore: prefer_const_literals_to_create_immutables
-          children: [
-            // Image(image: image
-            //     // height: 100,
-            //     // width: 100,
-            //     ),
-            Text(
-              '',
-              style: TextStyle(fontSize: 18.0, color: Colors.white),
-            ),
-          ],
-        ),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 3),
-          borderRadius: BorderRadius.circular(
-            15.0,
-          ),
-        ),
-        height: 140,
-        width: 140,
-      ),
-    );
 
 void toastShow({
   @required String text,
@@ -196,10 +164,12 @@ class ServicesButton extends StatelessWidget {
           var cubit = ServiceCubit.get(context);
           return InkWell(
             onTap: () {
+              cubit.changeindexscreen(text);
+              cubit.companyData(text);
+
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Service_Screen()));
               // cubit.changeindexscreen(text);
-              cubit.changeindexscreen(text);
             },
             child: Stack(
               children: [

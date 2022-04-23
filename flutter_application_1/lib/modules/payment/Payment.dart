@@ -70,7 +70,8 @@ class _PaymentState extends State<Payment> {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text('gas'),
+                  child:
+                      Text(Gloablvar.itemsOfDropDown[Global.indexOfServices]),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),
