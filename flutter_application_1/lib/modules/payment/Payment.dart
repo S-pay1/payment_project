@@ -50,7 +50,7 @@ class _PaymentState extends State<Payment> {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text(Gloablvar.date),
+                  child: Text(Gloablvar.date ?? 'default value'),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),

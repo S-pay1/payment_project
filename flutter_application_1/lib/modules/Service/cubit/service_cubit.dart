@@ -59,18 +59,26 @@ class ServiceCubit extends Cubit<ServiceState> {
   ServiceModel model;
   void userService({
     String client_id,
-    String company_id,
+    String company_name,
     @required int price,
     @required int service_code,
   }) {
     emit(Serviceloading());
     var feeds = price * (0.02);
 
+    var data = {
+      'client_id': Gloablvar.id,
+      'company_id': company_name,
+      'price': price,
+      'service_code': service_code,
+      'feeds': feeds,
+    };
+    print(data);
     DioHelper.postData(
       url: Payment,
       data: {
         'client_id': Gloablvar.id,
-        'company_id': company_id,
+        'company_name': company_name,
         'price': price,
         'service_code': service_code,
         'feeds': feeds,
@@ -91,20 +99,19 @@ class ServiceCubit extends Cubit<ServiceState> {
 
   DataModel Companymodel;
   void companyData(text) {
-    // itemsOfDropDown =
+    Gloablvar.itemsOfDropDown = [];
     emit(ServiceGetloading());
 
     DioHelper.getData(url: getserve, query: {
       'service': text,
     }).then((value) {
       Companymodel = DataModel.fromJson(value.data);
-      Companymodel.data.companies.forEach((element) {
+      for (var element in Companymodel.data.companies) {
         Gloablvar.itemsOfDropDown.add(element.name);
-      });
+      }
 
       print(value.data);
       print(Gloablvar.itemsOfDropDown);
-      // print(Companymodel.data.companies);
 
       emit(ServiceGetsuccess(Companymodel));
     }).catchError((error) {

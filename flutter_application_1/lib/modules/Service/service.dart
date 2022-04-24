@@ -1,5 +1,6 @@
 // ignore_for_file: missing_required_param, prefer_const_constructors, avoid_print
 
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/service_model/get_service_model.dart';
 
@@ -25,37 +26,27 @@ class _Service_ScreenState extends State<Service_Screen> {
   var number = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  // String selectedItemValue = ;
+  // var itemDropDown;
 
-  // List itemsOfDropDown = [
-  //   'ezz',
-  //   'hesham',
-  //   'youssef',
-  //   'mo\'men',
-  //   'yehya',
-  //   'l',
-  //   'g',
-  //   't',
-  //   'm',
-  //   'y',
-  // ];
+  DataModel datamodel;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => ServiceCubit(),
+      create: (BuildContext context) =>
+          ServiceCubit()..companyData(Gloablvar.itemsOfDropDown),
       child: BlocConsumer<ServiceCubit, ServiceState>(
         listener: (BuildContext context, state) {
           if (state is Servicesuccess) {
             if (state.model.status) {
               var client_id = Gloablvar.id;
-              Gloablvar.feeds = state.model.data.feeds;
+              Gloablvar.feeds = state.model.data.receiptsData.feeds;
               Gloablvar.price = state.model.data.price;
               Gloablvar.service_code = state.model.data.service_code;
-              Gloablvar.total = state.model.data.total;
-              Gloablvar.date = state.model.data.date;
+              Gloablvar.total = state.model.data.receiptsData.total;
+              Gloablvar.date = state.model.data.receiptsData.date;
 
-              print(state.model.data.feeds);
+              print(state.model.data.receiptsData.feeds);
 
               print(state.model.message);
               //print(state.model.data.token);
@@ -115,7 +106,6 @@ class _Service_ScreenState extends State<Service_Screen> {
                       hint: Text('Select Company'),
                       decoration: InputDecoration(border: OutlineInputBorder()),
                       menuMaxHeight: 250,
-                      // enableFeedback: true,
                       items: Gloablvar.itemsOfDropDown
                           .map<DropdownMenuItem<String>>((value) {
                         return DropdownMenuItem<String>(
@@ -124,7 +114,9 @@ class _Service_ScreenState extends State<Service_Screen> {
                         );
                       }).toList(),
                       onChanged: (index) {
-                        Gloablvar.itemsOfDropDown[Global.indexOfServices];
+                        setState(() {
+                          Gloablvar.dropdownitem = index;
+                        });
                       },
                     ),
                     SizedBox(
@@ -144,25 +136,27 @@ class _Service_ScreenState extends State<Service_Screen> {
                       height: 20,
                     ),
                     defaultButton(
-                        text: 'pay',
-                        function: () {
-                          if (_formKey.currentState.validate()) {
-                            ServiceCubit.get(context).userService(
-                              // phone: phoneController.text,
-                              // password: passwordController.text
-                              service_code: int.parse(number.text),
-                              price: int.parse(pricenumber.text),
-
-                              company_id: Gloablvar.itemsOfDropDown.toString(),
-                              client_id: Gloablvar.id,
-                            );
-                            print(Gloablvar.feeds);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Payment()));
-                          }
-                        }),
+                      text: 'pay',
+                      function: () {
+                        if (_formKey.currentState.validate()) {
+                          ServiceCubit.get(context).userService(
+                            // phone: phoneController.text,
+                            // password: passwordController.text
+                            service_code: int.parse(number.text),
+                            price: int.parse(pricenumber.text),
+                            company_name: Gloablvar.dropdownitem,
+                            client_id: Gloablvar.id,
+                          );
+                          // print(Gloablvar.feeds);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Payment(),
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),

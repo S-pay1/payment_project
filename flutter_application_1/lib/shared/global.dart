@@ -16,6 +16,7 @@ class Gloablvar {
   static String date;
   static String passwordgenerate;
   static List itemsOfDropDown = [];
+  static String dropdownitem = "";
 }
 
 class Global {
