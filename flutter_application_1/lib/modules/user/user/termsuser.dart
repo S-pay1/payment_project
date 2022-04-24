@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
 
-
 import '../../../shared/components/components.dart';
 
 class termsUser extends StatefulWidget {

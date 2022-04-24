@@ -5,8 +5,10 @@ import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 import 'package:flutter_application_1/modules/home_screen/home.dart';
+import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
 import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
+import 'package:flutter_application_1/shared/cach_helper.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,8 +30,27 @@ class Otp extends StatelessWidget {
           if (state is Otpsuccess) {
             print(Gloablvar.id);
             if (state.model.status) {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Homelayout()));
+              if (Gloablvar.registerScreen) {
+                CacheHelper.saveDate(
+                        key: 'Homelayout', value: Gloablvar.registerScreen)
+                    .then((value) => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Homelayout())));
+              }
+              if (Gloablvar.resetpasswordScreen) {
+                CacheHelper.saveDate(
+                        key: 'ResetPassword',
+                        value: Gloablvar.resetpasswordScreen)
+                    .then((value) => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ResetPassword())));
+              }
+              if (Gloablvar.walletScreen) {
+                CacheHelper.saveDate(
+                        key: 'Homelayout', value: Gloablvar.walletScreen)
+                    .then((value) => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Homelayout())));
+              }
             } else {
               showDialog(
                   context: context,
@@ -60,8 +81,8 @@ class Otp extends StatelessWidget {
             appBar: AppBar(
               leading: IconButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => SignUp()));
+                    // Navigator.pushReplacement(context,
+                    //     MaterialPageRoute(builder: (context) => SignUp()));
                   },
                   icon: Icon(Icons.arrow_back)),
               title: Text('OTP Verification'),
@@ -127,6 +148,7 @@ class Otp extends StatelessWidget {
                             OtpCubit.get(context).userOtpCheak(
                               otp: OTPcontroller.text,
                             );
+                            getTherightotpPage(context);
                           }
                         },
                         text: 'verify',
@@ -150,5 +172,18 @@ class Otp extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+void getTherightotpPage(BuildContext ctx) {
+  if (CacheHelper.getData(key: 'Homelayout')) {
+    Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
+  }
+  if (CacheHelper.getData(key: 'ResetPassword')) {
+    Navigator.push(
+        ctx, MaterialPageRoute(builder: (context) => ResetPassword()));
+  }
+  if (CacheHelper.getData(key: 'Homelayout')) {
+    Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
   }
 }

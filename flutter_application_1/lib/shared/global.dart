@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, camel_case_types, non_constant_identifier_names, avoid_print
+// ignore_for_file: unused_local_variable, camel_case_types, non_constant_identifier_names, avoid_print, prefer_typing_uninitialized_variables
 
 // main() {
 //   var userid = state.model.data.id;
@@ -17,9 +17,9 @@ class Gloablvar {
   static String passwordgenerate;
   static List itemsOfDropDown = [];
   static String dropdownitem = "";
-  static bool registerScreen = false;
-  static bool resetpasswordScreen = false;
-  static bool walletScreen = false;
+  static dynamic registerScreen;
+  static dynamic resetpasswordScreen;
+  static dynamic walletScreen;
   static double balance;
 }
 

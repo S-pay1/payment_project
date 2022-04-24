@@ -9,6 +9,7 @@ import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 import 'package:flutter_application_1/modules/user/user/login/login_screen.dart';
 import 'package:flutter_application_1/modules/wallet_screen/wallet.dart';
 import 'package:flutter_application_1/shared/bloc_observer.dart';
+import 'package:flutter_application_1/shared/cach_helper.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,9 +20,10 @@ import 'shared/styles/styles.dart';
 
 Future<void> main() async {
   BlocOverrides.runZoned(
-    () {
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
       DioHelper.init();
-
+      await CacheHelper.init();
       runApp(MyApp());
     },
     blocObserver: MyBlocObserver(),
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Color(0xff004B7d),
         ),
       ),
-      home: SignUp(),
+      home: LoginScreen(),
     );
   }
 }
