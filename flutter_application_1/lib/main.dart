@@ -12,6 +12,7 @@ import 'package:flutter_application_1/shared/bloc_observer.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'modules/user/user/reset password/RsetPasswprd.dart';
 import 'modules/user/user/signup/Signup.dart';
 import 'shared/dio/dio_helper.dart';
 import 'shared/styles/styles.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: Color(0xff004B7d),
         ),
       ),
-      home: LoginScreen(),
+      home: SignUp(),
     );
   }
 }

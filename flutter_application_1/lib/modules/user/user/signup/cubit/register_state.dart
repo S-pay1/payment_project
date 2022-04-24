@@ -19,3 +19,14 @@ class Registererror extends RegisterState {
 }
 
 class RegisterpaswwordChange extends RegisterState {}
+
+class Checksuccess extends RegisterState {
+  final ResetModel remodel;
+
+  Checksuccess(this.remodel);
+}
+
+class Checkererror extends RegisterState {
+  final String error;
+  Checkererror(this.error);
+}

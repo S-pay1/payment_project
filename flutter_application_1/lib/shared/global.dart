@@ -17,6 +17,10 @@ class Gloablvar {
   static String passwordgenerate;
   static List itemsOfDropDown = [];
   static String dropdownitem = "";
+  static bool registerScreen = false;
+  static bool resetpasswordScreen = false;
+  static bool walletScreen = false;
+  static double balance;
 }
 
 class Global {

@@ -6,6 +6,7 @@ import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 import 'package:flutter_application_1/modules/home_screen/home.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
+import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
