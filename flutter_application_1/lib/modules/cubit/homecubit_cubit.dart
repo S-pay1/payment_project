@@ -12,6 +12,7 @@ import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../models/wallet_model/wallet_model.dart';
 import '../home_screen/home.dart';
 import '../wallet_screen/wallet.dart';
 import 'homecubit_state.dart';
@@ -48,42 +49,40 @@ class HomecubitCubit extends Cubit<HomecubitState> {
   HistoryModel model;
   void HistoryData() {
     emit(HomecubitLoading());
-    // getHistoryData().then((value) {
-    //   emit(Historysuccess(model));
-    // }).catchError((onError) {
-    //   emit(Historyerror(model.toString()));
-    //   print(onError.toString());
-    // });
+
     DioHelper.getData(url: history, query: {
-      'id': 'XvwO63jNPp0py3Y8Nawk',
-      // 'id': Gloablvar.id,
+      // 'id': 'XvwO63jNPp0py3Y8Nawk',
+      // 'id': 'c7db3868a41846d385ee',
+      'id': Gloablvar.id
     }).then((value) {
       model = HistoryModel.fromJson(value.data);
-      // print(value.data.toString());
+
       // print(value);
       print(value.data);
 
-      // print(model.data.payments);
-      //  print(model.status);
-      // print(model.message);
-      //print(model.data.token);
-      // print(value.data.data);
-
       emit(Historysuccess());
-      // emit(Historysuccess(model));
     }).catchError((error) {
-      // emit(Historyerror(error.toString()));
       print('catch error');
+      print(Gloablvar.id);
       emit(Historyerror());
       print(error.toString());
     });
   }
 
-  // List<HistoryModel> historyData;
-
-  // final DioHelper dioHelper;
-  // Future<List<HistoryModel>> getHistoryData() async {
-  //   final history = await dioHelper.getTheHistory();
-  //   return history.map((history) => HistoryModel.fromJson(history)).toList();
-  // }
+  WalletModel rmodel;
+  void userwallet() {
+    emit(walletloading());
+    DioHelper.getData(url: walletshow, query: {
+      'client_id': Gloablvar.id,
+    }).then((value) {
+      rmodel = WalletModel.fromJson(value.data);
+      Gloablvar.balance = rmodel.data.balance;
+      print(value.data);
+      emit(walletsuccess());
+    }).catchError((onError) {
+      print('catch error');
+      emit(walletyerror());
+      print(onError.toString());
+    });
+  }
 }

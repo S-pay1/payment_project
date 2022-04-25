@@ -37,14 +37,9 @@ class CompanyCubit extends Cubit<CompanyState> {
       url: company,
       data: {
         'email': email,
-        // 'bank_account': bank_account,
-        // 'commercial': commercial,
-        // 'tax_number': tax_number,
-        // 'id': id,
-        // 'name': name,
-        // 'phone': phone,
+       
         'password': hashPassword.toString(),
-        'type': 'user',
+     
         'typeOfUser': typeOfUser.toString()
       },
     ).then((value) {

@@ -16,7 +16,12 @@ class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     var feed = Gloablvar.feeds;
-    print(feed);
+
+    var price = Gloablvar.price;
+    var code = Gloablvar.service_code;
+    var total = Gloablvar.total;
+    var date = Gloablvar.date;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -70,8 +75,7 @@ class _PaymentState extends State<Payment> {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child:
-                      Text(Gloablvar.itemsOfDropDown[Global.indexOfServices]),
+                  child: Text(Gloablvar.dropdownitem),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),

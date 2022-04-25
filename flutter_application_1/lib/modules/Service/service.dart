@@ -40,18 +40,23 @@ class _Service_ScreenState extends State<Service_Screen> {
           if (state is Servicesuccess) {
             if (state.model.status) {
               var client_id = Gloablvar.id;
-              Gloablvar.feeds = state.model.data.receiptsData.feeds;
-              Gloablvar.price = state.model.data.price;
-              Gloablvar.service_code = state.model.data.service_code;
-              Gloablvar.total = state.model.data.receiptsData.total;
-              Gloablvar.date = state.model.data.receiptsData.date;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Payment(),
+                ),
+              );
+              // Gloablvar.feeds = state.model.data.feeds;
+              // Gloablvar.price = state.model.data.price;
+              // Gloablvar.service_code = state.model.data.service_code;
+              // Gloablvar.total = state.model.data.total;
+              // Gloablvar.date = state.model.data.date;
 
-              print(state.model.data.receiptsData.feeds);
+              // print(state.model.data.receiptsData.feeds);
 
               print(state.model.message);
               //print(state.model.data.token);
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => Payment()));
+
             } else {
               print(state.model.message);
               Fluttertoast.showToast(
@@ -135,27 +140,26 @@ class _Service_ScreenState extends State<Service_Screen> {
                     SizedBox(
                       height: 20,
                     ),
-                    defaultButton(
-                      text: 'pay',
-                      function: () {
-                        if (_formKey.currentState.validate()) {
-                          ServiceCubit.get(context).userService(
-                            // phone: phoneController.text,
-                            // password: passwordController.text
-                            service_code: int.parse(number.text),
-                            price: int.parse(pricenumber.text),
-                            company_name: Gloablvar.dropdownitem,
-                            client_id: Gloablvar.id,
-                          );
-                          // print(Gloablvar.feeds);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Payment(),
-                            ),
-                          );
-                        }
-                      },
+                    ConditionalBuilder(
+                      fallback: (context) => CircularProgressIndicator(),
+                      condition: state is! Serviceloading,
+                      builder: (context) => defaultButton(
+                        text: 'pay',
+                        function: () {
+                          if (_formKey.currentState.validate()) {
+                            ServiceCubit.get(context).userService(
+                              // phone: phoneController.text,
+                              // password: passwordController.text
+                              service_code: number.text,
+                              price: double.parse(pricenumber.text),
+                              company_name: Gloablvar.dropdownitem.toString(),
+                              client_id: Gloablvar.id,
+                            );
+                            // print(Gloablvar.feeds);
+
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),

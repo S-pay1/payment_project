@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../shared/components/components.dart';
+import '../../../../shared/global.dart';
 import 'cubit/Login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -26,6 +27,7 @@ class LoginScreen extends StatelessWidget {
         child: BlocConsumer<loginCubit, loginState>(
           listener: (context, state) {
             if (state is loginsuccess) {
+              Gloablvar.id = state.model.data.id;
               if (state.model.status) {
                 print(state.model.message);
                 //print(state.model.data.token);

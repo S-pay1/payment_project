@@ -29,3 +29,16 @@ class Historyerror extends HomecubitState {
   // final String error;
   // Historyerror(this.error);
 }
+
+class walletloading extends HomecubitState {}
+
+class walletsuccess extends HomecubitState {
+  // final HistoryModel model;
+
+  // Historysuccess(this.model);
+}
+
+class walletyerror extends HomecubitState {
+  // final String error;
+  // Historyerror(this.error);
+}

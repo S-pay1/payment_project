@@ -27,7 +27,7 @@ class reciveWalletdata {
 
   reciveWalletdata.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    balance = json['company_name'];
+    balance = json['balance'];
     // client_id = json['date'];
   }
 }

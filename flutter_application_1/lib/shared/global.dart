@@ -10,8 +10,8 @@ class Gloablvar {
   static String phone;
   static String name;
   static double total;
-  static int service_code;
-  static int price;
+  static String service_code;
+  static double price;
   static double feeds;
   static String date;
   static String passwordgenerate;

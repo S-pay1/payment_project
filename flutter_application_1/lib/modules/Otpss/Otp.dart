@@ -40,10 +40,8 @@ class Otp extends StatelessWidget {
                 CacheHelper.saveDate(
                         key: 'ResetPassword',
                         value: Gloablvar.resetpasswordScreen)
-                    .then((value) => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ResetPassword())));
+                    .then((value) => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Genrate())));
               }
               if (Gloablvar.walletScreen) {
                 CacheHelper.saveDate(
@@ -180,8 +178,7 @@ void getTherightotpPage(BuildContext ctx) {
     Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
   }
   if (CacheHelper.getData(key: 'ResetPassword')) {
-    Navigator.push(
-        ctx, MaterialPageRoute(builder: (context) => ResetPassword()));
+    Navigator.push(ctx, MaterialPageRoute(builder: (context) => Genrate()));
   }
   if (CacheHelper.getData(key: 'Homelayout')) {
     Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));

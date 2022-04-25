@@ -30,7 +30,7 @@ class recivedata {
   String date;
   String total;
   recivedata.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'].toString();
     company_name = json['company_name'];
     date = json['date'];
     total = json['total'].toString();

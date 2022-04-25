@@ -11,6 +11,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../layout/home/homePageLayout.dart';
 
+import 'companyRecipts.dart';
 import 'termsAndPoliceis.dart';
 
 class CompanyScreen extends StatelessWidget {
@@ -31,7 +32,7 @@ class CompanyScreen extends StatelessWidget {
               print(state.model.message);
               //print(state.model.data.token);
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => Homelayout()));
+                  MaterialPageRoute(builder: (context) => CompanyRecipts()));
             } else {
               print(state.model.message);
               Fluttertoast.showToast(

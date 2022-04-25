@@ -60,8 +60,8 @@ class ServiceCubit extends Cubit<ServiceState> {
   void userService({
     String client_id,
     String company_name,
-    @required int price,
-    @required int service_code,
+    @required double price,
+    @required String service_code,
   }) {
     emit(Serviceloading());
     var feeds = price * (0.02);
@@ -85,9 +85,20 @@ class ServiceCubit extends Cubit<ServiceState> {
       },
     ).then((value) {
       model = ServiceModel.fromJson(value.data);
-      print(model.status);
-      print(model.message);
-      //print(model.data.token);
+
+      // Gloablvar.feeds = model.data.receiptsData.feeds;
+      // Gloablvar.price = model.data.price;
+      // Gloablvar.service_code = model.data.service_code;
+      // Gloablvar.total = model.data.receiptsData.total;
+      // Gloablvar.date = model.data.receiptsData.date;
+      // print(Gloablvar.feeds);
+      // print(Gloablvar.price);
+      // print(Gloablvar.service_code);
+      // print(Gloablvar.date);
+      // print(Gloablvar.total);
+      // print(model.status);
+      // print(model.message);
+      // //print(model.data.token);
       print(value.data);
 
       emit(Servicesuccess(model));
