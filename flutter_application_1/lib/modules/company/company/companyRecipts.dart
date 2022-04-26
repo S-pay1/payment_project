@@ -29,6 +29,7 @@ class _CompanyReciptsState extends State<CompanyRecipts> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
+              // ignore: prefer_const_literals_to_create_immutables
               Row(children: [
                 Text(
                   'S-PAY',
@@ -58,14 +59,3 @@ class _CompanyReciptsState extends State<CompanyRecipts> {
         )));
   }
 }
-
-
-
-
-
-/*SizedBox(height: 30,),
-RaisedButton(onPressed: (){},
-child:Text("Agree",style: TextStyle(fontSize: 20),),
-textColor:Colors.white ,
-color: Color(0xff003B75),
-padding:EdgeInsets.only(left: 100,right: 100,bottom: 10,top: 10)*/
