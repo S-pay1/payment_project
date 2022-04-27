@@ -9,18 +9,18 @@ class Gloablvar {
   static String id;
   static String phone;
   static String name;
-  static double total;
-  static String service_code;
-  static double price;
-  static double feeds;
-  static String date;
+  static var total;
+  static var service_code;
+  static var price;
+  static var feeds;
+  static var date;
   static String passwordgenerate;
   static List itemsOfDropDown = [];
   static String dropdownitem = "";
   static dynamic registerScreen;
   static dynamic resetpasswordScreen;
   static dynamic walletScreen;
-  static double balance;
+  static var balance;
 }
 
 class Global {

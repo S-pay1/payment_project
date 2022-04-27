@@ -29,15 +29,15 @@ class CompanyCubit extends Cubit<CompanyState> {
     @required String typeOfUser,
     // @required String name,
   }) {
-    var pas = utf8.encode(password);
-    var hashPassword = sha256.convert(pas);
+    // var pas = utf8.encode(password);
+    // var hashPassword = sha256.convert(pas);
     typeOfUser = 'company';
     emit(Companyloading());
     DioHelper.postData(
       url: LOGINs,
       data: {
         'email': email,
-        'password': hashPassword.toString(),
+        'password': password,
         'typeOfUser': typeOfUser.toString()
       },
     ).then((value) {

@@ -1,6 +1,6 @@
 // class ServiceModel {
 //   bool status;
-//   String message;
+//  var message;
 //   UserData data;
 
 //   ServiceModel.fromJson(Map<String, dynamic> json) {
@@ -11,10 +11,10 @@
 // }
 
 // class UserData {
-//   String client_id;
-//   String service_code;
-//   double price;
-//   String company_name;
+//  var client_id;
+//  var service_code;
+//   var price;
+//  var company_name;
 //   ReceiptsData receiptsData;
 
 //   UserData.fromJason(Map<String, dynamic> json) {
@@ -27,20 +27,20 @@
 // }
 
 // class ReceiptsData {
-//   double feeds;
-//   double total;
-//   String date;
+//   var feeds;
+//   var total;
+//  var date;
 
 //   ReceiptsData.fromJson(Map<String, dynamic> json) {
-//     feeds = double.parse(json['feeds']);
-//     total = double.parse(json['total']);
+//     feeds = var.parse(json['feeds']);
+//     total = var.parse(json['total']);
 //     date = json['date'];
 //   }
 // }
 
 class ServiceModel {
   bool status;
-  String message;
+  var message;
   UserData data;
 
   ServiceModel.fromJson(Map<String, dynamic> json) {
@@ -51,28 +51,28 @@ class ServiceModel {
 }
 
 class UserData {
-  // String client_id;
+  //var client_id;
   // int service_code;
-  // double price;
-  // String companyName;
-  // double feeds;
-  // double total;
-  // String date;
-  String client_id;
-  String service_code;
-  double price;
-  String company_name;
-  double feeds;
-  double total;
-  String date;
+  // var price;
+  //var companyName;
+  // var feeds;
+  // var total;
+  //var date;
+  var client_id;
+  var service_code;
+  var price;
+  var company_name;
+  var feeds;
+  var total;
+  var date;
 
   UserData.fromJason(Map<String, dynamic> json) {
     client_id = json['client_id'].toString();
     service_code = json['service_code'];
     price = json["price"];
     company_name = json['company_name'].toString();
-    feeds = double.parse(json['receipt']['feeds']);
-    total = double.parse(json['receipt']['total']);
+    feeds = json['receipt']['feeds'];
+    total = json['receipt']['total'];
     date = json['receipt']['date'].toString();
   }
 }
