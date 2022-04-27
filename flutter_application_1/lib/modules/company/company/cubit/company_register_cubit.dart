@@ -1,6 +1,6 @@
-import 'package:flutter_application_1/models/company_model/company_register_model.dart';
+import '../../../../models/company_model/company_register_model.dart';
 
-import 'package:flutter_application_1/modules/company/company/cubit/company_register_state.dart';
+import 'company_register_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 

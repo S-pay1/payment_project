@@ -1,12 +1,9 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable, unused_element, avoid_print, void_checks
 
-import 'dart:ffi';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter_application_1/models/service_model/service_model.dart';
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 

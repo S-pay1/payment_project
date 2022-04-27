@@ -31,24 +31,49 @@ class Otp extends StatelessWidget {
             print(Gloablvar.id);
             if (state.model.status) {
               if (Gloablvar.registerScreen) {
-                CacheHelper.saveDate(
-                        key: 'Homelayout', value: Gloablvar.registerScreen)
-                    .then((value) => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Homelayout())));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Homelayout(
+                              registerAndWalletOtp: Gloablvar.registerScreen,
+                            )));
               }
               if (Gloablvar.resetpasswordScreen) {
-                CacheHelper.saveDate(
-                        key: 'ResetPassword',
-                        value: Gloablvar.resetpasswordScreen)
-                    .then((value) => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Genrate())));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Genrate(
+                            generateResetPassword:
+                                Gloablvar.resetpasswordScreen)));
               }
               if (Gloablvar.walletScreen) {
-                CacheHelper.saveDate(
-                        key: 'Homelayout', value: Gloablvar.walletScreen)
-                    .then((value) => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Homelayout())));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Homelayout(
+                              registerAndWalletOtp: Gloablvar.walletScreen,
+                            )));
               }
+
+              // if (Gloablvar.registerScreen) {
+              //   CacheHelper.saveDate(
+              //           key: 'Homelayout', value: Gloablvar.registerScreen)
+              //       .then((value) => Navigator.push(context,
+              //           MaterialPageRoute(builder: (context) => Homelayout())));
+              // }
+              // if (Gloablvar.resetpasswordScreen) {
+              //   CacheHelper.saveDate(
+              //           key: 'ResetPassword',
+              //           value: Gloablvar.resetpasswordScreen)
+              //       .then((value) => Navigator.push(context,
+              //           MaterialPageRoute(builder: (context) => Genrate())));
+              // }
+              // if (Gloablvar.walletScreen) {
+              //   CacheHelper.saveDate(
+              //           key: 'Homelayout', value: Gloablvar.walletScreen)
+              //       .then((value) => Navigator.push(context,
+              //           MaterialPageRoute(builder: (context) => Homelayout())));
+              // }
             } else {
               showDialog(
                   context: context,
@@ -58,10 +83,11 @@ class Otp extends StatelessWidget {
                       actions: [
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => SignUp()));
+                            Navigator.pop(context);
+                            // pushReplacement(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => SignUp()));
                           },
                           child: Text(
                             'ok',
@@ -146,7 +172,7 @@ class Otp extends StatelessWidget {
                             OtpCubit.get(context).userOtpCheak(
                               otp: OTPcontroller.text,
                             );
-                            getTherightotpPage(context);
+                            // getTherightotpPage(context);
                           }
                         },
                         text: 'verify',
@@ -173,14 +199,14 @@ class Otp extends StatelessWidget {
   }
 }
 
-void getTherightotpPage(BuildContext ctx) {
-  if (CacheHelper.getData(key: 'Homelayout')) {
-    Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
-  }
-  if (CacheHelper.getData(key: 'ResetPassword')) {
-    Navigator.push(ctx, MaterialPageRoute(builder: (context) => Genrate()));
-  }
-  if (CacheHelper.getData(key: 'Homelayout')) {
-    Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
-  }
-}
+// void getTherightotpPage(BuildContext ctx) {
+//   if (CacheHelper.getData(key: 'Homelayout')) {
+//     Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
+//   }
+//   if (CacheHelper.getData(key: 'ResetPassword')) {
+//     Navigator.push(ctx, MaterialPageRoute(builder: (context) => Genrate()));
+//   }
+//   if (CacheHelper.getData(key: 'Homelayout')) {
+//     Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
+//   }
+// }

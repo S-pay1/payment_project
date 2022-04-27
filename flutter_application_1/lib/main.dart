@@ -10,7 +10,6 @@ import 'package:flutter_application_1/modules/user/user/login/login_screen.dart'
 import 'package:flutter_application_1/modules/wallet_screen/wallet.dart';
 import 'package:flutter_application_1/shared/bloc_observer.dart';
 import 'package:flutter_application_1/shared/cach_helper.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'modules/choose type of user/ChooseTypeOfUser.dart';

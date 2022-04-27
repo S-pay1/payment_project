@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
-import 'package:flutter_application_1/modules/user/user/reset%20password/NewPassword.dart';
+
 import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
-import 'package:flutter_application_1/shared/global.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../shared/components/components.dart';

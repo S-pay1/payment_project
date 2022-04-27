@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/layout/home/homePageLayout.dart';
+import '../../layout/home/homePageLayout.dart';
 
 class Contact_us extends StatefulWidget {
   @override

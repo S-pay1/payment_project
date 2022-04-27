@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/shared/components/components.dart';
+import '../../../shared/components/components.dart';
 
 class CompanyRecipts extends StatefulWidget {
   @override

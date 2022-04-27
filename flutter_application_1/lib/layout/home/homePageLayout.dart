@@ -4,11 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
 import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
+import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../modules/cubit/homecubit_state.dart';
 
 class Homelayout extends StatelessWidget {
+  final Gloablvar registerAndWalletOtp;
+
+  const Homelayout({this.registerAndWalletOtp});
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

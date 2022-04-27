@@ -6,7 +6,8 @@ import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
 
 class Genrate extends StatelessWidget {
-  const Genrate({Key key}) : super(key: key);
+  final Gloablvar generateResetPassword;
+  const Genrate({Key key, this.generateResetPassword}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

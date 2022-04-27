@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/shared/global.dart';
+import '../global.dart';
 
 const LOGINs = 'api/login';
 //const LOGINn = 'clients';
