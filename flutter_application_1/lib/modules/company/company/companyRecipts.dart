@@ -1,61 +1,103 @@
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/company_model/company_history_model.dart';
+import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../shared/components/components.dart';
 
-class CompanyRecipts extends StatefulWidget {
-  @override
-  State<CompanyRecipts> createState() => _CompanyReciptsState();
-}
-
-class _CompanyReciptsState extends State<CompanyRecipts> {
+class CompanyRecipts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(Icons.arrow_back)),
-          title: Text(
-            'Company Recipts  ',
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        body: SingleChildScrollView(
-            child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              // ignore: prefer_const_literals_to_create_immutables
-              Row(children: [
-                Text(
-                  'S-PAY',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+    return BlocProvider(
+      create: (context) => CompanyCubit(),
+      child: BlocConsumer<CompanyCubit, CompanyState>(
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return Scaffold(
+              appBar: AppBar(
+                leading: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back)),
+                title: Text(
+                  'Company Recipts  ',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                Image(
-                  image: AssetImage("assets/images/8432.jpg"),
-                  height: 250.0,
-                  width: 280.0,
-                ),
-              ]),
-              SizedBox(
-                height: 480,
               ),
-              Container(
-                  alignment: Alignment.bottomCenter,
-                  child: defaultButton(
-                      function: () {
-                        /*Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => companyScreen()));*/
-                      },
-                      text: 'Logout')),
-            ],
-          ),
-        )));
+              body: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ConditionalBuilder(
+                  condition: State is! Companysuccess ||
+                      CompanyCubit.get(context).rmodel.data == null,
+                  builder: (context) => ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) =>
+                        Historyview(CompanyCubit.get(context).rmodel),
+                    separatorBuilder: (context, index) => SizedBox(height: 20),
+                    itemCount: 1,
+                    // HomecubitCubit.get(context).model.data.payments.length,
+                  ),
+                  fallback: (context) => Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              ));
+        },
+      ),
+    );
   }
+}
+
+Widget Historyview(CompanyHistoryModel rmodel) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: rmodel.data.payments.map(
+      (e) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              e.service_code ?? 'null',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    // model.data.payments.map((e) => e.date).toString(),
+                    e.date ?? 'null',
+                    maxLines: 1,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Container(
+                    width: 7.0,
+                    height: 7.0,
+                    decoration: BoxDecoration(
+                        color: Colors.blue, shape: BoxShape.circle),
+                  ),
+                ),
+                Text(
+                    // model.data.payments.map((e) => e.total).toString(),
+                    e.price + ' EG' ?? 'null'),
+              ],
+            ),
+            Divider(color: Colors.grey, thickness: 2)
+          ],
+        );
+      },
+    ).toList(),
+  );
 }

@@ -21,8 +21,8 @@ class WalletModel {
 // }
 
 class reciveWalletdata {
-  String id;
-  double balance;
+  var id;
+  var balance;
   // String client_id;
 
   reciveWalletdata.fromJson(Map<String, dynamic> json) {

@@ -19,3 +19,14 @@ class Companyerror extends CompanyState {
 }
 
 class CompanypaswwordChange extends CompanyState {}
+
+class CompanyHistorysuccess extends CompanyState {
+  // final CompanyHistoryModel model;
+
+  // CompanyHistorysuccess(this.model);
+}
+
+class CompanyHistoryerror extends CompanyState {
+  // final String error;
+  // CompanyHistoryerror(this.error);
+}

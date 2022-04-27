@@ -12,6 +12,9 @@ import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../models/company_model/company_history_model.dart';
+import '../../../../shared/global.dart';
+
 part 'company_state.dart';
 
 class CompanyCubit extends Cubit<CompanyState> {
@@ -19,18 +22,10 @@ class CompanyCubit extends Cubit<CompanyState> {
   static CompanyCubit get(context) => BlocProvider.of(context);
   CompanyModel model;
   void Companylogin({
-    // @required String phone,
     @required String email,
-    // @required double bank_account,
-    // @required double commercial,
-    // @required double tax_number,
-    // @required double id,
     @required String password,
     @required String typeOfUser,
-    // @required String name,
   }) {
-    // var pas = utf8.encode(password);
-    // var hashPassword = sha256.convert(pas);
     typeOfUser = 'company';
     emit(Companyloading());
     DioHelper.postData(
@@ -63,5 +58,24 @@ class CompanyCubit extends Cubit<CompanyState> {
         isPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined;
 
     emit(CompanypaswwordChange());
+  }
+
+  CompanyHistoryModel rmodel;
+  void Historycompany({
+    @required String company_id,
+  }) {
+    emit(Companyloading());
+    DioHelper.getData(url: Companyhistory, query: {
+      'company_id': Gloablvar.id,
+    }).then((value) {
+      rmodel = CompanyHistoryModel.fromJson(value.data);
+
+      print(value.data);
+      emit(CompanyHistorysuccess());
+    }).catchError((onError) {
+      print('catch error');
+      emit(CompanyHistoryerror());
+      print(onError.toString());
+    });
   }
 }

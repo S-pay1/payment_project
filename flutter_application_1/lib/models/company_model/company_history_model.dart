@@ -25,14 +25,13 @@ class CompanyHistoryData {
 }
 
 class recivedata {
-  var id;
-  var company_name;
+  // var id;
+  var service_code;
   var date;
-  var total;
+  var price;
   recivedata.fromJson(Map<String, dynamic> json) {
-    id = json['id'].tovar();
-    company_name = json['company_name'];
+    service_code = json['service_code'];
+    price = json['price'];
     date = json['date'];
-    total = json['total'];
   }
 }
