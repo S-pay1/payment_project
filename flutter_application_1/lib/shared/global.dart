@@ -5,6 +5,10 @@
 // }
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/layout/home/homePageLayout.dart';
+import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
+
 class Gloablvar {
   static String id;
   static String phone;
@@ -17,9 +21,9 @@ class Gloablvar {
   static String passwordgenerate;
   static List itemsOfDropDown = [];
   static String dropdownitem = "";
-  static dynamic registerScreen;
-  static dynamic resetpasswordScreen;
-  static dynamic walletScreen;
+  static Widget registerScreen = Homelayout();
+  static dynamic resetpasswordScreen = Genrate();
+  static Widget walletScreen = Homelayout();
   static double balance;
 }
 

@@ -11,7 +11,7 @@ class Genrate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Gloablvar.resetpasswordScreen = false;
+    // Gloablvar.resetpasswordScreen = false as Widget;
     final _formKey = GlobalKey<FormState>();
     var phoneController = TextEditingController();
     var text = TextEditingController();

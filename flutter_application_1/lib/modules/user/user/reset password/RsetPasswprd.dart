@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
 
 import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
+import 'package:flutter_application_1/shared/global.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -68,6 +69,8 @@ class ResetPassword extends StatelessWidget {
                             if (_formkey.currentState.validate()) {
                               RegisterCubit.get(context)
                                   .CheakPassword(phone: phone.text);
+                              Gloablvar.phone = phone.text;
+                              print(Gloablvar.phone);
 
                               Navigator.push(
                                   context,

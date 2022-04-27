@@ -30,28 +30,29 @@ class Otp extends StatelessWidget {
           if (state is Otpsuccess) {
             print(Gloablvar.id);
             if (state.model.status) {
-              if (Gloablvar.registerScreen) {
+              if (Gloablvar.registerScreen != null) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Homelayout(
-                              registerAndWalletOtp: Gloablvar.registerScreen,
+                            // registerAndWalletOtp: Gloablvar.registerScreen.,
                             )));
               }
-              if (Gloablvar.resetpasswordScreen) {
+              if (Gloablvar.resetpasswordScreen != null) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Genrate(
-                            generateResetPassword:
-                                Gloablvar.resetpasswordScreen)));
+                            // generateResetPassword:
+                            // Gloablvar.resetpasswordScreen.
+                            )));
               }
-              if (Gloablvar.walletScreen) {
+              if (Gloablvar.walletScreen != null) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Homelayout(
-                              registerAndWalletOtp: Gloablvar.walletScreen,
+                            // registerAndWalletOtp: Gloablvar.walletScreen.,
                             )));
               }
 
@@ -105,8 +106,8 @@ class Otp extends StatelessWidget {
             appBar: AppBar(
               leading: IconButton(
                   onPressed: () {
-                    // Navigator.pushReplacement(context,
-                    //     MaterialPageRoute(builder: (context) => SignUp()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => SignUp()));
                   },
                   icon: Icon(Icons.arrow_back)),
               title: Text('OTP Verification'),
