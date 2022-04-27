@@ -83,19 +83,19 @@ class ServiceCubit extends Cubit<ServiceState> {
     ).then((value) {
       model = ServiceModel.fromJson(value.data);
 
-      // Gloablvar.feeds = model.data.receiptsData.feeds;
-      // Gloablvar.price = model.data.price;
-      // Gloablvar.service_code = model.data.service_code;
-      // Gloablvar.total = model.data.receiptsData.total;
-      // Gloablvar.date = model.data.receiptsData.date;
-      // print(Gloablvar.feeds);
-      // print(Gloablvar.price);
-      // print(Gloablvar.service_code);
-      // print(Gloablvar.date);
-      // print(Gloablvar.total);
-      // print(model.status);
-      // print(model.message);
-      // //print(model.data.token);
+      Gloablvar.feeds = model.data.feeds;
+      Gloablvar.price = model.data.price;
+      Gloablvar.service_code = model.data.service_code;
+      Gloablvar.total = model.data.total;
+      Gloablvar.date = model.data.date;
+      print(Gloablvar.feeds);
+      print(Gloablvar.price);
+      print(Gloablvar.service_code);
+      print(Gloablvar.date);
+      print(Gloablvar.total);
+      print(model.status);
+      print(model.message);
+      //print(model.data.token);
       print(value.data);
 
       emit(Servicesuccess(model));
