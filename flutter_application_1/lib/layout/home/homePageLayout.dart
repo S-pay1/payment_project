@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, unused_import, unused_local_variable, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/history_model/histoy_model.dart';
 import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
 import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
@@ -16,8 +17,14 @@ class Homelayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return BlocProvider(
-      create: (BuildContext context) => HomecubitCubit()..HistoryData(),
+    return MultiBlocProvider(
+      providers: [
+        // BlocProvider(
+        //     create: (BuildContext context) => HistoryCubit()..HistoryData()),
+        BlocProvider(create: (BuildContext context) => HomecubitCubit()),
+        // create: (BuildContext context) => HomecubitCubit(),
+      ],
+      // ..HistoryData(),
       child: BlocConsumer<HomecubitCubit, HomecubitState>(
         listener: (BuildContext context, APPstate) {
           // ignore: todo

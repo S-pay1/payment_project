@@ -21,9 +21,9 @@ class Gloablvar {
   static String passwordgenerate;
   static List itemsOfDropDown = [];
   static String dropdownitem = "";
-  static Widget registerScreen = Homelayout();
-  static dynamic resetpasswordScreen = Genrate();
-  static Widget walletScreen = Homelayout();
+  static bool registerScreen = false;
+  static bool resetpasswordScreen = false;
+  static bool walletScreen = false;
   static double balance;
 }
 

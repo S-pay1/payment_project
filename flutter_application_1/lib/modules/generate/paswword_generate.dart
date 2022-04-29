@@ -6,12 +6,12 @@ import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
 
 class Genrate extends StatelessWidget {
-  final Gloablvar generateResetPassword;
-  const Genrate({Key key, this.generateResetPassword}) : super(key: key);
+  const Genrate({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // Gloablvar.resetpasswordScreen = false as Widget;
+
     final _formKey = GlobalKey<FormState>();
     var phoneController = TextEditingController();
     var text = TextEditingController();
@@ -62,6 +62,9 @@ class Genrate extends StatelessWidget {
                       }),
                   SizedBox(
                     height: 5.0,
+                  ),
+                  SizedBox(
+                    height: 50,
                   ),
                   defaultButton(
                       function: () {

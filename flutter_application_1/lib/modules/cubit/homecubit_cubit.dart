@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/history_model/histoy_model.dart';
+import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/modules/history_screen/history.dart';
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
@@ -44,29 +45,30 @@ class HomecubitCubit extends Cubit<HomecubitState> {
   }
 
   //Trying my shit
+
   //
-  HistoryModel model;
-  void HistoryData() {
-    emit(HomecubitLoading());
+  // HistoryModel model;
+  // void HistoryData() {
+  //   emit(Historyloading());
 
-    DioHelper.getData(url: history, query: {
-      // 'id': 'XvwO63jNPp0py3Y8Nawk',
-      // 'id': 'c7db3868a41846d385ee',
-      'id': Gloablvar.id
-    }).then((value) {
-      model = HistoryModel.fromJson(value.data);
+  //   DioHelper.getData(url: history, query: {
+  //     // 'id': 'XvwO63jNPp0py3Y8Nawk',
+  //     // 'id': 'c7db3868a41846d385ee',
+  //     'id': Gloablvar.id
+  //   }).then((value) {
+  //     model = HistoryModel.fromJson(value.data);
 
-      // print(value);
-      print(value.data);
+  //     // print(value);
+  //     print(value.data);
 
-      emit(Historysuccess());
-    }).catchError((error) {
-      print('catch error');
-      print(Gloablvar.id);
-      emit(Historyerror());
-      print(error.toString());
-    });
-  }
+  //     emit(Historysuccess());
+  //   }).catchError((error) {
+  //     print('catch error');
+  //     print(Gloablvar.id);
+  //     emit(Historyerror());
+  //     print(error.toString());
+  //   });
+  // }
 
   WalletModel rmodel;
   void userwallet() {

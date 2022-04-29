@@ -3,16 +3,16 @@
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/history_model/histoy_model.dart';
-import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
-import 'package:flutter_application_1/modules/cubit/homecubit_state.dart';
+
+import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
+import 'package:flutter_application_1/modules/history_screen/cubit/History_state.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class History extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomecubitCubit, HomecubitState>(
-      listener: (context, state) {},
+    return BlocBuilder<HistoryCubit, HistoryState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -26,23 +26,16 @@ class History extends StatelessWidget {
           ),
           body: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: ConditionalBuilder(
-              condition: State is! HomecubitBottomNav ||
-                  HomecubitCubit.get(context).model.data == null,
-              // HomecubitCubit.get(context).model != null,
-
-              builder: (context) => ListView.separated(
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) =>
-                    Historyview(HomecubitCubit.get(context).model),
-                separatorBuilder: (context, index) => SizedBox(height: 20),
-                itemCount: 1,
-                // HomecubitCubit.get(context).model.data.payments.length,
-              ),
-              fallback: (context) => Center(
-                child: CircularProgressIndicator(),
-              ),
-            ),
+            child: state is Historyloading
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : ListView.separated(
+                    itemBuilder: ((context, index) =>
+                        Historyview(HistoryCubit.get(context).model)),
+                    separatorBuilder: (context, index) => SizedBox(height: 20),
+                    itemCount: 1,
+                  ),
           ),
         );
       },

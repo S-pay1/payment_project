@@ -6,6 +6,7 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/models/user_model/register_model.dart';
+import 'package:flutter_application_1/modules/Otpss/cubit/otp_cubit.dart';
 import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
@@ -104,8 +105,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   void reset({
-    String otp,
-    String phone,
+    var otp,
+    var phone,
   }) {
     emit(Registerloading());
     DioHelper.postData(

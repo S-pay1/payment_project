@@ -17,3 +17,9 @@ class Otperror extends OtpState {
   final String error;
   Otperror(this.error);
 }
+
+class GeretePass extends OtpState {}
+
+class HomeStateWithWallete extends OtpState {}
+
+class HomeStateWithResete extends OtpState {}

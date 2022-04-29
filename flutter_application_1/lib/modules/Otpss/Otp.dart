@@ -30,50 +30,16 @@ class Otp extends StatelessWidget {
           if (state is Otpsuccess) {
             print(Gloablvar.id);
             if (state.model.status) {
-              if (Gloablvar.registerScreen != null) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Homelayout(
-                            // registerAndWalletOtp: Gloablvar.registerScreen.,
-                            )));
-              }
-              if (Gloablvar.resetpasswordScreen != null) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Genrate(
-                            // generateResetPassword:
-                            // Gloablvar.resetpasswordScreen.
-                            )));
-              }
-              if (Gloablvar.walletScreen != null) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Homelayout(
-                            // registerAndWalletOtp: Gloablvar.walletScreen.,
-                            )));
-              }
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Homelayout()));
 
-              // if (Gloablvar.registerScreen) {
-              //   CacheHelper.saveDate(
-              //           key: 'Homelayout', value: Gloablvar.registerScreen)
-              //       .then((value) => Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) => Homelayout())));
-              // }
               // if (Gloablvar.resetpasswordScreen) {
-              //   CacheHelper.saveDate(
-              //           key: 'ResetPassword',
-              //           value: Gloablvar.resetpasswordScreen)
-              //       .then((value) => Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) => Genrate())));
+              //   Navigator.push(context,
+              //       MaterialPageRoute(builder: (context) => Genrate()));
               // }
               // if (Gloablvar.walletScreen) {
-              //   CacheHelper.saveDate(
-              //           key: 'Homelayout', value: Gloablvar.walletScreen)
-              //       .then((value) => Navigator.push(context,
-              //           MaterialPageRoute(builder: (context) => Homelayout())));
+              //   Navigator.push(context,
+              //       MaterialPageRoute(builder: (context) => Homelayout()));
               // }
             } else {
               showDialog(
@@ -173,7 +139,19 @@ class Otp extends StatelessWidget {
                             OtpCubit.get(context).userOtpCheak(
                               otp: OTPcontroller.text,
                             );
-                            // getTherightotpPage(context);
+                            // if (Gloablvar.registerScreen == true ||
+                            //     Gloablvar.walletScreen == true) {
+                            //   Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) => Homelayout()));
+                            // }
+                            // if (Gloablvar.resetpasswordScreen) {
+                            //   Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //           builder: (context) => Genrate()));
+                            // }
                           }
                         },
                         text: 'verify',
@@ -199,15 +177,3 @@ class Otp extends StatelessWidget {
     );
   }
 }
-
-// void getTherightotpPage(BuildContext ctx) {
-//   if (CacheHelper.getData(key: 'Homelayout')) {
-//     Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
-//   }
-//   if (CacheHelper.getData(key: 'ResetPassword')) {
-//     Navigator.push(ctx, MaterialPageRoute(builder: (context) => Genrate()));
-//   }
-//   if (CacheHelper.getData(key: 'Homelayout')) {
-//     Navigator.push(ctx, MaterialPageRoute(builder: (context) => Homelayout()));
-//   }
-// }

@@ -9,14 +9,14 @@ class HistoryInitial extends HistoryState {}
 class Historyloading extends HistoryState {}
 
 class Historysuccess extends HistoryState {
-  final HistoryModel model;
+  // final HistoryModel model;
 
-  Historysuccess(this.model);
+  // Historysuccess(this.model);
 }
 
 class Historyerror extends HistoryState {
-  final String error;
-  Historyerror(this.error);
+  // final String error;
+  // Historyerror(this.error);
 }
 
 class HistorypaswwordChange extends HistoryState {}

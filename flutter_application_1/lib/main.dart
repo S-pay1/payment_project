@@ -6,6 +6,7 @@ import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/layout/test.dart';
 import 'package:flutter_application_1/modules/company/company/CompanySignUp.dart';
 import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
+import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/modules/user/user/login/login_screen.dart';
 import 'package:flutter_application_1/modules/wallet_screen/wallet.dart';
 import 'package:flutter_application_1/shared/bloc_observer.dart';
@@ -33,23 +34,26 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
-          backwardsCompatibility: false,
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.light,
+    return BlocProvider(
+      create: (BuildContext context) => HistoryCubit()..HistoryData(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: AppBarTheme(
+            backwardsCompatibility: false,
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness: Brightness.light,
+            ),
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            foregroundColor: Color(0xff004B7d),
           ),
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          foregroundColor: Color(0xff004B7d),
         ),
+        home: TypeOfUser(),
       ),
-      home: TypeOfUser(),
     );
   }
 }
