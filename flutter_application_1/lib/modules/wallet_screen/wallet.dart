@@ -46,7 +46,7 @@ class Wallet extends StatelessWidget {
                   ],
                 ),
                 child: Text(
-                  ' EG',
+                  '400 EG',
                   style: TextStyle(
                     fontFamily: 'Arial',
                     fontSize: 20.0,
@@ -67,7 +67,7 @@ class Wallet extends StatelessWidget {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text('Gloablvar.phone'),
+                  child: Text('ezz'),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),
@@ -87,7 +87,7 @@ class Wallet extends StatelessWidget {
               Container(
                 child: Align(
                   alignment: Alignment.center,
-                  child: Text(''),
+                  child: Text('01007220517'),
                 ),
                 decoration: BoxDecoration(
                   border: Border.all(color: Color(0xff003B75), width: 2),

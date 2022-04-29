@@ -84,4 +84,22 @@ class HomecubitCubit extends Cubit<HomecubitState> {
       print(onError.toString());
     });
   }
+
+  void paywithpassword(@required String password) {
+    DioHelper.postData(url: paywithwalletss, data: {
+      'client_id': Gloablvar.id,
+      'password': password,
+      'total': Gloablvar.total
+    }).then((value) {
+      print(Gloablvar.id);
+      print(Gloablvar.total);
+      print(value.data);
+      emit(HomecubitSucees());
+    }).catchError((onError) {
+      emit(HomecubitEroor());
+      print(Gloablvar.id);
+      print(Gloablvar.total);
+      print(onError.toString());
+    });
+  }
 }

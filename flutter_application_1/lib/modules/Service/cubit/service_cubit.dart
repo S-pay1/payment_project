@@ -20,7 +20,7 @@ class ServiceCubit extends Cubit<ServiceState> {
   List<String> ChosseService = [
     'gas',
     'water',
-    'electric',
+    'Electronic',
     'phone',
     'landing',
     'wifi',
@@ -109,7 +109,7 @@ class ServiceCubit extends Cubit<ServiceState> {
   void companyData(text) {
     Gloablvar.itemsOfDropDown = [];
     emit(ServiceGetloading());
-
+    print(text);
     DioHelper.getData(url: getserve, query: {
       'service': text,
     }).then((value) {
