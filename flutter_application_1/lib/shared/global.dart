@@ -24,7 +24,7 @@ class Gloablvar {
   static bool registerScreen = false;
   static bool resetpasswordScreen = false;
   static bool walletScreen = false;
-  static double balance;
+  static var balance;
 }
 
 class Global {

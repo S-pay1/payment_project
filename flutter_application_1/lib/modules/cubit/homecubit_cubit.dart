@@ -44,48 +44,22 @@ class HomecubitCubit extends Cubit<HomecubitState> {
     emit(HomecubitBottomNav());
   }
 
-  //Trying my shit
-
-  //
-  // HistoryModel model;
-  // void HistoryData() {
-  //   emit(Historyloading());
-
-  //   DioHelper.getData(url: history, query: {
-  //     // 'id': 'XvwO63jNPp0py3Y8Nawk',
-  //     // 'id': 'c7db3868a41846d385ee',
-  //     'id': Gloablvar.id
+  // WalletModel rmodel;
+  // void userwallet() {
+  //   emit(walletloading());
+  //   DioHelper.getData(url: walletshow, query: {
+  //     'client_id': Gloablvar.id,
   //   }).then((value) {
-  //     model = HistoryModel.fromJson(value.data);
-
-  //     // print(value);
+  //     rmodel = WalletModel.fromJson(value.data);
+  //     Gloablvar.balance = rmodel.data.balance;
   //     print(value.data);
-
-  //     emit(Historysuccess());
-  //   }).catchError((error) {
+  //     emit(walletsuccess());
+  //   }).catchError((onError) {
   //     print('catch error');
-  //     print(Gloablvar.id);
-  //     emit(Historyerror());
-  //     print(error.toString());
+  //     emit(walletyerror());
+  //     print(onError.toString());
   //   });
   // }
-
-  WalletModel rmodel;
-  void userwallet() {
-    emit(walletloading());
-    DioHelper.getData(url: walletshow, query: {
-      'client_id': Gloablvar.id,
-    }).then((value) {
-      rmodel = WalletModel.fromJson(value.data);
-      Gloablvar.balance = rmodel.data.balance;
-      print(value.data);
-      emit(walletsuccess());
-    }).catchError((onError) {
-      print('catch error');
-      emit(walletyerror());
-      print(onError.toString());
-    });
-  }
 
   void paywithpassword(@required String password) {
     DioHelper.postData(url: paywithwalletss, data: {

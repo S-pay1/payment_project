@@ -17,14 +17,8 @@ class Homelayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return MultiBlocProvider(
-      providers: [
-        // BlocProvider(
-        //     create: (BuildContext context) => HistoryCubit()..HistoryData()),
-        BlocProvider(create: (BuildContext context) => HomecubitCubit()),
-        // create: (BuildContext context) => HomecubitCubit(),
-      ],
-      // ..HistoryData(),
+    return BlocProvider(
+      create: (BuildContext context) => HomecubitCubit(),
       child: BlocConsumer<HomecubitCubit, HomecubitState>(
         listener: (BuildContext context, APPstate) {
           // ignore: todo

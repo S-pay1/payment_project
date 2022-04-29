@@ -8,6 +8,7 @@ import 'package:flutter_application_1/modules/company/company/CompanySignUp.dart
 import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/modules/user/user/login/login_screen.dart';
+import 'package:flutter_application_1/modules/wallet_screen/cubit/wallet_cubit.dart';
 import 'package:flutter_application_1/modules/wallet_screen/wallet.dart';
 import 'package:flutter_application_1/shared/bloc_observer.dart';
 import 'package:flutter_application_1/shared/cach_helper.dart';
@@ -34,8 +35,14 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => HistoryCubit()..HistoryData(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (BuildContext context) => HistoryCubit()..HistoryData(),
+        ),
+        BlocProvider(
+            create: (BuildContext context) => WalletCubit()..userwallet())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
