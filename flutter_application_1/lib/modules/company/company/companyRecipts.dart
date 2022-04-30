@@ -8,48 +8,38 @@ import '../../../shared/components/components.dart';
 class CompanyRecipts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CompanyCubit(),
-      child: BlocConsumer<CompanyCubit, CompanyState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          return Scaffold(
-              appBar: AppBar(
-                leading: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Icon(Icons.arrow_back)),
-                title: Text(
-                  'Company Recipts  ',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return BlocBuilder<CompanyCubit, CompanyState>(
+      builder: (context, state) {
+        return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back)),
+              title: Text(
+                'Company Recipts  ',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              body: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: ConditionalBuilder(
-                  condition: State is! Companysuccess ||
-                      CompanyCubit.get(context).rmodel.data == null,
-                  builder: (context) => ListView.separated(
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) =>
-                        Historyview(CompanyCubit.get(context).rmodel),
-                    separatorBuilder: (context, index) => SizedBox(height: 20),
-                    itemCount: 1,
-                    // HomecubitCubit.get(context).model.data.payments.length,
-                  ),
-                  fallback: (context) => Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-              ));
-        },
-      ),
+            ),
+            body: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: state is CompanyHistoryloading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ListView.separated(
+                      itemBuilder: ((context, index) =>
+                          Historyview(CompanyCubit.get(context).rmodel)),
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 20),
+                      itemCount: 1,
+                    ),
+            ));
+      },
     );
   }
 }

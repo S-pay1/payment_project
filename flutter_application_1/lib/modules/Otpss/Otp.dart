@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, missing_return, prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: unused_element, missing_return, prefer_const_constructors, non_constant_identifier_names, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
@@ -19,7 +19,7 @@ class Otp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    var phoneController = TextEditingController();
+    // var phoneController = TextEditingController();
     var OTPcontroller = TextEditingController();
 
     return BlocProvider(
@@ -32,15 +32,6 @@ class Otp extends StatelessWidget {
             if (state.model.status) {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Homelayout()));
-
-              // if (Gloablvar.resetpasswordScreen) {
-              //   Navigator.push(context,
-              //       MaterialPageRoute(builder: (context) => Genrate()));
-              // }
-              // if (Gloablvar.walletScreen) {
-              //   Navigator.push(context,
-              //       MaterialPageRoute(builder: (context) => Homelayout()));
-              // }
             } else {
               showDialog(
                   context: context,

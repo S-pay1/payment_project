@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/layout/test.dart';
 import 'package:flutter_application_1/modules/company/company/CompanySignUp.dart';
+import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
 import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/modules/user/user/login/login_screen.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_application_1/modules/wallet_screen/cubit/wallet_cubit.d
 import 'package:flutter_application_1/modules/wallet_screen/wallet.dart';
 import 'package:flutter_application_1/shared/bloc_observer.dart';
 import 'package:flutter_application_1/shared/cach_helper.dart';
+import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'modules/choose type of user/ChooseTypeOfUser.dart';
@@ -41,7 +43,10 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => HistoryCubit()..HistoryData(),
         ),
         BlocProvider(
-            create: (BuildContext context) => WalletCubit()..userwallet())
+            create: (BuildContext context) => WalletCubit()..userwallet()),
+        BlocProvider(
+            create: (BuildContext context) =>
+                CompanyCubit()..Historycompany(company_id: Gloablvar.id)),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

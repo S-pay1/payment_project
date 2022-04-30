@@ -64,7 +64,7 @@ class CompanyCubit extends Cubit<CompanyState> {
   void Historycompany({
     @required String company_id,
   }) {
-    emit(Companyloading());
+    emit(CompanyHistoryloading());
     DioHelper.getData(url: Companyhistory, query: {
       'company_id': Gloablvar.id,
     }).then((value) {

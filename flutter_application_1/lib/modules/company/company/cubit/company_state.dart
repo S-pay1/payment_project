@@ -20,6 +20,8 @@ class Companyerror extends CompanyState {
 
 class CompanypaswwordChange extends CompanyState {}
 
+class CompanyHistoryloading extends CompanyState {}
+
 class CompanyHistorysuccess extends CompanyState {
   // final CompanyHistoryModel model;
 
