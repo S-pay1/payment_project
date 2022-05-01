@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
 
 import 'package:flutter_application_1/shared/components/components.dart';
+import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -29,6 +30,7 @@ class CompanyScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is Companysuccess) {
             if (state.model.status) {
+              Gloablvar.id = state.model.data.id;
               print(state.model.message);
               //print(state.model.data.token);
               Navigator.pushReplacement(context,

@@ -1,9 +1,7 @@
-import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/company_model/company_history_model.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../shared/components/components.dart';
 
 class CompanyRecipts extends StatelessWidget {
   @override

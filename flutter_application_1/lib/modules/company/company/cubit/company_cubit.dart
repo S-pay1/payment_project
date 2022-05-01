@@ -68,6 +68,7 @@ class CompanyCubit extends Cubit<CompanyState> {
     DioHelper.getData(url: Companyhistory, query: {
       'company_id': Gloablvar.id,
     }).then((value) {
+      print(Gloablvar.id);
       rmodel = CompanyHistoryModel.fromJson(value.data);
 
       print(value.data);
