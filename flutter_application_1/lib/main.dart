@@ -43,8 +43,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => HistoryCubit()..HistoryData(),
         ),
-        BlocProvider(
-            create: (BuildContext context) => WalletCubit()..userwallet()),
+        // BlocProvider(
+        //     create: (BuildContext context) => WalletCubit()..userwallet()),
         BlocProvider(
             create: (BuildContext context) =>
                 CompanyCubit()..Historycompany(company_id: Gloablvar.id)),
