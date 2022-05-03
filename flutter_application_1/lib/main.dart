@@ -6,6 +6,7 @@ import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/layout/test.dart';
 import 'package:flutter_application_1/modules/company/company/CompanySignUp.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
+import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
 import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/modules/user/user/login/login_screen.dart';

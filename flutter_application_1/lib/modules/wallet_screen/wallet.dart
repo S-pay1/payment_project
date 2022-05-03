@@ -25,7 +25,12 @@ class Wallet extends StatelessWidget {
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
+            child:
+                // ConditionalBuilder(
+                //   condition: state is walletloading,
+                //   fallback: (context) => CircularProgressIndicator(),
+                //   builder: (context) =>
+                Column(
               children: [
                 Container(
                   alignment: Alignment(-0.05, 0.0),
@@ -68,7 +73,7 @@ class Wallet extends StatelessWidget {
                 Container(
                   child: Align(
                     alignment: Alignment.center,
-                    child: Text('ezz'),
+                    child: Text(Gloablvar.phone),
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xff003B75), width: 2),
@@ -88,7 +93,7 @@ class Wallet extends StatelessWidget {
                 Container(
                   child: Align(
                     alignment: Alignment.center,
-                    child: Text('01007220517'),
+                    child: Text(Gloablvar.name),
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xff003B75), width: 2),

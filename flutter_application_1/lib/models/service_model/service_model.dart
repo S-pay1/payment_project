@@ -65,9 +65,11 @@ class UserData {
   var feeds;
   var total;
   var date;
+  var id;
 
   UserData.fromJason(Map<String, dynamic> json) {
     client_id = json['client_id'].toString();
+    id = json['id'].toString();
     service_code = json['service_code'];
     price = json["price"];
     company_name = json['company_name'].toString();

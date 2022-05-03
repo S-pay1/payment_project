@@ -40,23 +40,15 @@ class _Service_ScreenState extends State<Service_Screen> {
           if (state is Servicesuccess) {
             if (state.model.status) {
               var client_id = Gloablvar.id;
+              Gloablvar.Paymentid = state.model.data.id;
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => Payment(),
                 ),
               );
-              // Gloablvar.feeds = state.model.data.feeds;
-              // Gloablvar.price = state.model.data.price;
-              // Gloablvar.service_code = state.model.data.service_code;
-              // Gloablvar.total = state.model.data.total;
-              // Gloablvar.date = state.model.data.date;
-
-              // print(state.model.data.receiptsData.feeds);
 
               print(state.model.message);
-              //print(state.model.data.token);
-
             } else {
               print(state.model.message);
               Fluttertoast.showToast(

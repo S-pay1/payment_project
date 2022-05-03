@@ -3,11 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
+import 'package:flutter_application_1/modules/Service/cubit/paywallet_cubit.dart';
+import 'package:flutter_application_1/modules/Service/cubit/paywallet_state.dart';
 import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
 import 'package:flutter_application_1/modules/cubit/homecubit_state.dart';
 
 import 'package:flutter_application_1/shared/components/components.dart';
+import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Paywithwallet extends StatefulWidget {
   @override
@@ -23,13 +27,24 @@ class _PaywithwalletState extends State<Paywithwallet> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomecubitCubit(),
-      child: BlocConsumer<HomecubitCubit, HomecubitState>(
+      create: (context) => PayWalletCubit(),
+      child: BlocConsumer<PayWalletCubit, PayWalletState>(
         listener: (context, state) {
-          // if (state is HomecubitSucees) {
-          //   Navigator.pushReplacement(
-          //       context, MaterialPageRoute(builder: (context) => Homelayout()));
-          // }
+          if (state is PayWalletsuccess) {
+            if (state.model.status) {
+              print(state.model.message);
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => Homelayout()));
+            } else {
+              print(state.model.message);
+              Fluttertoast.showToast(
+                msg: state.model.message,
+                backgroundColor: Colors.red,
+                fontSize: 16,
+                gravity: ToastGravity.BOTTOM,
+              );
+            }
+          }
         },
         builder: (context, state) {
           return Scaffold(
@@ -65,6 +80,11 @@ class _PaywithwalletState extends State<Paywithwallet> {
                           type: TextInputType.visiblePassword,
                           label: 'Password',
                           prefix: Icons.lock,
+                          validate: (String value) {
+                            if (value.isEmpty) {
+                              return 'Please Enter code';
+                            }
+                          },
                           suffix: remote_Red_eye),
                       SizedBox(
                         height: 30.0,
@@ -72,12 +92,12 @@ class _PaywithwalletState extends State<Paywithwallet> {
                       defaultButton(
                         function: () {
                           if (_formKey.currentState.validate()) {
-                            HomecubitCubit.get(context)
+                            PayWalletCubit.get(context)
                                 .paywithpassword(passwordcontroller.text);
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Homelayout()));
+                            // Navigator.pushReplacement(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => Homelayout()));
                           }
                         },
                         text: 'pay',

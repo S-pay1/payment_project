@@ -11,6 +11,7 @@ import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 class Gloablvar {
   static String id;
+  static String Paymentid;
   static String phone;
   static String name;
   static var total;

@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/history_model/histoy_model.dart';
+import 'package:flutter_application_1/models/pay_model.dart';
 import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/modules/history_screen/history.dart';
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
@@ -61,21 +62,4 @@ class HomecubitCubit extends Cubit<HomecubitState> {
   //   });
   // }
 
-  void paywithpassword(@required String password) {
-    DioHelper.postData(url: paywithwalletss, data: {
-      'client_id': Gloablvar.id,
-      'password': password,
-      'total': Gloablvar.total
-    }).then((value) {
-      print(Gloablvar.id);
-      print(Gloablvar.total);
-      print(value.data);
-      emit(HomecubitSucees());
-    }).catchError((onError) {
-      emit(HomecubitEroor());
-      print(Gloablvar.id);
-      print(Gloablvar.total);
-      print(onError.toString());
-    });
-  }
 }

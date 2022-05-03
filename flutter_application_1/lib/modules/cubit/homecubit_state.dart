@@ -1,5 +1,7 @@
 //import 'package:udemy_flutter/models/user/user/login/login_model.dart';
 
+import 'package:flutter_application_1/models/pay_model.dart';
+
 import '../../models/history_model/histoy_model.dart';
 import '../../models/user_model/Register_model.dart';
 
@@ -41,4 +43,14 @@ class walletsuccess extends HomecubitState {
 class walletyerror extends HomecubitState {
   // final String error;
   // Historyerror(this.error);
+}
+
+class PaySucees extends HomecubitState {
+  // final PayModel model;
+  // PaySucees(this.model);
+}
+
+class PayEroor extends HomecubitState {
+  // final String error;
+  // PayEroor(this.error);
 }

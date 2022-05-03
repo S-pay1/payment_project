@@ -11,9 +11,13 @@ class DioHelper {
         baseUrl: 'http://10.0.2.2:8000/',
 
         receiveDataWhenStatusError: true,
-
+        followRedirects: false,
+        validateStatus: (status) {
+          return status < 500;
+        },
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
       ),
     );

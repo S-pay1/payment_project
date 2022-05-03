@@ -28,6 +28,8 @@ class LoginScreen extends StatelessWidget {
           listener: (context, state) {
             if (state is loginsuccess) {
               Gloablvar.id = state.model.data.id;
+              Gloablvar.name = state.model.data.name;
+              Gloablvar.phone = state.model.data.phone;
               if (state.model.status) {
                 print(state.model.message);
                 //print(state.model.data.token);
@@ -36,11 +38,11 @@ class LoginScreen extends StatelessWidget {
               } else {
                 print(state.model.message);
                 Fluttertoast.showToast(
-                  msg: state.model.message,
-                  backgroundColor: Colors.red,
-                  fontSize: 16,
-                  gravity: ToastGravity.BOTTOM,
-                );
+                    msg: state.model.message,
+                    backgroundColor: Colors.red,
+                    fontSize: 16,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 20);
               }
             }
           },
