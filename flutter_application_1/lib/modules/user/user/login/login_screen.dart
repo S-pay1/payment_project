@@ -10,6 +10,7 @@ import 'package:flutter_application_1/modules/user/user/termsuser.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../../../fingerprint/local_auth.dart';
 import '../../../../shared/components/components.dart';
 import '../../../../shared/global.dart';
 import 'cubit/Login_cubit.dart';
@@ -174,7 +175,22 @@ class LoginScreen extends StatelessWidget {
                             height: 10,
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              final isAuthenticated =
+                                  await LocalAuthApi.authenticate();
+
+                              if (isAuthenticated) {
+                                // if (state is loginsuccess) {
+                                //   Gloablvar.id = state.model.data.id;
+                                //   Gloablvar.name = state.model.data.name;
+                                //   Gloablvar.phone = state.model.data.phone;
+                                // }
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => Homelayout()),
+                                );
+                              }
+                            },
                             icon: Icon(Icons.fingerprint),
                             iconSize: 50,
                           ),

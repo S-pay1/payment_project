@@ -17,6 +17,7 @@ import 'package:flutter_application_1/shared/cach_helper.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'fingerprint/fingerprint_screen.dart';
 import 'modules/choose type of user/ChooseTypeOfUser.dart';
 import 'modules/user/user/reset password/RsetPasswprd.dart';
 import 'modules/user/user/signup/Signup.dart';
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
             foregroundColor: Color(0xff004B7d),
           ),
         ),
-        home: TypeOfUser(),
+        home: Hometest(),
       ),
     );
   }

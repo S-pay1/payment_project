@@ -60,6 +60,7 @@ dependencies:
   uuid: ^3.0.6
   mac_address: ^1.0.0
   shared_preferences: ^2.0.13
+  local_auth: ^0.6.3+4
 
 dev_dependencies:
   flutter_test:
