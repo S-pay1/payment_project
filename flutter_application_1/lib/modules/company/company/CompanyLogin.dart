@@ -12,6 +12,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../layout/home/homePageLayout.dart';
 
+import '../../../shared/rejex.dart';
 import 'companyRecipts.dart';
 import 'termsAndPoliceis.dart';
 
@@ -24,6 +25,7 @@ class CompanyScreen extends StatelessWidget {
     var emailadress = TextEditingController();
     var passwordController = TextEditingController();
     var username = TextEditingController();
+    var regexEmail = EmailAdrresValidator;
     return BlocProvider(
       create: (context) => CompanyCubit(),
       child: BlocConsumer<CompanyCubit, CompanyState>(
@@ -78,12 +80,11 @@ class CompanyScreen extends StatelessWidget {
                       height: 10.0,
                     ),
                     defaultFormField(
-                      controller: emailadress,
-                      type: TextInputType.emailAddress,
-                      label: 'email',
-                      prefix: Icons.email_outlined,
-                      //validate: regexEmail
-                    ),
+                        controller: emailadress,
+                        type: TextInputType.emailAddress,
+                        label: 'email',
+                        prefix: Icons.email_outlined,
+                        validate: regexEmail),
                     SizedBox(
                       height: 20.0,
                     ),

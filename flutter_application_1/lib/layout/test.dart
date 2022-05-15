@@ -40,6 +40,7 @@ class _HometestState extends State<Hometest> {
     String macAddress;
     try {
       macAddress = await GetMac.macAddress;
+      print('mac adrees ' + _deviceMAC);
     } on PlatformException {
       macAddress = 'Error getting the MAC address.';
     }

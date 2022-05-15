@@ -25,6 +25,7 @@ class SignUp extends StatelessWidget {
   // bool value = false;
   final rejexfullname = fullNameValidator;
   final rejexPhone = phoneNumberValidator;
+  final regexEmail = EmailAdrresValidator;
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,15 @@ class SignUp extends StatelessWidget {
                           label: 'Full Name',
                           prefix: Icons.drive_file_rename_outline,
                           validate: rejexfullname),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      defaultFormField(
+                          controller: emailController,
+                          type: TextInputType.emailAddress,
+                          label: 'email',
+                          prefix: Icons.email_outlined,
+                          validate: regexEmail),
                       SizedBox(
                         height: 20,
                       ),

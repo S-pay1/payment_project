@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
             foregroundColor: Color(0xff004B7d),
           ),
         ),
-        home: Hometest(),
+        home: LoginScreen(),
       ),
     );
   }
