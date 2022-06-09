@@ -14,7 +14,8 @@ const clients = 'api/clients';
 
 const getserve = 'companies_service';
 const cheakuser = 'api/check_user';
-const cheakreset = 'api/check_reset_password_otp';
+
 const walletshow = 'clients/wallet';
 const Companyhistory = '/companies/payments';
 const paywithwalletss = 'api/WalletPay';
+const resetpassword = 'api/reset_password';

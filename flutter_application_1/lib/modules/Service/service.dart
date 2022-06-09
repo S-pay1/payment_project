@@ -48,11 +48,11 @@ class _Service_ScreenState extends State<Service_Screen> {
                 ),
               );
 
-              print(state.model.message);
-            } else {
-              print(state.model.message);
+              // print(state.model.message);
+            } else if (state is Serviceerror) {
+              // print(state.model.message);
               Fluttertoast.showToast(
-                msg: state.model.message,
+                msg: 'not found servicecode',
                 backgroundColor: Colors.red,
                 fontSize: 16,
                 gravity: ToastGravity.BOTTOM,

@@ -8,7 +8,8 @@ class DioHelper {
     dio = Dio(
       BaseOptions(
         //baseUrl: 'https://student.valuxapps.com/api/',
-        baseUrl: 'http://10.0.2.2:8000/',
+        // baseUrl: 'http://10.0.2.2:8000/',
+        baseUrl: 'http://3.131.228.191/',
 
         receiveDataWhenStatusError: true,
         followRedirects: false,

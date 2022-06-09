@@ -162,6 +162,7 @@ class ServicesButton extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = ServiceCubit.get(context);
+
           return InkWell(
             onTap: () {
               cubit.changeindexscreen(text);
@@ -229,17 +230,45 @@ class ServicesButton extends StatelessWidget {
         },
       ),
     ));
-    // curve: Curves.fastOutSlowIn,
-    // tween: Tween<double>(begin: 0, end: 1),
-    // duration: const Duration(seconds: 4),
-    // builder: (context, double _val, Widget child) {
-    //   return Opacity(
-    //     opacity: _val,
-    //     child: Padding(
-    //       padding: EdgeInsets.only(top: _val * 4),
-    //       child: child,
-    //     ),
-    //   );
-    // });
+  }
+}
+
+class textserviceButton extends StatelessWidget {
+  const textserviceButton({
+    Key key,
+    @required this.text,
+  }) : super(key: key);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: BlocProvider(
+          create: (context) => ServiceCubit(),
+          child: BlocConsumer<ServiceCubit, ServiceState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              var cubit = ServiceCubit.get(context);
+
+              return TextButton(
+                  onPressed: () {
+                    cubit.changeindexscreen(text);
+                    cubit.companyData(text);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Service_Screen()));
+                  },
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ));
+            },
+          )),
+    );
   }
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
+import 'package:flutter_application_1/models/otp_model/OTP_model.dart';
 import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 import 'package:flutter_application_1/modules/home_screen/home.dart';
@@ -58,6 +59,7 @@ class Otp extends StatelessWidget {
             }
           }
         },
+
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
@@ -127,36 +129,19 @@ class Otp extends StatelessWidget {
                       defaultButton(
                         function: () {
                           if (_formKey.currentState.validate()) {
-                            OtpCubit.get(context).userOtpCheak(
-                              otp: OTPcontroller.text,
-                            );
-                            // if (Gloablvar.registerScreen == true ||
-                            //     Gloablvar.walletScreen == true) {
-                            //   Navigator.push(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //           builder: (context) => Homelayout()));
-                            // }
-                            // if (Gloablvar.resetpasswordScreen) {
-                            //   Navigator.push(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //           builder: (context) => Genrate()));
-                            // }
+                            if (Gloablvar.resetpasswordScreen = false) {
+                              OtpCubit.get(context).userOtpCheak(
+                                otp: OTPcontroller.text,
+                              );
+                            } else {
+                              RegisterCubit.get(context)
+                                  .resetPassword(otp: OTPcontroller.text);
+                            }
                           }
                         },
                         text: 'verify',
                       ),
                       SizedBox(height: 5.0),
-                      // TextButton(
-                      //   onPressed: () {},
-                      //   child: Text(
-                      //     'Click here to resend..',
-                      //     style: TextStyle(
-                      //       color: Colors.blue,
-                      //     ),
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),

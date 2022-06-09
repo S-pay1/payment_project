@@ -38,6 +38,8 @@ class SignUp extends StatelessWidget {
             if (state.model.status) {
               Gloablvar.name = state.model.data.name;
               Gloablvar.phone = state.model.data.phone;
+              Gloablvar.Email = state.model.data.email;
+
               print(state.model.message);
               // Navigator.push(
               //     context, MaterialPageRoute(builder: (context) => genrate()));
@@ -160,6 +162,7 @@ class SignUp extends StatelessWidget {
                               if (_formKey.currentState.validate()) {
                                 Gloablvar.name = nameController.text;
                                 Gloablvar.phone = phoneController.text;
+                                Gloablvar.Email = emailController.text;
                                 // OtpCubit.get(context).model.data.id;
                                 // RegisterModel.data.id;
                                 // cubit.userOtpCheak.call(state.model.data.id)

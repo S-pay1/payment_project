@@ -14,12 +14,14 @@ class Gloablvar {
   static String Paymentid;
   static String phone;
   static String name;
+  static String Email;
   static var total;
   static var service_code;
   static var price;
   static var feeds;
   static var date;
   static String passwordgenerate;
+  static String Numbergenerate;
   static List itemsOfDropDown = [];
   static String dropdownitem = "";
   static bool registerScreen = false;
@@ -47,4 +49,21 @@ String getRandomString(String name, dynamic num, int length) {
       ),
     ),
   );
+}
+
+String getRandomNumber() {
+  var rng = Random();
+  for (var i = 0; i < 10; i++) {
+    print(rng.nextInt(100));
+  }
+}
+
+String RandomNumber(int min, int max) {
+  Random().nextInt(max - min);
+}
+
+String numberRandom() {
+  String randomnumber;
+
+  randomnumber = (Random().nextInt(1000) + 5).toString();
 }

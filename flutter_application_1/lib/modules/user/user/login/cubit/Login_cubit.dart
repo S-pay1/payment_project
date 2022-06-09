@@ -31,7 +31,7 @@ class loginCubit extends Cubit<loginState> {
       data: {
         'phone': phone,
         'password': hashPassword.toString(),
-        'type': 'user',
+        // 'type': 'user',
         'typeOfUser': typeOfUser.toString()
       },
     ).then((value) {

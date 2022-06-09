@@ -31,6 +31,7 @@ class OtpCubit extends Cubit<OtpState> {
     ).then((value) {
       model = OtpModel.fromJson(value.data);
       print(model.status);
+      print(Gloablvar.id);
       print(model.message);
       //print(model.data.token);
       print(value.data);

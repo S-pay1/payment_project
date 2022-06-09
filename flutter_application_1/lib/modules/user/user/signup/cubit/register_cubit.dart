@@ -30,6 +30,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     String password,
     String salt,
     String typeOfUser,
+    String Email,
 
     // @required String email,
   }) {
@@ -49,11 +50,13 @@ class RegisterCubit extends Cubit<RegisterState> {
         'phone': Gloablvar.phone,
         'name': Gloablvar.name,
         'salt': newSalt,
-        'typeOfUser': typeOfUser.toString()
+        'typeOfUser': typeOfUser.toString(),
+        'email': Gloablvar.Email
       },
     ).then((value) {
       model = RegisterModel.fromJson(value.data);
       Gloablvar.id = model.data.id;
+      print(model.data.id + 'id');
       print(model.status);
       print(model.message);
 
@@ -78,21 +81,19 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   ResetModel remodel;
-  void CheakPassword({
-    String client_id,
-    String phone,
+  void SendOtp({
+    String email,
   }) {
     emit(Registerloading());
     DioHelper.postData(
       url: cheakuser,
       data: {
-        //  'client_id': Gloablvar.id,
-        'phone': phone,
+        'email': email,
       },
     ).then((value) {
       remodel = ResetModel.fromJson(value.data);
       Gloablvar.resetpasswordScreen = true;
-      Gloablvar.phone = phone;
+      Gloablvar.Email = email;
       // print(remodel.data);
       print(remodel.message);
 
@@ -104,16 +105,14 @@ class RegisterCubit extends Cubit<RegisterState> {
     });
   }
 
-  void reset({
-    var otp,
-    var phone,
-  }) {
+  void resetPassword({var password, var email, var otp}) {
     emit(Registerloading());
     DioHelper.postData(
-      url: cheakreset,
+      url: resetpassword,
       data: {
+        'password': Gloablvar.passwordgenerate,
+        'email': Gloablvar.Email,
         'otp': otp,
-        'phone': Gloablvar.phone,
       },
     ).then((value) {
       remodel = ResetModel.fromJson(value.data);
@@ -122,9 +121,9 @@ class RegisterCubit extends Cubit<RegisterState> {
       print(remodel.message);
 
       print(value.data);
-      emit(Checksuccess(remodel));
+      emit(passwordUpdataSuccess(remodel));
     }).catchError((error) {
-      emit(Checkererror(error.toString()));
+      emit(passwordUpdataError(error.toString()));
       print(error.toString());
     });
   }

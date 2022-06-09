@@ -13,13 +13,15 @@ class RegisterModel {
 class UserData {
   String id;
   String name;
-
+  var email;
   String phone;
+  String number;
 
   UserData.fromJason(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-
+    email = json['email'];
     phone = json['phone'];
+    number = json['number'];
   }
 }

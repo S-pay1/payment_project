@@ -19,8 +19,10 @@ class Recive extends StatelessWidget {
       child: BlocConsumer<RegisterCubit, RegisterState>(
         listener: (context, state) {
           if (state is Registersuccess) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Otp()));
+            if (state.model.status) {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Otp()));
+            }
           }
         },
         builder: (context, state) {
@@ -53,7 +55,12 @@ class Recive extends StatelessWidget {
                     ),
                     defaultButton(
                         function: () {
-                          RegisterCubit.get(context).userRegister();
+                          if (Gloablvar.resetpasswordScreen = false) {
+                            RegisterCubit.get(context).userRegister();
+                          } else {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => Otp()));
+                          }
                         },
                         text: 'use it')
                   ],

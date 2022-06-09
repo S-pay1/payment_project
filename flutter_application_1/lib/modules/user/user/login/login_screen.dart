@@ -7,10 +7,12 @@ import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/modules/choose%20type%20of%20user/choosetypeofuser.dart';
 import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
 import 'package:flutter_application_1/modules/user/user/termsuser.dart';
+import 'package:flutter_application_1/shared/rejex.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../fingerprint/local_auth.dart';
+import '../../../../shared/cach_helper.dart';
 import '../../../../shared/components/components.dart';
 import '../../../../shared/global.dart';
 import 'cubit/Login_cubit.dart';
@@ -20,6 +22,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var phoneController = TextEditingController();
+    final rejexPhone = phoneNumberValidator;
     // var emaiadress = TextEditingController();
     var passwordController = TextEditingController();
 
@@ -28,10 +31,10 @@ class LoginScreen extends StatelessWidget {
         child: BlocConsumer<loginCubit, loginState>(
           listener: (context, state) {
             if (state is loginsuccess) {
-              Gloablvar.id = state.model.data.id;
-              Gloablvar.name = state.model.data.name;
-              Gloablvar.phone = state.model.data.phone;
               if (state.model.status) {
+                Gloablvar.id = state.model.data.id;
+                Gloablvar.name = state.model.data.name;
+                Gloablvar.phone = state.model.data.phone;
                 print(state.model.message);
                 //print(state.model.data.token);
                 Navigator.pushReplacement(context,
@@ -84,16 +87,12 @@ class LoginScreen extends StatelessWidget {
                             height: 5.0,
                           ),
                           defaultFormField(
-                              controller: phoneController,
-                              type: TextInputType.number,
-                              label: 'phone',
-                              prefix: Icons.phone,
-                              validate: (String value) {
-                                if (value.isEmpty) {
-                                  return 'Please Enter your phone';
-                                }
-                                return null;
-                              }),
+                            controller: phoneController,
+                            type: TextInputType.number,
+                            label: 'phone',
+                            prefix: Icons.phone,
+                            validate: rejexPhone,
+                          ),
                           SizedBox(
                             height: 20.0,
                           ),
@@ -158,6 +157,8 @@ class LoginScreen extends StatelessWidget {
                               text: 'login',
                               function: () {
                                 if (_formKey.currentState.validate()) {
+                                  Gloablvar.Numbergenerate = numberRandom();
+                                  print(Gloablvar.Numbergenerate);
                                   loginCubit.get(context).userlogin(
                                       phone: phoneController.text,
                                       password: passwordController.text);
@@ -174,26 +175,28 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(
                             height: 10,
                           ),
-                          IconButton(
-                            onPressed: () async {
-                              final isAuthenticated =
-                                  await LocalAuthApi.authenticate();
+                          CacheHelper.getData(key: 'fingerPrint') != null
+                              ? IconButton(
+                                  onPressed: () async {
+                                    final isAuthenticated =
+                                        await LocalAuthApi.authenticate();
 
-                              if (isAuthenticated) {
-                                // if (state is loginsuccess) {
-                                //   Gloablvar.id = state.model.data.id;
-                                //   Gloablvar.name = state.model.data.name;
-                                //   Gloablvar.phone = state.model.data.phone;
-                                // }
-                                Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (context) => Homelayout()),
-                                );
-                              }
-                            },
-                            icon: Icon(Icons.fingerprint),
-                            iconSize: 50,
-                          ),
+                                    if (isAuthenticated) {
+                                      var getsaveddatasuccess =
+                                          CacheHelper.getData(
+                                              key: 'dataForFingerPrint');
+                                      print('datagetsuccess ' +
+                                          getsaveddatasuccess.toString());
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (context) => Homelayout()),
+                                      );
+                                    }
+                                  },
+                                  icon: Icon(Icons.fingerprint),
+                                  iconSize: 50,
+                                )
+                              : Text(''),
                           SizedBox(
                             height: 0.0,
                           ),

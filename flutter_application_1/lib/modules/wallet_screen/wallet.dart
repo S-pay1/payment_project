@@ -1,10 +1,11 @@
 // ignore_for_file: unused_import, prefer_const_constructors
-
+import 'dart:math';
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
 import 'package:flutter_application_1/modules/cubit/homecubit_state.dart';
 import 'package:flutter_application_1/modules/wallet_screen/cubit/wallet_cubit.dart';
+import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,8 +15,10 @@ class Wallet extends StatefulWidget {
 }
 
 class _WalletState extends State<Wallet> {
+  String number = 'x';
   @override
   Widget build(BuildContext context) {
+    String number = 'x';
     return BlocProvider(
       create: (ctx) => WalletCubit()..userwallet(),
       child: BlocBuilder<WalletCubit, WalletState>(
@@ -112,7 +115,44 @@ class _WalletState extends State<Wallet> {
                       Icon(Icons.star),
                       Text('to recharge go to atm')
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  defaultButton(
+                      function: () {
+                        setState(() {
+                          number = Random().nextInt(9000).toString();
+                        });
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text('you code is : '),
+                                content: Text(
+                                  number,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      'ok',
+                                      style: TextStyle(
+                                          color: Colors.blue, fontSize: 18),
+                                    ),
+                                  )
+                                ],
+                              );
+                            });
+                      },
+                      text: 'get code'),
                 ],
               ),
             ),

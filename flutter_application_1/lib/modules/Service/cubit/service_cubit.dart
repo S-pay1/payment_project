@@ -24,7 +24,7 @@ class ServiceCubit extends Cubit<ServiceState> {
     'phone',
     'landing',
     'wifi',
-    // 'other service',
+    'other services',
   ];
   List<String> Servicecode = [
     'Service code',
@@ -33,7 +33,7 @@ class ServiceCubit extends Cubit<ServiceState> {
     'phone number',
     'landing number',
     'number',
-    // 'opreation number',
+    'opreation number',
   ];
   List<String> ServicCompany = [
     'company',
@@ -42,7 +42,7 @@ class ServiceCubit extends Cubit<ServiceState> {
     'Network',
     'landing number',
     'number',
-    // 'number',
+    'company',
   ];
   int indexOfServices;
 

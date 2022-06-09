@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
+import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
 import 'package:flutter_application_1/shared/global.dart';
@@ -12,6 +13,7 @@ import '../../../../shared/components/components.dart';
 
 class ResetPassword extends StatelessWidget {
   var phone = TextEditingController();
+  var email = TextEditingController();
   var _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -51,13 +53,13 @@ class ResetPassword extends StatelessWidget {
                         height: 80.0,
                       ),
                       defaultFormField(
-                          controller: phone,
-                          type: TextInputType.number,
-                          label: 'Your Phone',
-                          prefix: Icons.phone,
+                          controller: email,
+                          type: TextInputType.emailAddress,
+                          label: 'Your Email',
+                          prefix: Icons.email,
                           validate: (String value) {
                             if (value.isEmpty) {
-                              return 'Please Enter a Correct Phone Number';
+                              return 'Please Enter your Email';
                             }
                             return null;
                           }),
@@ -68,14 +70,14 @@ class ResetPassword extends StatelessWidget {
                           function: () {
                             if (_formkey.currentState.validate()) {
                               RegisterCubit.get(context)
-                                  .CheakPassword(phone: phone.text);
-                              Gloablvar.phone = phone.text;
-                              print(Gloablvar.phone);
+                                  .SendOtp(email: email.text);
+                              Gloablvar.Email = email.text;
+                              print(Gloablvar.Email);
 
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Otp()));
+                                      builder: (context) => Genrate()));
                             }
                           },
                           text: 'Send')

@@ -11,6 +11,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'dart:ui';
 
+import '../../fingerprint/local_auth.dart';
+import '../../other_services/other_service.dart';
+import '../../shared/cach_helper.dart';
 import '../Service/service.dart';
 import '../choose type of user/choosetypeofuser.dart';
 
@@ -89,6 +92,71 @@ class home extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Contact_us()));
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.fingerprint,
+                        color: Colors.black,
+                      ),
+                      title: Text("Enable FingerPrint"),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text(
+                              'Finger Print',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                              ),
+                            ),
+                            content: Text(
+                              'Are you Sure You Want enable finger print in this app ?',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () async {
+                                  final isAuthenticated =
+                                      await LocalAuthApi.authenticate();
+                                  CacheHelper.saveDate(
+                                      key: 'fingerPrint', value: true);
+                                  CacheHelper.saveDate(
+                                      key: 'dataForFingerPrint', value: true);
+
+                                  print('saved success');
+                                  if (isAuthenticated != null) {
+                                    Navigator.pop(context);
+                                    print('done success');
+                                  }
+                                },
+                                child: Text(
+                                  'OK',
+                                  style: TextStyle(color: Colors.blueAccent),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () async {
+                                  // final isAuthenticated =
+                                  //     await LocalAuthApi.authenticate();
+                                  CacheHelper.removeData(
+                                    key: 'fingerPrint',
+                                  );
+                                  print('Deleted success');
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  'Disable',
+                                  style: TextStyle(color: Colors.blueAccent),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
                       },
                     ),
                     ListTile(
@@ -178,17 +246,18 @@ class home extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Service_Screen()));
-                          },
-                          child: Text(
-                            'Other Service',
-                            style: TextStyle(color: Colors.white),
-                          ))
+                      textserviceButton(text: 'other services')
+
+                      // TextButton(
+                      //     onPressed: () {
+                      //       Navigator.push(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (context) => other_service()));
+                      //     },
+                      //     child: textserviceButton(
+                      //       text: 'other ',
+                      //     )),
                     ],
                   ),
                 ),
