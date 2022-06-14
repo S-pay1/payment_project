@@ -20,6 +20,7 @@ class Recive extends StatelessWidget {
         listener: (context, state) {
           if (state is Registersuccess) {
             if (state.model.status) {
+              print(Gloablvar.passwordgenerate);
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Otp()));
             }
@@ -55,12 +56,7 @@ class Recive extends StatelessWidget {
                     ),
                     defaultButton(
                         function: () {
-                          if (Gloablvar.resetpasswordScreen = false) {
-                            RegisterCubit.get(context).userRegister();
-                          } else {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => Otp()));
-                          }
+                          RegisterCubit.get(context).userRegister();
                         },
                         text: 'use it')
                   ],

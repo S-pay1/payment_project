@@ -33,8 +33,31 @@ class _PaywithwalletState extends State<Paywithwallet> {
           if (state is PayWalletsuccess) {
             if (state.model.status) {
               print(state.model.message);
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => Homelayout()));
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text('Success'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Homelayout()));
+                            // pushReplacement(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => SignUp()));
+                          },
+                          child: Text(
+                            'ok',
+                            style: TextStyle(color: Colors.blue, fontSize: 18),
+                          ),
+                        )
+                      ],
+                    );
+                  });
             } else {
               print(state.model.message);
               Fluttertoast.showToast(

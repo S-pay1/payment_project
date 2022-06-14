@@ -7,6 +7,7 @@ import 'package:flutter_application_1/modules/Service/cubit/service_cubit.dart';
 import 'package:flutter_application_1/modules/Service/service.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 Widget defaultButton({

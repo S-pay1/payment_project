@@ -6,6 +6,7 @@ import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
 import 'package:flutter_application_1/shared/global.dart';
+import 'package:flutter_application_1/shared/rejex.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +16,7 @@ class ResetPassword extends StatelessWidget {
   var phone = TextEditingController();
   var email = TextEditingController();
   var _formkey = GlobalKey<FormState>();
+  final regexEmail = EmailAdrresValidator;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -57,12 +59,7 @@ class ResetPassword extends StatelessWidget {
                           type: TextInputType.emailAddress,
                           label: 'Your Email',
                           prefix: Icons.email,
-                          validate: (String value) {
-                            if (value.isEmpty) {
-                              return 'Please Enter your Email';
-                            }
-                            return null;
-                          }),
+                          validate: regexEmail),
                       SizedBox(
                         height: 50,
                       ),

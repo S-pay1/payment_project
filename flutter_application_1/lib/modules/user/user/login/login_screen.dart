@@ -157,8 +157,8 @@ class LoginScreen extends StatelessWidget {
                               text: 'login',
                               function: () {
                                 if (_formKey.currentState.validate()) {
-                                  Gloablvar.Numbergenerate = numberRandom();
-                                  print(Gloablvar.Numbergenerate);
+                                  // Gloablvar.Numbergenerate = numberRandom();
+                                  // print(Gloablvar.Numbergenerate);
                                   loginCubit.get(context).userlogin(
                                       phone: phoneController.text,
                                       password: passwordController.text);

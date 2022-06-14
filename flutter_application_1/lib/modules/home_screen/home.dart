@@ -70,11 +70,6 @@ class home extends StatelessWidget {
                       height: 20,
                     ),
                     ListTile(
-                      leading: Icon(Icons.personal_injury_outlined),
-                      title: Text("Account"),
-                      onTap: () {},
-                    ),
-                    ListTile(
                       leading: Icon(Icons.chat),
                       title: Text("About us"),
                       onTap: () {

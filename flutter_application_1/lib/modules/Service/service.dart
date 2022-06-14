@@ -49,7 +49,7 @@ class _Service_ScreenState extends State<Service_Screen> {
               );
 
               // print(state.model.message);
-            } else if (state is Serviceerror) {
+            } else {
               // print(state.model.message);
               Fluttertoast.showToast(
                 msg: 'not found servicecode',
@@ -128,6 +128,19 @@ class _Service_ScreenState extends State<Service_Screen> {
                         }
                       },
                       label: 'price',
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    defaultFormField(
+                      controller: pricenumber,
+                      type: TextInputType.number,
+                      validate: (String value) {
+                        if (value.isEmpty) {
+                          return 'Please Enter pin';
+                        }
+                      },
+                      label: 'PIN',
                     ),
                     SizedBox(
                       height: 20,

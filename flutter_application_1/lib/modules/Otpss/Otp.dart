@@ -31,8 +31,27 @@ class Otp extends StatelessWidget {
           if (state is Otpsuccess) {
             print(Gloablvar.id);
             if (state.model.status) {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Homelayout()));
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text('Success created account'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Homelayout()));
+                          },
+                          child: Text(
+                            'ok',
+                            style: TextStyle(color: Colors.blue, fontSize: 18),
+                          ),
+                        )
+                      ],
+                    );
+                  });
             } else {
               showDialog(
                   context: context,
@@ -129,14 +148,12 @@ class Otp extends StatelessWidget {
                       defaultButton(
                         function: () {
                           if (_formKey.currentState.validate()) {
-                            if (Gloablvar.resetpasswordScreen = false) {
-                              OtpCubit.get(context).userOtpCheak(
-                                otp: OTPcontroller.text,
-                              );
-                            } else {
-                              RegisterCubit.get(context)
-                                  .resetPassword(otp: OTPcontroller.text);
-                            }
+                            OtpCubit.get(context).userOtpCheak(
+                              otp: OTPcontroller.text,
+                            );
+                            // } else {
+                            //   RegisterCubit.get(context)
+                            //       .resetPassword(otp: OTPcontroller.text);
                           }
                         },
                         text: 'verify',

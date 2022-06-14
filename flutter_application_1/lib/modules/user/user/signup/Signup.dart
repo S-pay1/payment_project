@@ -1,4 +1,4 @@
-// ignore_for_file: missing_required_param, prefer_const_constructors, prefer_function_declarations_over_variables, avoid_print
+// ignore_for_file: missing_required_param, prefer_const_constructors, prefer_function_declarations_over_variables, avoid_print, unnecessary_new
 
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,7 @@ import 'package:flutter_application_1/modules/Otpss/Otp.dart';
 import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 import '../../../../shared/rejex.dart';
 import '../../../generate/paswword_generate.dart';
@@ -76,6 +77,9 @@ class SignUp extends StatelessWidget {
                         height: 250.0,
                         width: 250.0,
                       ),
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
                       defaultFormField(
                           controller: nameController,
                           type: TextInputType.name,
@@ -104,6 +108,41 @@ class SignUp extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
+
+                      defaultFormField(
+                          controller: passwordController,
+                          type: TextInputType.text,
+                          label: 'password',
+                          prefix: Icons.lock,
+                          validate: (String value) {
+                            if (value.isEmpty) {
+                              return 'Password is required';
+                            }
+                          }),
+
+                      SizedBox(
+                        height: 5,
+                      ),
+                      FlutterPwValidator(
+                        controller: passwordController,
+                        minLength: 8,
+                        uppercaseCharCount: 2,
+                        numericCharCount: 3,
+                        specialCharCount: 1,
+                        normalCharCount: 3,
+                        width: 350,
+                        height: 150,
+                        onSuccess: () {
+                          print("MATCHED");
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              new SnackBar(
+                                  content: new Text("Password is matched")));
+                        },
+                        onFail: () {
+                          print("NOT MATCHED");
+                        },
+                      ),
+
                       SizedBox(
                         height: 20,
                       ),
@@ -132,28 +171,29 @@ class SignUp extends StatelessWidget {
                       //   label: 'Password',
                       //   prefix: Icons.lock_outline,
                       // ),
-                      SizedBox(
-                        height: 20,
-                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            height: 10,
+                          Text(
+                            'need help to create password?',
                           ),
-                          Row(
-                            // ignore: prefer_const_literals_to_create_immutables
-                            children: <Widget>[
-                              SizedBox(
-                                width: 10,
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            width: 10,
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Genrate()));
+                            },
+                            child: Text(
+                              'we can help you',
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
+                            ),
                           ),
                         ],
                       ),
+
                       ConditionalBuilder(
                         condition: state is! Registerloading,
                         builder: (context) => defaultButton(

@@ -44,6 +44,11 @@ class ServiceCubit extends Cubit<ServiceState> {
     'number',
     'company',
   ];
+  List<String> PinServic = [
+    'PIN',
+    'PIN',
+    'PIN',
+  ];
   int indexOfServices;
 
   void changeindexscreen(text) {

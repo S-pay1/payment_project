@@ -61,6 +61,7 @@ dependencies:
   mac_address: ^1.0.0
   shared_preferences: ^2.0.13
   local_auth: ^0.6.3+4
+  flutter_pw_validator: ^1.4.2
 
 dev_dependencies:
   flutter_test:
