@@ -1,5 +1,7 @@
 // ignore_for_file: missing_required_param, prefer_const_constructors, prefer_function_declarations_over_variables, avoid_print, unnecessary_new
 
+import 'dart:math';
+
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
@@ -110,15 +112,22 @@ class SignUp extends StatelessWidget {
                       ),
 
                       defaultFormField(
-                          controller: passwordController,
-                          type: TextInputType.text,
-                          label: 'password',
-                          prefix: Icons.lock,
-                          validate: (String value) {
-                            if (value.isEmpty) {
-                              return 'Password is required';
-                            }
-                          }),
+                        controller: passwordController,
+                        type: TextInputType.visiblePassword,
+                        suffix: RegisterCubit.get(context).suffix,
+                        onSubmit: (value) {},
+                        isPassword: RegisterCubit.get(context).isPassword,
+                        suffixPressed: () {
+                          RegisterCubit.get(context).changePasswordVisibility();
+                        },
+                        validate: (String value) {
+                          if (value.isEmpty) {
+                            return 'password is required';
+                          }
+                        },
+                        label: 'Password',
+                        prefix: Icons.lock_outline,
+                      ),
 
                       SizedBox(
                         height: 5,
@@ -127,9 +136,9 @@ class SignUp extends StatelessWidget {
                         controller: passwordController,
                         minLength: 8,
                         uppercaseCharCount: 2,
-                        numericCharCount: 3,
+                        numericCharCount: 2,
                         specialCharCount: 1,
-                        normalCharCount: 3,
+                        normalCharCount: 1,
                         width: 350,
                         height: 150,
                         onSuccess: () {
@@ -179,10 +188,15 @@ class SignUp extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Genrate()));
+                              if (_formKey.currentState.validate()) {
+                                Gloablvar.name = nameController.text;
+                                Gloablvar.phone = phoneController.text;
+                                Gloablvar.Email = emailController.text;
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Genrate()));
+                              }
                             },
                             child: Text(
                               'we can help you',
@@ -197,12 +211,16 @@ class SignUp extends StatelessWidget {
                       ConditionalBuilder(
                         condition: state is! Registerloading,
                         builder: (context) => defaultButton(
-                            text: 'Next',
+                            text: 'sign up',
                             function: () {
                               if (_formKey.currentState.validate()) {
-                                Gloablvar.name = nameController.text;
-                                Gloablvar.phone = phoneController.text;
-                                Gloablvar.Email = emailController.text;
+                                RegisterCubit.get(context).userRegister(
+                                  name: nameController.text,
+                                  phone: phoneController.text,
+                                  Email: emailController.text,
+                                  password: passwordController.text,
+                                );
+
                                 // OtpCubit.get(context).model.data.id;
                                 // RegisterModel.data.id;
                                 // cubit.userOtpCheak.call(state.model.data.id)
@@ -213,7 +231,7 @@ class SignUp extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Genrate()));
+                                        builder: (context) => Otp()));
                               }
                             }),
                       ),

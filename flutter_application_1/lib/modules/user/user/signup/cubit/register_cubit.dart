@@ -36,7 +36,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   }) {
     var uuid = Uuid();
     var salt = uuid.v4();
-    var pas = utf8.encode(Gloablvar.passwordgenerate);
+    var pas = utf8.encode(password);
     var hashPassword = sha256.convert(pas);
     var newSalt = salt.replaceAll("-", "");
     typeOfUser = 'user';
@@ -47,11 +47,11 @@ class RegisterCubit extends Cubit<RegisterState> {
       url: REIGSTERs,
       data: {
         'password': hashPassword.toString() + newSalt,
-        'phone': Gloablvar.phone,
-        'name': Gloablvar.name,
+        'phone': phone,
+        'name': name,
         'salt': newSalt,
         'typeOfUser': typeOfUser.toString(),
-        'email': Gloablvar.Email
+        'email': Email
       },
     ).then((value) {
       model = RegisterModel.fromJson(value.data);
@@ -125,6 +125,51 @@ class RegisterCubit extends Cubit<RegisterState> {
     }).catchError((error) {
       emit(passwordUpdataError(error.toString()));
       print(error.toString());
+    });
+  }
+
+  void userRegisterGenerate({
+    String name,
+    String phone,
+    String password,
+    String salt,
+    String typeOfUser,
+    String Email,
+
+    // @required String email,
+  }) {
+    var uuid = Uuid();
+    var salt = uuid.v4();
+    var pas = utf8.encode(Gloablvar.passwordgenerate);
+    var hashPassword = sha256.convert(pas);
+    var newSalt = salt.replaceAll("-", "");
+    typeOfUser = 'user';
+
+    emit(Registerloading());
+
+    DioHelper.postData(
+      url: REIGSTERs,
+      data: {
+        'password': hashPassword.toString() + newSalt,
+        'phone': Gloablvar.phone,
+        'name': Gloablvar.name,
+        'salt': newSalt,
+        'typeOfUser': typeOfUser.toString(),
+        'email': Gloablvar.Email
+      },
+    ).then((value) {
+      model = RegisterModel.fromJson(value.data);
+      Gloablvar.id = model.data.id;
+      print(model.data.id + 'id');
+      print(model.status);
+      print(model.message);
+
+      print(value.data);
+
+      emit(Registersuccess(model));
+    }).catchError((error) {
+      print(error.toString());
+      emit(Registererror(error.toString()));
     });
   }
 }
