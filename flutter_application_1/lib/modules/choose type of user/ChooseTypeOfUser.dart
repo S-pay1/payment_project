@@ -10,30 +10,24 @@ class TypeOfUser extends StatefulWidget {
 }
 
 class ChooseTypeOfUser extends State<TypeOfUser> {
-  var phoneController = TextEditingController();
-  var emailadress = TextEditingController();
-  var passwordController = TextEditingController();
-  var username = TextEditingController();
-
-  var formkey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          'Choose Operator',
+          style: TextStyle(
+            color: Color(0xff003B75),
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              Text(
-                'Choose Operator',
-                style: TextStyle(
-                  color: Color(0xff003B75),
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
               const SizedBox(
                 height: 50,
               ),

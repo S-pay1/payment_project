@@ -36,6 +36,7 @@ class LoginScreen extends StatelessWidget {
                 Gloablvar.name = state.model.data.name;
                 Gloablvar.phone = state.model.data.phone;
                 print(state.model.message);
+                print(Gloablvar.id);
                 //print(state.model.data.token);
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => Homelayout()));
@@ -158,10 +159,11 @@ class LoginScreen extends StatelessWidget {
                               function: () {
                                 if (_formKey.currentState.validate()) {
                                   // Gloablvar.Numbergenerate = numberRandom();
-                                  // print(Gloablvar.Numbergenerate);
+                                  // // print(Gloablvar.Numbergenerate);
                                   loginCubit.get(context).userlogin(
                                       phone: phoneController.text,
                                       password: passwordController.text);
+                                  // loginCubit.get(context).hambozo();
 
                                   /*return Navigator.pushReplacement(
                                       context,

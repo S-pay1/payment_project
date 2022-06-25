@@ -34,12 +34,12 @@ String EmailAdrresValidator(String value) {
   }
 }
 
-String tax(String value) {
-  Pattern pattern = r'^(?=[\s\S]{1,30}$)([^\r\n]{0,10}(\r?\n|$)){5}$';
+String price(String value) {
+  Pattern pattern = r'^\d+(?:[.,]\d{0,2})?';
 
   RegExp regex = new RegExp(pattern);
   if (!regex.hasMatch(value)) {
-    return 'Enter Valid Phone Numer';
+    return 'Enter price ';
   } else {
     return null;
   }

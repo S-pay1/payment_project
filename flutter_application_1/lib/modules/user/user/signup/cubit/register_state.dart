@@ -30,13 +30,3 @@ class Checkererror extends RegisterState {
   final String error;
   Checkererror(this.error);
 }
-
-class passwordUpdataSuccess extends RegisterState {
-  final ResetModel remodel;
-  passwordUpdataSuccess(this.remodel);
-}
-
-class passwordUpdataError extends RegisterState {
-  final String error;
-  passwordUpdataError(this.error);
-}

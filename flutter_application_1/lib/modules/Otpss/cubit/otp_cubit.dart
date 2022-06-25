@@ -1,11 +1,16 @@
 // ignore_for_file: non_constant_identifier_names, avoid_print
 
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 import 'package:flutter_application_1/models/otp_model/otp_model.dart';
+import 'package:flutter_application_1/models/reset_model/reset_model.dart';
 
 import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../shared/dio/dio_helper.dart';
 
@@ -57,6 +62,37 @@ class OtpCubit extends Cubit<OtpState> {
       emit(Otpsuccess(model));
     }).catchError((error) {
       emit(Otperror(error.toString()));
+      print(error.toString());
+    });
+  }
+
+  ResetModel remodel;
+  void resetPassword({var password, var email, var otp}) {
+    var uuid = Uuid();
+    var salt = uuid.v4();
+    var pas = utf8.encode(password);
+    var hashPassword = sha256.convert(pas);
+
+    var newSalt = salt.replaceAll("-", "");
+    emit(Otploading());
+    DioHelper.postData(
+      url: resetpassword,
+      data: {
+        'password': hashPassword.toString() + newSalt,
+        'email': Gloablvar.Email,
+        'salt': newSalt,
+        'otp': Gloablvar.otp,
+      },
+    ).then((value) {
+      remodel = ResetModel.fromJson(value.data);
+
+      // print(remodel.data);
+      print(remodel.message);
+
+      print(value.data);
+      emit(passwordUpdataSuccess(remodel));
+    }).catchError((error) {
+      emit(passwordUpdataError(error.toString()));
       print(error.toString());
     });
   }

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
+import 'package:flutter_application_1/layout/intro.dart';
 import 'package:flutter_application_1/layout/test.dart';
 import 'package:flutter_application_1/modules/company/company/CompanySignUp.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
@@ -25,7 +26,8 @@ import 'shared/dio/dio_helper.dart';
 import 'shared/styles/styles.dart';
 
 Future<void> main() async {
-  BlocOverrides.runZoned(
+  WidgetsFlutterBinding.ensureInitialized();
+  await BlocOverrides.runZoned(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
       DioHelper.init();

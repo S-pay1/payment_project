@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../shared/global.dart';
+import '../../shared/rejex.dart';
 
 class Service_Screen extends StatefulWidget {
   @override
@@ -21,11 +22,15 @@ class Service_Screen extends StatefulWidget {
 class _Service_ScreenState extends State<Service_Screen> {
   var pricenumber = TextEditingController();
 
+  var pinnumber = TextEditingController();
+
   var text = TextEditingController();
 
   var number = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  final priceregx = price;
   // var itemDropDown;
 
   DataModel datamodel;
@@ -49,14 +54,17 @@ class _Service_ScreenState extends State<Service_Screen> {
               );
 
               // print(state.model.message);
-            } else {
+            } else if (state is Serviceerror) {
+              if (state.model.status) {
+                Fluttertoast.showToast(
+                  msg: 'not found try again',
+                  backgroundColor: Colors.red,
+                  fontSize: 16,
+                  gravity: ToastGravity.BOTTOM,
+                );
+              }
               // print(state.model.message);
-              Fluttertoast.showToast(
-                msg: 'not found servicecode',
-                backgroundColor: Colors.red,
-                fontSize: 16,
-                gravity: ToastGravity.BOTTOM,
-              );
+
             }
           }
         },
@@ -122,26 +130,23 @@ class _Service_ScreenState extends State<Service_Screen> {
                     defaultFormField(
                       controller: pricenumber,
                       type: TextInputType.number,
-                      validate: (String value) {
-                        if (value.isEmpty) {
-                          return 'Please Enter price';
-                        }
-                      },
+                      validate: priceregx,
                       label: 'price',
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    defaultFormField(
-                      controller: pricenumber,
-                      type: TextInputType.number,
-                      validate: (String value) {
-                        if (value.isEmpty) {
-                          return 'Please Enter pin';
-                        }
-                      },
-                      label: 'PIN',
-                    ),
+                    if (Global.indexOfServices < 2)
+                      defaultFormField(
+                        controller: pinnumber,
+                        type: TextInputType.number,
+                        validate: (String value) {
+                          if (value.isEmpty) {
+                            return 'Please Enter pin';
+                          }
+                        },
+                        label: 'PIN',
+                      ),
                     SizedBox(
                       height: 20,
                     ),
@@ -159,6 +164,7 @@ class _Service_ScreenState extends State<Service_Screen> {
                               price: double.parse(pricenumber.text),
                               company_name: Gloablvar.dropdownitem.toString(),
                               client_id: Gloablvar.id,
+                              pin: pinnumber.text,
                             );
                             // print(Gloablvar.feeds);
 

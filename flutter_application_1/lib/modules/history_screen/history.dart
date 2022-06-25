@@ -12,33 +12,37 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class History extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HistoryCubit, HistoryState>(
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            // leading: IconButton(
-            //   onPressed: () {},
-            //   icon: Icon(Icons.arrow_back, color: Color(0xff004B7d)),
-            // ),
-            title: Text(
-              'History',
+    return BlocProvider(
+      create: (ctx) => HistoryCubit()..HistoryData(),
+      child: BlocBuilder<HistoryCubit, HistoryState>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              // leading: IconButton(
+              //   onPressed: () {},
+              //   icon: Icon(Icons.arrow_back, color: Color(0xff004B7d)),
+              // ),
+              title: Text(
+                'History',
+              ),
             ),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: state is Historyloading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : ListView.separated(
-                    itemBuilder: ((context, index) =>
-                        Historyview(HistoryCubit.get(context).model)),
-                    separatorBuilder: (context, index) => SizedBox(height: 20),
-                    itemCount: 1,
-                  ),
-          ),
-        );
-      },
+            body: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: state is Historyloading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ListView.separated(
+                      itemBuilder: ((context, index) =>
+                          Historyview(HistoryCubit.get(context).model)),
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 20),
+                      itemCount: 1,
+                    ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

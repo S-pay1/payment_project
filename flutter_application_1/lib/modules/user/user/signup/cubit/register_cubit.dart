@@ -38,6 +38,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     var salt = uuid.v4();
     var pas = utf8.encode(password);
     var hashPassword = sha256.convert(pas);
+
     var newSalt = salt.replaceAll("-", "");
     typeOfUser = 'user';
 
@@ -105,36 +106,13 @@ class RegisterCubit extends Cubit<RegisterState> {
     });
   }
 
-  void resetPassword({var password, var email, var otp}) {
-    emit(Registerloading());
-    DioHelper.postData(
-      url: resetpassword,
-      data: {
-        'password': Gloablvar.passwordgenerate,
-        'email': Gloablvar.Email,
-        'otp': otp,
-      },
-    ).then((value) {
-      remodel = ResetModel.fromJson(value.data);
-
-      // print(remodel.data);
-      print(remodel.message);
-
-      print(value.data);
-      emit(passwordUpdataSuccess(remodel));
-    }).catchError((error) {
-      emit(passwordUpdataError(error.toString()));
-      print(error.toString());
-    });
-  }
-
   void userRegisterGenerate({
     String name,
     String phone,
     String password,
     String salt,
     String typeOfUser,
-    String Email,
+    String email,
 
     // @required String email,
   }) {
@@ -146,7 +124,15 @@ class RegisterCubit extends Cubit<RegisterState> {
     typeOfUser = 'user';
 
     emit(Registerloading());
-
+    var data = {
+      'password': hashPassword.toString() + newSalt,
+      'phone': Gloablvar.phone,
+      'name': Gloablvar.name,
+      'salt': newSalt,
+      'typeOfUser': typeOfUser.toString(),
+      'email': Gloablvar.Email
+    };
+    print(data);
     DioHelper.postData(
       url: REIGSTERs,
       data: {

@@ -32,7 +32,17 @@ class _CompanySignUpState extends State<CompanySignUp> {
   var servicetype = TextEditingController();
   final rejexfullname = fullNameValidator;
   final emailrejex = EmailAdrresValidator;
-  final taxregex = tax;
+
+  String dropdownvalue = 'Item 1';
+  var items = [
+    'gas',
+    'water',
+    'Electronic',
+    'phone',
+    'landing',
+    'wifi',
+    'other services',
+  ];
   // var password = TextEditingController();
   bool ispassword = true;
   var _formkey = GlobalKey<FormState>();
@@ -201,17 +211,34 @@ class _CompanySignUpState extends State<CompanySignUp> {
                       SizedBox(
                         height: 15,
                       ),
-                      defaultFormField(
-                          controller: servicetype,
-                          type: TextInputType.text,
-                          label: 'Service',
-                          prefix: Icons.lock,
-                          validate: (String value) {
-                            if (value.isEmpty) {
-                              return 'Please Enter service';
-                            }
-                            return null;
-                          }),
+                      DropdownButtonFormField(
+                        hint: Text('Select Company'),
+                        decoration:
+                            InputDecoration(border: OutlineInputBorder()),
+                        menuMaxHeight: 250,
+                        items: items.map<DropdownMenuItem<String>>((value) {
+                          return DropdownMenuItem<String>(
+                            child: Text(value),
+                            value: value,
+                          );
+                        }).toList(),
+                        onChanged: (index) {
+                          setState(() {
+                            dropdownvalue = index;
+                          });
+                        },
+                      ),
+                      // defaultFormField(
+                      //     controller: servicetype,
+                      //     type: TextInputType.text,
+                      //     label: 'Service',
+                      //     prefix: Icons.lock,
+                      //     validate: (String value) {
+                      //       if (value.isEmpty) {
+                      //         return 'Please Enter service';
+                      //       }
+                      //       return null;
+                      //     }),
                       SizedBox(
                         height: 30,
                       ),
@@ -228,7 +255,8 @@ class _CompanySignUpState extends State<CompanySignUp> {
                                 email: emailadress.text,
                                 tax_number: taxNumber.text,
                                 personal_id: pirsonalID.text,
-                                Service: servicetype.text,
+                                // Service: servicetype.text,
+                                Service: dropdownvalue,
                               );
                             }
                             fallback:

@@ -10,6 +10,7 @@ import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../shared/rejex.dart';
 import '../../../generate/paswword_generate.dart';
@@ -188,15 +189,34 @@ class SignUp extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () {
-                              if (_formKey.currentState.validate()) {
-                                Gloablvar.name = nameController.text;
-                                Gloablvar.phone = phoneController.text;
-                                Gloablvar.Email = emailController.text;
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Genrate()));
-                              }
+                              Gloablvar.name = nameController.text.isEmpty
+                                  ? Fluttertoast.showToast(
+                                      msg: 'name is required',
+                                      backgroundColor: Colors.red,
+                                      fontSize: 16,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 20)
+                                  : nameController.text;
+                              Gloablvar.phone = phoneController.text.isEmpty
+                                  ? Fluttertoast.showToast(
+                                      msg: 'email is required',
+                                      backgroundColor: Colors.red,
+                                      fontSize: 16,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 20)
+                                  : phoneController.text;
+                              Gloablvar.Email = emailController.text.isEmpty
+                                  ? Fluttertoast.showToast(
+                                      msg: 'Phone is required',
+                                      backgroundColor: Colors.red,
+                                      fontSize: 16,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 20)
+                                  : emailController.text;
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Genrate()));
                             },
                             child: Text(
                               'we can help you',
@@ -221,13 +241,6 @@ class SignUp extends StatelessWidget {
                                   password: passwordController.text,
                                 );
 
-                                // OtpCubit.get(context).model.data.id;
-                                // RegisterModel.data.id;
-                                // cubit.userOtpCheak.call(state.model.data.id)
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => Otp()));
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

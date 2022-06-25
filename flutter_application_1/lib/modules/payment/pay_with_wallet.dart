@@ -1,5 +1,6 @@
 // ignore_for_file: missing_required_param, prefer_const_constructors
 
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
@@ -112,18 +113,22 @@ class _PaywithwalletState extends State<Paywithwallet> {
                       SizedBox(
                         height: 30.0,
                       ),
-                      defaultButton(
-                        function: () {
-                          if (_formKey.currentState.validate()) {
-                            PayWalletCubit.get(context)
-                                .paywithpassword(passwordcontroller.text);
-                            // Navigator.pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => Homelayout()));
-                          }
-                        },
-                        text: 'pay',
+                      ConditionalBuilder(
+                        fallback: (context) => CircularProgressIndicator(),
+                        condition: state is! PayWalletLoading,
+                        builder: (context) => defaultButton(
+                          function: () {
+                            if (_formKey.currentState.validate()) {
+                              PayWalletCubit.get(context)
+                                  .paywithpassword(passwordcontroller.text);
+                              // Navigator.pushReplacement(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => Homelayout()));
+                            }
+                          },
+                          text: 'pay',
+                        ),
                       ),
                     ],
                   ),

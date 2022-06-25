@@ -64,6 +64,7 @@ class ServiceCubit extends Cubit<ServiceState> {
     String company_name,
     @required double price,
     @required String service_code,
+    String pin,
   }) {
     emit(Serviceloading());
     var feeds = price * (0.02);
@@ -74,6 +75,7 @@ class ServiceCubit extends Cubit<ServiceState> {
       'price': price,
       'service_code': service_code,
       'feeds': feeds,
+      'pin': pin,
     };
     print(data);
     DioHelper.postData(
@@ -84,6 +86,7 @@ class ServiceCubit extends Cubit<ServiceState> {
         'price': price,
         'service_code': service_code,
         'feeds': feeds,
+        'pin': pin,
       },
     ).then((value) {
       model = ServiceModel.fromJson(value.data);

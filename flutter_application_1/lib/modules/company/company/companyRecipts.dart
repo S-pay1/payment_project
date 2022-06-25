@@ -9,21 +9,22 @@ class CompanyRecipts extends StatelessWidget {
     return BlocBuilder<CompanyCubit, CompanyState>(
       builder: (context, state) {
         return Scaffold(
-            appBar: AppBar(
-              leading: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.arrow_back)),
-              title: Text(
-                'Company Recipts  ',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
+          appBar: AppBar(
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back)),
+            title: Text(
+              'Company Recipts  ',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            body: Padding(
+          ),
+          body: Container(
+            child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: state is CompanyHistoryloading
                   ? Center(
@@ -36,7 +37,9 @@ class CompanyRecipts extends StatelessWidget {
                           SizedBox(height: 20),
                       itemCount: 1,
                     ),
-            ));
+            ),
+          ),
+        );
       },
     );
   }

@@ -56,6 +56,7 @@ class Recive extends StatelessWidget {
                     ),
                     defaultButton(
                         function: () {
+                          print(Gloablvar.Email);
                           RegisterCubit.get(context).userRegisterGenerate();
                         },
                         text: 'use it')

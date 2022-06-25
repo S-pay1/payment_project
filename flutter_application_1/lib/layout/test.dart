@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
+import '../shared/components/components.dart';
+
 class AppHome extends StatelessWidget {
   final TextEditingController controller = new TextEditingController();
 
@@ -24,26 +26,13 @@ class AppHome extends StatelessWidget {
                           new OutlineInputBorder(borderSide: BorderSide()))),
             ),
             new SizedBox(
-              height: 5,
+              height: 30,
             ),
-            new FlutterPwValidator(
-              controller: controller,
-              minLength: 8,
-              uppercaseCharCount: 2,
-              numericCharCount: 3,
-              specialCharCount: 1,
-              normalCharCount: 3,
-              width: 400,
-              height: 150,
-              onSuccess: () {
-                print("MATCHED");
-                ScaffoldMessenger.of(context).showSnackBar(
-                    new SnackBar(content: new Text("Password is matched")));
-              },
-              onFail: () {
-                print("NOT MATCHED");
-              },
-            ),
+            defaultButton(
+                function: () {
+                  print('$controller');
+                },
+                text: 'tetd')
           ],
         ),
       ),

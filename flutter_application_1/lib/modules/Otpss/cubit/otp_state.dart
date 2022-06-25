@@ -23,3 +23,13 @@ class GeretePass extends OtpState {}
 class HomeStateWithWallete extends OtpState {}
 
 class HomeStateWithResete extends OtpState {}
+
+class passwordUpdataSuccess extends OtpState {
+  final ResetModel remodel;
+  passwordUpdataSuccess(this.remodel);
+}
+
+class passwordUpdataError extends OtpState {
+  final String error;
+  passwordUpdataError(this.error);
+}

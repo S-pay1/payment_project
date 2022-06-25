@@ -91,15 +91,6 @@ class _termsUserState extends State<termsUser> {
                   SizedBox(
                     height: 30,
                   ),
-                  /* RaisedButton(onPressed: (){},
-                         child:Text("Agree",style: TextStyle(fontSize: 20),),
-                         textColor:Colors.white ,
-                         color: Color(0xff003B75),
-                         padding:EdgeInsets.only(left: 100,right: 100,bottom: 10,top: 10)
-
-
-
-                     )*/
                   defaultButton(
                       text: 'Agree',
                       function: () {

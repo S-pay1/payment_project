@@ -14,6 +14,7 @@ import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../shared/components/components.dart';
+import '../user/user/reset password/NewPassword.dart';
 import 'cubit/otp_cubit.dart';
 
 class Otp extends StatelessWidget {
@@ -148,12 +149,21 @@ class Otp extends StatelessWidget {
                       defaultButton(
                         function: () {
                           if (_formKey.currentState.validate()) {
-                            OtpCubit.get(context).userOtpCheak(
-                              otp: OTPcontroller.text,
-                            );
-                            // } else {
-                            //   RegisterCubit.get(context)
-                            //       .resetPassword(otp: OTPcontroller.text);
+                            if (Gloablvar.resetpasswordScreen == false) {
+                              OtpCubit.get(context).userOtpCheak(
+                                otp: OTPcontroller.text,
+                              );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Homelayout()));
+                            } else {
+                              Gloablvar.otp = OTPcontroller.text;
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NewPassword()));
+                            }
                           }
                         },
                         text: 'verify',

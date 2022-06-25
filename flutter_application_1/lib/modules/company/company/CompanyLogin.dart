@@ -152,11 +152,7 @@ class CompanyScreen extends StatelessWidget {
                     SizedBox(
                       height: 30,
                     ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.fingerprint),
-                      iconSize: 50,
-                    ),
+
                     SizedBox(
                       height: 30.0,
                     ),
