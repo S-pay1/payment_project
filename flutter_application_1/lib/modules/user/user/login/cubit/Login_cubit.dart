@@ -48,7 +48,7 @@ class loginCubit extends Cubit<loginState> {
       },
     ).then((value) {
       model = LoginModel.fromJson(value.data);
-
+      loginotp(id: Gloablvar.id);
       emit(loginsuccess(model));
     }).catchError((error) {
       emit(loginerror(error.toString()));
@@ -69,7 +69,7 @@ class loginCubit extends Cubit<loginState> {
 
   void loginotp({
     String id,
-    String otp,
+    // String otp,
   }) {
     emit(loginloading());
     //id = RegisterCubit.get(context).model.data.id;

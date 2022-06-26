@@ -163,7 +163,8 @@ class LoginScreen extends StatelessWidget {
                                   loginCubit.get(context).userlogin(
                                       phone: phoneController.text,
                                       password: passwordController.text);
-                                  loginCubit.get(context).loginotp();
+
+                                  // loginCubit.get(context).loginotp();
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
