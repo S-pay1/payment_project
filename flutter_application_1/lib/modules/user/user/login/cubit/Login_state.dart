@@ -21,3 +21,7 @@ class loginerror extends loginState {
 class loginpaswwordChange extends loginState {}
 
 class Getmac extends loginState {}
+
+class loginOtpsuccess extends loginState {}
+
+class loginOtperror extends loginState {}

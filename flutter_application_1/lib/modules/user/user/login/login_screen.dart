@@ -4,6 +4,8 @@
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
+import 'package:flutter_application_1/modules/Otpss/Otp.dart';
+import 'package:flutter_application_1/modules/Otpss/otp_login.dart';
 import 'package:flutter_application_1/modules/choose%20type%20of%20user/choosetypeofuser.dart';
 import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
 import 'package:flutter_application_1/modules/user/user/termsuser.dart';
@@ -38,8 +40,8 @@ class LoginScreen extends StatelessWidget {
                 print(state.model.message);
                 print(Gloablvar.id);
                 //print(state.model.data.token);
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => Homelayout()));
+                // Navigator.pushReplacement(context,
+                //     MaterialPageRoute(builder: (context) => Homelayout()));
               } else {
                 print(state.model.message);
                 Fluttertoast.showToast(
@@ -158,17 +160,14 @@ class LoginScreen extends StatelessWidget {
                               text: 'login',
                               function: () {
                                 if (_formKey.currentState.validate()) {
-                                  // Gloablvar.Numbergenerate = numberRandom();
-                                  // // print(Gloablvar.Numbergenerate);
                                   loginCubit.get(context).userlogin(
                                       phone: phoneController.text,
                                       password: passwordController.text);
-                                  // loginCubit.get(context).hambozo();
-
-                                  /*return Navigator.pushReplacement(
+                                  loginCubit.get(context).loginotp();
+                                  Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Homelayout()));*/
+                                          builder: (context) => Otplogin()));
                                 }
                               },
                             ),

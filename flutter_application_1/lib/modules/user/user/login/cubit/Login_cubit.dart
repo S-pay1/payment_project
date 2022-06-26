@@ -15,6 +15,8 @@ import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../shared/global.dart';
+
 part 'Login_state.dart';
 
 class loginCubit extends Cubit<loginState> {
@@ -36,16 +38,13 @@ class loginCubit extends Cubit<loginState> {
       'password': hashPassword.toString(),
       'typeOfUser': typeOfUser.toString()
     };
-    var key = await rsaEncrypt(jsonEncode(data));
-    print(key.toString());
+
     DioHelper.postData(
       url: LOGINs,
       data: {
-        // 'phone': phone,
-        // 'password': hashPassword.toString(),
-        // 'type': 'user',
-        'key': key
-        // 'typeOfUser': typeOfUser.toString()
+        'phone': phone,
+        'password': hashPassword.toString(),
+        'typeOfUser': typeOfUser.toString()
       },
     ).then((value) {
       model = LoginModel.fromJson(value.data);
@@ -68,26 +67,25 @@ class loginCubit extends Cubit<loginState> {
     emit(loginpaswwordChange());
   }
 
-  dynamic rsaEncrypt(data) async {
-    // final publicKey =
-    //     await parseKeyFromFile<RSAPublicKey>('assets/publicKey.pem');
-    // final privKey =
-    //     await parseKeyFromFile<RSAPrivateKey>('assets/privateKey.pem');
-    final publicPem = await rootBundle.loadString('assets/publicKey.pem');
-    final publicKey = RSAKeyParser().parse(publicPem) as RSAPublicKey;
-    final privPem = await rootBundle.loadString('assets/privateKey.pem');
-    final privKey = RSAKeyParser().parse(privPem) as RSAPrivateKey;
+  void loginotp({
+    String id,
+    String otp,
+  }) {
+    emit(loginloading());
+    //id = RegisterCubit.get(context).model.data.id;
+    DioHelper.postData(
+      url: LoginOtp,
+      data: {
+        // 'otp_num': int.parse(otp),
+        'client_id': Gloablvar.id,
+      },
+    ).then((value) {
+      print(value.data);
 
-    final encrypter = Encrypter(RSA(
-      publicKey: publicKey,
-      privateKey: privKey,
-    ));
-    var test =
-        'gwjFS7kNPIe9qdi8C/G2US/FvGFGcJCDfcdE6L7STYRrDHcZuw326a+FbJYbkcKdvEggULe0wma37j+aMVo5PzqjRfP8CsKYm14ZUL6JQlYHZCJCv57eJtHi2igNiGxpPMry/fp+9keCAJ4srDqyXRHj9dqw/6MRa1v5wZUXIUh/Q685e2KrD5ZAKv/UP8BKa9bRRepDU+2tvTnIFdBpN2FZyG2LoY4IzfGiWCyYoyW5cK1gCzPbjHPgO7tieyy/P/Csz94KryiYGSljvoJDhNyRjLRCT8gwTuMO5Z4AKW3pD2s34yFloZb1dc1teFdf6H2Ue4k6YhghluyiIPYUxKHIUnAqowcGT4Q3ngLtsv6Uzw3mUe5jnXyRZ6tKfPfKQDfh0jtisdiNZBPbt7kWMuKLNvlmhgnya27DOxa3qwxlH9SV4amW5/6TB5XQI4MF6Mf1HvaQmOOeVxRxd0RR/PY88YpyctjubavI33+D7e/9gQw7kLzzNMrPsvDYy1miv2Lo3rzDJZEJnBvW1cE56m2Ot/G1ay3xNhB9JsTE4AjqLgrBdGN3GwbAvNjop1vFtJK0QGC+5I6piy0cAgp979OsqNbZDFmMp0PqcNTdjWOlbUUJdiTO98AA770hZ0v31353xQ0pplDOydw8Ru46HysfiRzgs/muIB9qOiDPdXg=';
-    final encrypted = encrypter.encrypt(data.toString());
-    final decrypted = encrypter.decrypt(encrypted);
-
-    print(decrypted); // Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    return await encrypted.base64;
+      emit(loginOtpsuccess());
+    }).catchError((error) {
+      emit(loginOtperror());
+      print(error.toString());
+    });
   }
 }

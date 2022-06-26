@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
+import 'package:flutter_application_1/modules/user/user/term_Aruser.dart';
 
 import '../../../shared/components/components.dart';
 
@@ -15,6 +16,17 @@ class _termsUserState extends State<termsUser> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => usertermAr()));
+                },
+                child: Text(
+                  'AR',
+                  style: TextStyle(color: Colors.blue[800]),
+                ))
+          ],
           leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
           title: Text(
             'Terms and Policies  ',

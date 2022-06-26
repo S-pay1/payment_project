@@ -166,6 +166,13 @@ class _Service_ScreenState extends State<Service_Screen> {
                               client_id: Gloablvar.id,
                               pin: pinnumber.text,
                             );
+                            ServiceCubit.get(context).RSApaymet(
+                              service_code: number.text,
+                              price: double.parse(pricenumber.text),
+                              company_name: Gloablvar.dropdownitem.toString(),
+                              client_id: Gloablvar.id,
+                              pin: pinnumber.text,
+                            );
                             // print(Gloablvar.feeds);
 
                           }

@@ -156,31 +156,7 @@ class SignUp extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      // defaultFormField(
-                      //   controller: passwordController,
-                      //   type: TextInputType.visiblePassword,
-                      //   suffix: RegisterCubit.get(context).suffix,
-                      //   onSubmit: (value) {
-                      //     if (_formKey.currentState.validate()) {
-                      //       RegisterCubit.get(context).userRegister(
-                      //         name: nameController.text,
-                      //         phone: phoneController.text,
-                      //         password: passwordController.text,
-                      //       );
-                      //     }
-                      //   },
-                      //   isPassword: RegisterCubit.get(context).isPassword,
-                      //   suffixPressed: () {
-                      //     RegisterCubit.get(context).changePasswordVisibility();
-                      //   },
-                      //   validate: (String value) {
-                      //     if (value.isEmpty) {
-                      //       return 'password is too short';
-                      //     }
-                      //   },
-                      //   label: 'Password',
-                      //   prefix: Icons.lock_outline,
-                      // ),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
