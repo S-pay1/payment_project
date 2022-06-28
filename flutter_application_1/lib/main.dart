@@ -1,29 +1,17 @@
-// ignore_for_file: unused_label, unused_import, duplicate_ignore, deprecated_member_use, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/layout/intro.dart';
-import 'package:flutter_application_1/layout/test.dart';
-import 'package:flutter_application_1/modules/company/company/CompanySignUp.dart';
+
 import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
-import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
-import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
+
 import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
-import 'package:flutter_application_1/modules/user/user/login/login_screen.dart';
-import 'package:flutter_application_1/modules/wallet_screen/cubit/wallet_cubit.dart';
-import 'package:flutter_application_1/modules/wallet_screen/wallet.dart';
+
 import 'package:flutter_application_1/shared/bloc_observer.dart';
 import 'package:flutter_application_1/shared/cach_helper.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'fingerprint/fingerprint_screen.dart';
-import 'modules/choose type of user/ChooseTypeOfUser.dart';
-import 'modules/user/user/reset password/RsetPasswprd.dart';
-import 'modules/user/user/signup/Signup.dart';
 import 'shared/dio/dio_helper.dart';
-import 'shared/styles/styles.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,8 +34,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => HistoryCubit()..HistoryData(),
         ),
-        // BlocProvider(
-        //     create: (BuildContext context) => WalletCubit()..userwallet()),
         BlocProvider(
             create: (BuildContext context) =>
                 CompanyCubit()..Historycompany(company_id: Gloablvar.id)),
@@ -57,7 +43,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           appBarTheme: AppBarTheme(
-            backwardsCompatibility: false,
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.light,
@@ -68,7 +53,7 @@ class MyApp extends StatelessWidget {
             foregroundColor: Color(0xff004B7d),
           ),
         ),
-        home: LoginScreen(),
+        home: Intro(),
       ),
     );
   }

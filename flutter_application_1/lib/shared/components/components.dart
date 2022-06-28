@@ -1,13 +1,12 @@
-// ignore_for_file: unused_import, prefer_const_constructors
+// ignore_for_file: non_constant_identifier_names, avoid_types_as_parameter_names, camel_case_types
 
-import 'package:conditional_builder/conditional_builder.dart';
 import 'package:fl_toast/fl_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/Service/cubit/service_cubit.dart';
 import 'package:flutter_application_1/modules/Service/service.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
+
 import 'package:fluttertoast/fluttertoast.dart';
 
 Widget defaultButton({
@@ -109,6 +108,7 @@ void toastShow({
   );
 }
 
+// ignore: constant_identifier_names
 enum ToastStates { SUCSESS, ERROR, WARNING }
 
 Color chooseColorToast(ToastStates state) {
@@ -124,17 +124,6 @@ Color chooseColorToast(ToastStates state) {
       color = Colors.amber;
   }
   return color;
-}
-
-void _showToast(BuildContext context) {
-  final scaffold = ScaffoldMessenger.of(context);
-  scaffold.showSnackBar(
-    SnackBar(
-      content: const Text('Added to favorite'),
-      action: SnackBarAction(
-          label: 'UNDO', onPressed: scaffold.hideCurrentSnackBar),
-    ),
-  );
 }
 
 void toaster() => Fluttertoast.showToast(
@@ -156,8 +145,7 @@ class ServicesButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: BlocProvider(
+    return BlocProvider(
       create: (context) => ServiceCubit(),
       child: BlocConsumer<ServiceCubit, ServiceState>(
         listener: (context, state) {},
@@ -171,7 +159,6 @@ class ServicesButton extends StatelessWidget {
 
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Service_Screen()));
-              // cubit.changeindexscreen(text);
             },
             child: Stack(
               children: [
@@ -213,7 +200,6 @@ class ServicesButton extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      // const SizedBox(height: 5),
                       Text(
                         text,
                         style: const TextStyle(
@@ -230,7 +216,7 @@ class ServicesButton extends StatelessWidget {
           );
         },
       ),
-    ));
+    );
   }
 }
 
@@ -243,33 +229,31 @@ class textserviceButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BlocProvider(
-          create: (context) => ServiceCubit(),
-          child: BlocConsumer<ServiceCubit, ServiceState>(
-            listener: (context, state) {},
-            builder: (context, state) {
-              var cubit = ServiceCubit.get(context);
+    return BlocProvider(
+        create: (context) => ServiceCubit(),
+        child: BlocConsumer<ServiceCubit, ServiceState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            var cubit = ServiceCubit.get(context);
 
-              return TextButton(
-                  onPressed: () {
-                    cubit.changeindexscreen(text);
-                    cubit.companyData(text);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Service_Screen()));
-                  },
-                  child: Text(
-                    text,
-                    style: const TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ));
-            },
-          )),
-    );
+            return TextButton(
+                onPressed: () {
+                  cubit.changeindexscreen(text);
+                  cubit.companyData(text);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Service_Screen()));
+                },
+                child: Text(
+                  text,
+                  style: const TextStyle(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ));
+          },
+        ));
   }
 }

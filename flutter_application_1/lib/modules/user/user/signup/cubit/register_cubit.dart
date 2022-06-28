@@ -1,13 +1,13 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/models/user_model/register_model.dart';
-import 'package:flutter_application_1/modules/Otpss/cubit/otp_cubit.dart';
-import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
+
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_application_1/shared/global.dart';
@@ -31,8 +31,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     String salt,
     String typeOfUser,
     String Email,
-
-    // @required String email,
   }) {
     var uuid = Uuid();
     var salt = uuid.v4();
@@ -57,15 +55,25 @@ class RegisterCubit extends Cubit<RegisterState> {
     ).then((value) {
       model = RegisterModel.fromJson(value.data);
       Gloablvar.id = model.data.id;
-      print(model.data.id + 'id');
-      print(model.status);
-      print(model.message);
+      if (kDebugMode) {
+        print(model.data.id + 'id');
+      }
+      if (kDebugMode) {
+        print(model.status);
+      }
+      if (kDebugMode) {
+        print(model.message);
+      }
 
-      print(value.data);
+      if (kDebugMode) {
+        print(value.data);
+      }
 
       emit(Registersuccess(model));
     }).catchError((error) {
-      print(error.toString());
+      if (kDebugMode) {
+        print(error.toString());
+      }
       emit(Registererror(error.toString()));
     });
   }
@@ -95,14 +103,20 @@ class RegisterCubit extends Cubit<RegisterState> {
       remodel = ResetModel.fromJson(value.data);
       Gloablvar.resetpasswordScreen = true;
       Gloablvar.Email = email;
-      // print(remodel.data);
-      print(remodel.message);
 
-      print(value.data);
+      if (kDebugMode) {
+        print(remodel.message);
+      }
+
+      if (kDebugMode) {
+        print(value.data);
+      }
       emit(Checksuccess(remodel));
     }).catchError((error) {
       emit(Checkererror(error.toString()));
-      print(error.toString());
+      if (kDebugMode) {
+        print(error.toString());
+      }
     });
   }
 
@@ -113,8 +127,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     String salt,
     String typeOfUser,
     String email,
-
-    // @required String email,
   }) {
     var uuid = Uuid();
     var salt = uuid.v4();
@@ -132,7 +144,9 @@ class RegisterCubit extends Cubit<RegisterState> {
       'typeOfUser': typeOfUser.toString(),
       'email': Gloablvar.Email
     };
-    print(data);
+    if (kDebugMode) {
+      print(data);
+    }
     DioHelper.postData(
       url: REIGSTERs,
       data: {
@@ -146,15 +160,25 @@ class RegisterCubit extends Cubit<RegisterState> {
     ).then((value) {
       model = RegisterModel.fromJson(value.data);
       Gloablvar.id = model.data.id;
-      print(model.data.id + 'id');
-      print(model.status);
-      print(model.message);
+      if (kDebugMode) {
+        print(model.data.id + 'id');
+      }
+      if (kDebugMode) {
+        print(model.status);
+      }
+      if (kDebugMode) {
+        print(model.message);
+      }
 
-      print(value.data);
+      if (kDebugMode) {
+        print(value.data);
+      }
 
       emit(Registersuccess(model));
     }).catchError((error) {
-      print(error.toString());
+      if (kDebugMode) {
+        print(error.toString());
+      }
       emit(Registererror(error.toString()));
     });
   }

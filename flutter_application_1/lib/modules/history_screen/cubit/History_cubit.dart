@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, non_constant_identifier_names, file_names
 
 import 'package:flutter_application_1/models/history_model/histoy_model.dart';
 import 'package:flutter_application_1/modules/history_screen/cubit/History_state.dart';
@@ -16,14 +16,9 @@ class HistoryCubit extends Cubit<HistoryState> {
   void HistoryData() {
     emit(Historyloading());
 
-    DioHelper.getData(url: history, query: {
-      // 'id': 'XvwO63jNPp0py3Y8Nawk',
-      // 'id': 'c7db3868a41846d385ee',
-      'id': Gloablvar.id
-    }).then((value) {
+    DioHelper.getData(url: history, query: {'id': Gloablvar.id}).then((value) {
       model = HistoryModel.fromJson(value.data);
 
-      // print(value);
       print(value.data);
 
       emit(Historysuccess());

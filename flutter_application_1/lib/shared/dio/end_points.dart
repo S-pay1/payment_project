@@ -1,9 +1,7 @@
-import 'package:flutter_application_1/modules/payment/Payment.dart';
-
-import '../global.dart';
+// ignore_for_file: constant_identifier_names
 
 const LOGINs = 'api/login';
-//const LOGINn = 'clients';
+
 const REIGSTERs = 'api/register';
 const CHEAKOTP = 'api/checkOtp';
 

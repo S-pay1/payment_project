@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, file_names
+
 import 'package:flutter/material.dart';
 
 import '../../../shared/components/components.dart';
@@ -46,7 +48,6 @@ class _termsAndPoliceisState extends State<termsAndPoliceis> {
                 SizedBox(
                   height: 30,
                 ),
-                //Icon(Icons.arrow_right_rounded),
                 Text(
                     " 1- Transferring money to the account is done every week on the company's account ",
                     style: TextStyle(
@@ -56,7 +57,6 @@ class _termsAndPoliceisState extends State<termsAndPoliceis> {
                 SizedBox(
                   height: 30,
                 ),
-                //Icon(Icons.arrow_right_rounded),
                 Text(
                     " 2- The company must send their APIs to the S-PAY account ",
                     style: TextStyle(
@@ -66,7 +66,6 @@ class _termsAndPoliceisState extends State<termsAndPoliceis> {
                 SizedBox(
                   height: 30,
                 ),
-                //Icon(Icons.arrow_right_rounded),
                 Text(
                     " 3- The company must write the commercial register and its tax card  ",
                     style: TextStyle(
@@ -76,7 +75,6 @@ class _termsAndPoliceisState extends State<termsAndPoliceis> {
                 SizedBox(
                   height: 30,
                 ),
-                //Icon(Icons.arrow_right_rounded),
                 Text(
                     " 4- The company can know its bills by entering the application by obtaining the Email adreess and password after S-pay send their After 48hr  ",
                     style: TextStyle(
@@ -86,14 +84,12 @@ class _termsAndPoliceisState extends State<termsAndPoliceis> {
                 SizedBox(
                   height: 30,
                 ),
-                //Icon(Icons.arrow_right_rounded),
                 Text(
                     " 5- The company must commit to me a fixed 2% rate on each payment",
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
                     )),
-
                 SizedBox(
                   height: 30,
                 ),

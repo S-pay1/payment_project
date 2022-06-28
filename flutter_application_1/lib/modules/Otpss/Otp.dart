@@ -1,15 +1,11 @@
-// ignore_for_file: unused_element, missing_return, prefer_const_constructors, non_constant_identifier_names, avoid_print
+// ignore_for_file: non_constant_identifier_names, file_names
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
-import 'package:flutter_application_1/models/otp_model/OTP_model.dart';
-import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
-import 'package:flutter_application_1/modules/home_screen/home.dart';
-import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
-import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
-import 'package:flutter_application_1/shared/cach_helper.dart';
+
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +17,7 @@ class Otp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    // var phoneController = TextEditingController();
+
     var OTPcontroller = TextEditingController();
 
     return BlocProvider(
@@ -30,7 +26,9 @@ class Otp extends StatelessWidget {
         // ignore: void_checks
         listener: (context, state) {
           if (state is Otpsuccess) {
-            print(Gloablvar.id);
+            if (kDebugMode) {
+              print(Gloablvar.id);
+            }
             if (state.model.status) {
               showDialog(
                   context: context,
@@ -63,10 +61,6 @@ class Otp extends StatelessWidget {
                         TextButton(
                           onPressed: () {
                             Navigator.pop(context);
-                            // pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => SignUp()));
                           },
                           child: Text(
                             'ok',

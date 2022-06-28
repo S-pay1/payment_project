@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: file_names, camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
 import 'package:flutter_application_1/modules/user/user/termsuser.dart';
@@ -28,7 +29,6 @@ class _usertermArState extends State<usertermAr> {
                   style: TextStyle(color: Colors.blue[800]),
                 ))
           ],
-          leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
           title: Text(
             'الشروط والاحكام   ',
             style: TextStyle(
@@ -51,7 +51,6 @@ class _usertermArState extends State<usertermAr> {
                           style: TextStyle(fontSize: 20)),
                     ),
                     decoration: BoxDecoration(
-                        //color: Colors.cyan[50],
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                   ),
                   SizedBox(

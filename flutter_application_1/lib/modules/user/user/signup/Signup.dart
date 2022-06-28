@@ -1,8 +1,7 @@
-// ignore_for_file: missing_required_param, prefer_const_constructors, prefer_function_declarations_over_variables, avoid_print, unnecessary_new
-
-import 'dart:math';
+// ignore_for_file: must_be_immutable, file_names
 
 import 'package:conditional_builder/conditional_builder.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
 
@@ -23,17 +22,14 @@ class SignUp extends StatelessWidget {
   var emailController = TextEditingController();
   var nameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  // var cubit = OtpCubit get(context) => BlocProvider.of(context)
 
   bool ispassword = true;
-  // bool value = false;
   final rejexfullname = fullNameValidator;
   final rejexPhone = phoneNumberValidator;
   final regexEmail = EmailAdrresValidator;
 
   @override
   Widget build(BuildContext context) {
-    //var cubit = OtpCubit.get(context);
     return BlocProvider(
       create: (BuildContext context) => RegisterCubit(),
       child: BlocConsumer<RegisterCubit, RegisterState>(
@@ -44,11 +40,13 @@ class SignUp extends StatelessWidget {
               Gloablvar.phone = state.model.data.phone;
               Gloablvar.Email = state.model.data.email;
 
-              print(state.model.message);
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (context) => genrate()));
+              if (kDebugMode) {
+                print(state.model.message);
+              }
             } else {
-              print(state.model.message);
+              if (kDebugMode) {
+                print(state.model.message);
+              }
             }
           }
         },
@@ -80,9 +78,6 @@ class SignUp extends StatelessWidget {
                         height: 250.0,
                         width: 250.0,
                       ),
-                      // const SizedBox(
-                      //   height: 10,
-                      // ),
                       defaultFormField(
                           controller: nameController,
                           type: TextInputType.name,
@@ -111,7 +106,6 @@ class SignUp extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-
                       defaultFormField(
                         controller: passwordController,
                         type: TextInputType.visiblePassword,
@@ -129,7 +123,6 @@ class SignUp extends StatelessWidget {
                         label: 'Password',
                         prefix: Icons.lock_outline,
                       ),
-
                       SizedBox(
                         height: 5,
                       ),
@@ -143,20 +136,21 @@ class SignUp extends StatelessWidget {
                         width: 350,
                         height: 150,
                         onSuccess: () {
-                          print("MATCHED");
+                          if (kDebugMode) {
+                            print("MATCHED");
+                          }
                           ScaffoldMessenger.of(context).showSnackBar(
-                              new SnackBar(
-                                  content: new Text("Password is matched")));
+                              SnackBar(content: Text("Password is matched")));
                         },
                         onFail: () {
-                          print("NOT MATCHED");
+                          if (kDebugMode) {
+                            print("NOT MATCHED");
+                          }
                         },
                       ),
-
                       SizedBox(
                         height: 20,
                       ),
-
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -203,7 +197,6 @@ class SignUp extends StatelessWidget {
                           ),
                         ],
                       ),
-
                       ConditionalBuilder(
                         condition: state is! Registerloading,
                         builder: (context) => defaultButton(

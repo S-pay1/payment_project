@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 class CompanySignupModel {
   bool status;
   String message;
@@ -14,7 +16,6 @@ class CompanySignupModel {
 class CompanySignupData {
   String id;
   String name;
-  // String phone;
   String email;
   String bank_account;
   String tax_number;
@@ -24,7 +25,6 @@ class CompanySignupData {
   CompanySignupData.fromJason(Map<String, dynamic> json) {
     id = json['id'].toString();
     name = json['name'].toString();
-    // phone = json['phone'];
     email = json['email'].toString();
     bank_account = json['bank_account'].toString();
     tax_number = json['tax_number'].toString();

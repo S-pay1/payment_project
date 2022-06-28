@@ -1,5 +1,6 @@
-// ignore_for_file: missing_required_param, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: camel_case_types, must_be_immutable, missing_required_param, duplicate_ignore
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
@@ -9,38 +10,21 @@ import 'package:flutter_application_1/modules/payment/contact_us.dart';
 import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'dart:ui';
-
 import '../../fingerprint/local_auth.dart';
-import '../../other_services/other_service.dart';
 import '../../shared/cach_helper.dart';
-import '../Service/service.dart';
+
 import '../choose type of user/choosetypeofuser.dart';
 
 class home extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
   bool ispassword = true;
   bool value = false;
 
   @override
   Widget build(BuildContext context) {
-    var cubit = HomecubitCubit.get(context);
-    Size size = MediaQuery.of(context).size;
-
     return BlocProvider(
       create: (BuildContext context) => HomecubitCubit(),
       child: BlocConsumer<HomecubitCubit, HomecubitState>(
-        listener: (context, state) {
-          // if (state is Registersuccess) {
-          //   if (state.model.status) {
-          //     print(state.model.message);
-          //     Navigator.pushReplacement(
-          //         context, MaterialPageRoute(builder: (context) => Otp()));
-          //   } else {
-          //     print(state.model.message);
-          //   }
-          // }
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Stack(children: [
             Container(
@@ -55,12 +39,11 @@ class home extends StatelessWidget {
             Scaffold(
               drawer: Drawer(
                 child: ListView(
-                  // Important: Remove any padding from the ListView.
                   padding: EdgeInsets.zero,
                   children: <Widget>[
+                    // ignore: missing_required_param
                     const DrawerHeader(
                       decoration: BoxDecoration(
-                        //color: const Color(0xff003B75),
                         image: DecorationImage(
                             image: AssetImage('assets/images/intro.jpeg'),
                             fit: BoxFit.cover),
@@ -123,10 +106,14 @@ class home extends StatelessWidget {
                                   CacheHelper.saveDate(
                                       key: 'dataForFingerPrint', value: true);
 
-                                  print('saved success');
+                                  if (kDebugMode) {
+                                    print('saved success');
+                                  }
                                   if (isAuthenticated != null) {
                                     Navigator.pop(context);
-                                    print('done success');
+                                    if (kDebugMode) {
+                                      print('done success');
+                                    }
                                   }
                                 },
                                 child: Text(
@@ -136,12 +123,12 @@ class home extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () async {
-                                  // final isAuthenticated =
-                                  //     await LocalAuthApi.authenticate();
                                   CacheHelper.removeData(
                                     key: 'fingerPrint',
                                   );
-                                  print('Deleted success');
+                                  if (kDebugMode) {
+                                    print('Deleted success');
+                                  }
                                   Navigator.pop(context);
                                 },
                                 child: Text(
@@ -224,17 +211,15 @@ class home extends StatelessWidget {
                         height: 20,
                       ),
                       Row(
-                        children: [
+                        children: const [
                           ServicesButton(
                             image: 'assets/images/image (10).png',
                             text: 'landing',
                           ),
                           Spacer(),
-                          Container(
-                            child: ServicesButton(
-                              image: 'assets/images/image (9).png',
-                              text: 'wifi',
-                            ),
+                          ServicesButton(
+                            image: 'assets/images/image (9).png',
+                            text: 'wifi',
                           ),
                         ],
                       ),
@@ -242,17 +227,6 @@ class home extends StatelessWidget {
                         height: 10,
                       ),
                       textserviceButton(text: 'other services')
-
-                      // TextButton(
-                      //     onPressed: () {
-                      //       Navigator.push(
-                      //           context,
-                      //           MaterialPageRoute(
-                      //               builder: (context) => other_service()));
-                      //     },
-                      //     child: textserviceButton(
-                      //       text: 'other ',
-                      //     )),
                     ],
                   ),
                 ),

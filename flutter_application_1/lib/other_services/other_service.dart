@@ -1,13 +1,8 @@
-import 'package:conditional_builder/conditional_builder.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/modules/Service/cubit/service_cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// ignore_for_file: camel_case_types, missing_required_param
 
-import '../models/service_model/get_service_model.dart';
-import '../modules/payment/Payment.dart';
+import 'package:flutter/material.dart';
+
 import '../shared/components/components.dart';
-import '../shared/global.dart';
 
 class other_service extends StatefulWidget {
   @override
@@ -23,24 +18,13 @@ class _other_serviceState extends State<other_service> {
   var number = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-  // var itemDropDown;
 
   @override
   Widget build(BuildContext context) {
-    // var items = [
-    //   'svul',
-    //   'ham',
-    //   'Item 3',
-    //   'Item 4',
-    //   'Item 5',
-    // ];
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              // Navigator.pushReplacement(context,
-              //     MaterialPageRoute(builder: (context) => Homelayout()));
               Navigator.pop(context);
             },
             icon: Icon(Icons.arrow_back)),
@@ -69,7 +53,6 @@ class _other_serviceState extends State<other_service> {
                 hint: Text('Select Company'),
                 decoration: InputDecoration(border: OutlineInputBorder()),
                 menuMaxHeight: 250,
-                // ignore: prefer_const_literals_to_create_immutables
                 items: [
                   DropdownMenuItem(
                     child: Text('svul'),
@@ -98,22 +81,6 @@ class _other_serviceState extends State<other_service> {
                   });
                 },
               ),
-              // DropdownButtonFormField(
-              //     value: dropdownValue,
-              //     hint: Text('Select Company'),
-              //     decoration: InputDecoration(border: OutlineInputBorder()),
-              //     menuMaxHeight: 250,
-              //     items: items.map((String items) {
-              //       return DropdownMenuItem(
-              //         value: items,
-              //         child: Text(items),
-              //       );
-              //     }).toList(),
-              //     onChanged: (String newValue) {
-              //       setState(() {
-              //         dropdownValue = newValue;
-              //       });
-              //     }),
               SizedBox(
                 height: 18,
               ),

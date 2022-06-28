@@ -1,9 +1,6 @@
-// ignore_for_file: unused_import, prefer_const_constructors
 import 'dart:math';
-import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/modules/cubit/homecubit_cubit.dart';
-import 'package:flutter_application_1/modules/cubit/homecubit_state.dart';
+
 import 'package:flutter_application_1/modules/wallet_screen/cubit/wallet_cubit.dart';
 import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
@@ -24,10 +21,6 @@ class _WalletState extends State<Wallet> {
       child: BlocBuilder<WalletCubit, WalletState>(
         builder: (context, state) => Scaffold(
           appBar: AppBar(
-            leading: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.arrow_back, color: Color(0xff004B7d)),
-            ),
             title: Text(
               'Wallet',
             ),

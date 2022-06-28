@@ -1,5 +1,6 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../layout/home/homePageLayout.dart';
@@ -12,7 +13,6 @@ class Otplogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    // var phoneController = TextEditingController();
     var OTPcontroller = TextEditingController();
 
     return BlocProvider(

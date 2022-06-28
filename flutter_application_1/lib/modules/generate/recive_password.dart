@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/layout/home/homePageLayout.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
-import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
 import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
 import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
@@ -20,7 +19,9 @@ class Recive extends StatelessWidget {
         listener: (context, state) {
           if (state is Registersuccess) {
             if (state.model.status) {
-              print(Gloablvar.passwordgenerate);
+              if (kDebugMode) {
+                print(Gloablvar.passwordgenerate);
+              }
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Otp()));
             }
@@ -35,7 +36,7 @@ class Recive extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                      children: [Text('Your passsword ')],
+                      children: const [Text('Your passsword ')],
                     ),
                     SizedBox(
                       height: 5,
@@ -56,7 +57,9 @@ class Recive extends StatelessWidget {
                     ),
                     defaultButton(
                         function: () {
-                          print(Gloablvar.Email);
+                          if (kDebugMode) {
+                            print(Gloablvar.Email);
+                          }
                           RegisterCubit.get(context).userRegisterGenerate();
                         },
                         text: 'use it')

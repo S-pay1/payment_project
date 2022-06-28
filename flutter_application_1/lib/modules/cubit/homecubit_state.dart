@@ -1,9 +1,6 @@
 //import 'package:udemy_flutter/models/user/user/login/login_model.dart';
 
-import 'package:flutter_application_1/models/pay_model.dart';
-
-import '../../models/history_model/histoy_model.dart';
-import '../../models/user_model/Register_model.dart';
+// ignore_for_file: camel_case_types
 
 abstract class HomecubitState {}
 
@@ -21,36 +18,16 @@ class HomecubitEroor extends HomecubitState {}
 
 class Historyloading extends HomecubitState {}
 
-class Historysuccess extends HomecubitState {
-  // final HistoryModel model;
+class Historysuccess extends HomecubitState {}
 
-  // Historysuccess(this.model);
-}
-
-class Historyerror extends HomecubitState {
-  // final String error;
-  // Historyerror(this.error);
-}
+class Historyerror extends HomecubitState {}
 
 class walletloading extends HomecubitState {}
 
-class walletsuccess extends HomecubitState {
-  // final HistoryModel model;
+class walletsuccess extends HomecubitState {}
 
-  // Historysuccess(this.model);
-}
+class walletyerror extends HomecubitState {}
 
-class walletyerror extends HomecubitState {
-  // final String error;
-  // Historyerror(this.error);
-}
+class PaySucees extends HomecubitState {}
 
-class PaySucees extends HomecubitState {
-  // final PayModel model;
-  // PaySucees(this.model);
-}
-
-class PayEroor extends HomecubitState {
-  // final String error;
-  // PayEroor(this.error);
-}
+class PayEroor extends HomecubitState {}

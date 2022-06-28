@@ -1,13 +1,6 @@
-// ignore_for_file: unused_local_variable, camel_case_types, non_constant_identifier_names, avoid_print, prefer_typing_uninitialized_variables
+// ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables
 
-// main() {
-//   var userid = state.model.data.id;
-// }
 import 'dart:math';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/layout/home/homePageLayout.dart';
-import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 class Gloablvar {
   static String id;
@@ -34,8 +27,6 @@ class Gloablvar {
 class Global {
   static int indexOfServices;
 }
-
-class genratepass {}
 
 Random _rnd = Random();
 

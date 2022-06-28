@@ -1,12 +1,9 @@
-// ignore_for_file: avoid_print
-import 'dart:io';
+// ignore_for_file: file_names, camel_case_types
+
 import 'dart:convert';
-import 'package:flutter/services.dart';
-import 'package:pointycastle/asymmetric/api.dart';
 
 import 'package:crypto/crypto.dart';
-import 'package:encrypt/encrypt.dart';
-import 'package:encrypt/encrypt_io.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 
@@ -33,11 +30,6 @@ class loginCubit extends Cubit<loginState> {
     var hashPassword = sha256.convert(pas);
     typeOfUser = 'user';
     emit(loginloading());
-    var data = {
-      'phone': phone,
-      'password': hashPassword.toString(),
-      'typeOfUser': typeOfUser.toString()
-    };
 
     DioHelper.postData(
       url: LOGINs,
@@ -52,7 +44,9 @@ class loginCubit extends Cubit<loginState> {
       emit(loginsuccess(model));
     }).catchError((error) {
       emit(loginerror(error.toString()));
-      print(error.toString());
+      if (kDebugMode) {
+        print(error.toString());
+      }
     });
   }
 
@@ -69,23 +63,25 @@ class loginCubit extends Cubit<loginState> {
 
   void loginotp({
     String id,
-    // String otp,
   }) {
     emit(loginloading());
-    //id = RegisterCubit.get(context).model.data.id;
+
     DioHelper.postData(
       url: LoginOtp,
       data: {
-        // 'otp_num': int.parse(otp),
         'client_id': Gloablvar.id,
       },
     ).then((value) {
-      print(value.data);
+      if (kDebugMode) {
+        print(value.data);
+      }
 
       emit(loginOtpsuccess());
     }).catchError((error) {
       emit(loginOtperror());
-      print(error.toString());
+      if (kDebugMode) {
+        print(error.toString());
+      }
     });
   }
 }

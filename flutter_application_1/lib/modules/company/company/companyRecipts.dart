@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, non_constant_identifier_names, avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/company_model/company_history_model.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';

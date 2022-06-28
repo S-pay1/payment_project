@@ -1,12 +1,9 @@
-// ignore_for_file: avoid_print
-
-import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/models/wallet_model/wallet_model.dart';
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'wallet_state.dart';
 
@@ -22,12 +19,18 @@ class WalletCubit extends Cubit<WalletState> {
     }).then((value) {
       model = WalletModel.fromJson(value.data);
       Gloablvar.balance = model.data.balance;
-      print(value.data);
+      if (kDebugMode) {
+        print(value.data);
+      }
       emit(WalletSucces());
     }).catchError((onError) {
-      print('catch error');
+      if (kDebugMode) {
+        print('catch error');
+      }
       emit(WalletEroor(onError.toString()));
-      print(onError.toString());
+      if (kDebugMode) {
+        print(onError.toString());
+      }
     });
   }
 }

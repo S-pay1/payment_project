@@ -7,10 +7,7 @@ class WalletInitial extends WalletState {}
 
 class WalletLoading extends WalletState {}
 
-class WalletSucces extends WalletState {
-  // final WalletModel model;
-  // WalletSucces(this.model);
-}
+class WalletSucces extends WalletState {}
 
 class WalletEroor extends WalletState {
   final String error;

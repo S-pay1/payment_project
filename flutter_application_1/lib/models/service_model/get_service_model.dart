@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 class DataModel {
   bool status;
   String message;
@@ -18,9 +20,6 @@ class DataData {
     json['companies'].forEach((element) {
       companies.add(getdata.fromJson(element));
     });
-    // json['companies'].forEach((element) {
-    //   itemsOfDropDown.add(getdata.fromJson(element));
-    // });
   }
 }
 

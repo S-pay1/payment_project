@@ -1,12 +1,10 @@
-// ignore_for_file: unused_field, prefer_const_constructors, avoid_print
+// ignore_for_file: missing_required_param
 
-// ignore: must_be_immutable
 import 'package:conditional_builder/conditional_builder.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
-import 'package:flutter_application_1/modules/Otpss/Otp.dart';
 import 'package:flutter_application_1/modules/Otpss/otp_login.dart';
-import 'package:flutter_application_1/modules/choose%20type%20of%20user/choosetypeofuser.dart';
 import 'package:flutter_application_1/modules/user/user/reset%20password/RsetPasswprd.dart';
 import 'package:flutter_application_1/modules/user/user/termsuser.dart';
 import 'package:flutter_application_1/shared/rejex.dart';
@@ -25,7 +23,6 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var phoneController = TextEditingController();
     final rejexPhone = phoneNumberValidator;
-    // var emaiadress = TextEditingController();
     var passwordController = TextEditingController();
 
     return BlocProvider(
@@ -37,13 +34,16 @@ class LoginScreen extends StatelessWidget {
                 Gloablvar.id = state.model.data.id;
                 Gloablvar.name = state.model.data.name;
                 Gloablvar.phone = state.model.data.phone;
-                print(state.model.message);
-                print(Gloablvar.id);
-                //print(state.model.data.token);
-                // Navigator.pushReplacement(context,
-                //     MaterialPageRoute(builder: (context) => Homelayout()));
+                if (kDebugMode) {
+                  print(state.model.message);
+                }
+                if (kDebugMode) {
+                  print(Gloablvar.id);
+                }
               } else {
-                print(state.model.message);
+                if (kDebugMode) {
+                  print(state.model.message);
+                }
                 Fluttertoast.showToast(
                     msg: state.model.message,
                     backgroundColor: Colors.red,
@@ -56,14 +56,6 @@ class LoginScreen extends StatelessWidget {
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
-                leading: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => TypeOfUser()));
-                    },
-                    icon: Icon(Icons.arrow_back)),
                 title: Text(
                   'Personal Login ',
                   style: TextStyle(
@@ -187,8 +179,10 @@ class LoginScreen extends StatelessWidget {
                                       var getsaveddatasuccess =
                                           CacheHelper.getData(
                                               key: 'dataForFingerPrint');
-                                      print('datagetsuccess ' +
-                                          getsaveddatasuccess.toString());
+                                      if (kDebugMode) {
+                                        print('datagetsuccess ' +
+                                            getsaveddatasuccess.toString());
+                                      }
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
                                             builder: (context) => Homelayout()),

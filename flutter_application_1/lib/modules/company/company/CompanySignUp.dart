@@ -1,12 +1,11 @@
-// ignore_for_file: unused_import, avoid_print, deprecated_member_use
+// ignore_for_file: non_constant_identifier_names, deprecated_member_use, file_names, missing_required_param
 
 import 'package:conditional_builder/conditional_builder.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/choose%20type%20of%20user/choosetypeofuser.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_register_cubit.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_register_state.dart';
-import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
 
 import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +18,6 @@ class CompanySignUp extends StatefulWidget {
 }
 
 class _CompanySignUpState extends State<CompanySignUp> {
-  @override
   var phoneController = TextEditingController();
   var emailadress = TextEditingController();
   var passwordController = TextEditingController();
@@ -45,7 +43,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
   ];
   // var password = TextEditingController();
   bool ispassword = true;
-  var _formkey = GlobalKey<FormState>();
+  final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -55,7 +53,9 @@ class _CompanySignUpState extends State<CompanySignUp> {
         listener: (context, state) {
           if (state is CompanySingUpsuccess) {
             if (state.model.status) {
-              print(state.model.message);
+              if (kDebugMode) {
+                print(state.model.message);
+              }
               return showDialog(
                   context: context,
                   builder: (context) {
@@ -86,10 +86,10 @@ class _CompanySignUpState extends State<CompanySignUp> {
                       ],
                     );
                   });
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (context) => genrate()));
             } else {
-              print(state.model.message);
+              if (kDebugMode) {
+                print(state.model.message);
+              }
             }
           }
         },
@@ -212,7 +212,7 @@ class _CompanySignUpState extends State<CompanySignUp> {
                         height: 15,
                       ),
                       DropdownButtonFormField(
-                        hint: Text('Select Company'),
+                        hint: Text('Select services'),
                         decoration:
                             InputDecoration(border: OutlineInputBorder()),
                         menuMaxHeight: 250,
@@ -228,17 +228,6 @@ class _CompanySignUpState extends State<CompanySignUp> {
                           });
                         },
                       ),
-                      // defaultFormField(
-                      //     controller: servicetype,
-                      //     type: TextInputType.text,
-                      //     label: 'Service',
-                      //     prefix: Icons.lock,
-                      //     validate: (String value) {
-                      //       if (value.isEmpty) {
-                      //         return 'Please Enter service';
-                      //       }
-                      //       return null;
-                      //     }),
                       SizedBox(
                         height: 30,
                       ),
@@ -255,11 +244,9 @@ class _CompanySignUpState extends State<CompanySignUp> {
                                 email: emailadress.text,
                                 tax_number: taxNumber.text,
                                 personal_id: pirsonalID.text,
-                                // Service: servicetype.text,
                                 Service: dropdownvalue,
                               );
                             }
-                            fallback:
                             (context) => CircularProgressIndicator();
                           },
                         ),

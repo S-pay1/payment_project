@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
-
-import '../../../models/history_model/histoy_model.dart';
+// ignore_for_file: file_names
 
 abstract class HistoryState {}
 
@@ -8,16 +6,9 @@ class HistoryInitial extends HistoryState {}
 
 class Historyloading extends HistoryState {}
 
-class Historysuccess extends HistoryState {
-  // final HistoryModel model;
+class Historysuccess extends HistoryState {}
 
-  // Historysuccess(this.model);
-}
-
-class Historyerror extends HistoryState {
-  // final String error;
-  // Historyerror(this.error);
-}
+class Historyerror extends HistoryState {}
 
 class HistorypaswwordChange extends HistoryState {}
 

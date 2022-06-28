@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names, prefer_typing_uninitialized_variables
+
 class CompanyHistoryModel {
   bool status;
   var message;
@@ -6,16 +8,11 @@ class CompanyHistoryModel {
   CompanyHistoryModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    // data = json['data'] != null ? HistoryData.fromJson(json['data']) : null;
     data = CompanyHistoryData.fromJson(json['data'] as Map<String, dynamic>);
   }
 }
 
 class CompanyHistoryData {
-  // var id;
-  // var company_name;
-  // var date;
-  // var total;
   List<recivedata> payments = [];
   CompanyHistoryData.fromJson(Map<String, dynamic> json) {
     json['payments'].forEach((element) {
@@ -25,7 +22,6 @@ class CompanyHistoryData {
 }
 
 class recivedata {
-  // var id;
   var service_code;
   var date;
   var price;

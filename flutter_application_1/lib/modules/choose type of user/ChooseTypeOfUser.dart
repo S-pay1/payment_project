@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_import, unused_import, prefer_const_constructors
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/company/company/companylogin.dart';
@@ -14,6 +14,9 @@ class ChooseTypeOfUser extends State<TypeOfUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back),
+        // ),
         title: Text(
           'Choose Operator',
           style: TextStyle(

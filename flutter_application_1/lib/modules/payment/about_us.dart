@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/layout/home/homePageLayout.dart';
@@ -26,7 +26,7 @@ class _About_usState extends State<About_us> {
           padding: const EdgeInsets.all(20.0),
           child: Center(
             child: Column(
-              children: [
+              children: const [
                 Image(
                   image: AssetImage("assets/images/20944999.jpg"),
                   height: 300.0,

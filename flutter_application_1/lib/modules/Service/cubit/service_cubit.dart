@@ -1,8 +1,8 @@
-// ignore_for_file: non_constant_identifier_names, unused_local_variable, unused_element, avoid_print, void_checks
+// ignore_for_file: non_constant_identifier_names
 
 import 'dart:convert';
 
-import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:pointycastle/asymmetric/api.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +10,6 @@ import 'package:flutter_application_1/models/service_model/service_model.dart';
 import 'package:flutter_application_1/shared/dio/dio_helper.dart';
 import 'package:flutter_application_1/shared/dio/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../../models/service_model/get_service_model.dart';
 import '../../../shared/global.dart';
@@ -58,9 +57,10 @@ class ServiceCubit extends Cubit<ServiceState> {
 
   void changeindexscreen(text) {
     Global.indexOfServices = ChosseService.indexOf(text);
-    // Global.indexOfServices = Servicecode.indexOf(text);
-    // Global.indexOfServices = ServicCompany.indexOf(text);
-    print(Global.indexOfServices);
+
+    if (kDebugMode) {
+      print(Global.indexOfServices);
+    }
   }
 
   ServiceModel model;
@@ -96,7 +96,9 @@ class ServiceCubit extends Cubit<ServiceState> {
       emit(Servicesuccess(model));
     }).catchError((error) {
       emit(Serviceerror(error.toString()));
-      print(error.toString());
+      if (kDebugMode) {
+        print(error.toString());
+      }
     });
   }
 
@@ -119,7 +121,9 @@ class ServiceCubit extends Cubit<ServiceState> {
     };
 
     var key = await rsaEncrypt(jsonEncode(data));
-    print(key.toString());
+    if (kDebugMode) {
+      print(key.toString());
+    }
     DioHelper.postData(
       url: Payment,
       data: {'key': key},
@@ -132,14 +136,16 @@ class ServiceCubit extends Cubit<ServiceState> {
       Gloablvar.total = model.data.total;
       Gloablvar.date = model.data.date;
 
-      //print(model.data.token);
-      print(value.data);
-      print(model.message);
+      if (kDebugMode) {
+        print(value.data);
+      }
+      if (kDebugMode) {
+        print(model.message);
+      }
 
       emit(Servicesuccess(model));
     }).catchError((error) {
       emit(Serviceerror(error.toString()));
-      // print(error.toString());
     });
   }
 
@@ -147,7 +153,9 @@ class ServiceCubit extends Cubit<ServiceState> {
   void companyData(text) {
     Gloablvar.itemsOfDropDown = [];
     emit(ServiceGetloading());
-    print(text);
+    if (kDebugMode) {
+      print(text);
+    }
     DioHelper.getData(url: getserve, query: {
       'service': text,
     }).then((value) {
@@ -156,23 +164,27 @@ class ServiceCubit extends Cubit<ServiceState> {
         Gloablvar.itemsOfDropDown.add(element.name);
       }
 
-      print(value.data);
-      print(Gloablvar.itemsOfDropDown);
+      if (kDebugMode) {
+        print(value.data);
+      }
+      if (kDebugMode) {
+        print(Gloablvar.itemsOfDropDown);
+      }
 
       emit(ServiceGetsuccess(Companymodel));
     }).catchError((error) {
-      print('catch error');
+      if (kDebugMode) {
+        print('catch error');
+      }
       emit(ServiceGeterror(error.toString()));
-      print(error.toString());
+      if (kDebugMode) {
+        print(error.toString());
+      }
     });
     return;
   }
 
   dynamic rsaEncrypt(data) async {
-    // final publicKey =
-    //     await parseKeyFromFile<RSAPublicKey>('assets/publicKey.pem');
-    // final privKey =
-    //     await parseKeyFromFile<RSAPrivateKey>('assets/privateKey.pem');
     final publicPem = await rootBundle.loadString('assets/publicKey.pem');
     final publicKey = RSAKeyParser().parse(publicPem) as RSAPublicKey;
     final privPem = await rootBundle.loadString('assets/privateKey.pem');
@@ -182,12 +194,15 @@ class ServiceCubit extends Cubit<ServiceState> {
       publicKey: publicKey,
       privateKey: privKey,
     ));
+    // ignore: unused_local_variable
     var test =
         'gwjFS7kNPIe9qdi8C/G2US/FvGFGcJCDfcdE6L7STYRrDHcZuw326a+FbJYbkcKdvEggULe0wma37j+aMVo5PzqjRfP8CsKYm14ZUL6JQlYHZCJCv57eJtHi2igNiGxpPMry/fp+9keCAJ4srDqyXRHj9dqw/6MRa1v5wZUXIUh/Q685e2KrD5ZAKv/UP8BKa9bRRepDU+2tvTnIFdBpN2FZyG2LoY4IzfGiWCyYoyW5cK1gCzPbjHPgO7tieyy/P/Csz94KryiYGSljvoJDhNyRjLRCT8gwTuMO5Z4AKW3pD2s34yFloZb1dc1teFdf6H2Ue4k6YhghluyiIPYUxKHIUnAqowcGT4Q3ngLtsv6Uzw3mUe5jnXyRZ6tKfPfKQDfh0jtisdiNZBPbt7kWMuKLNvlmhgnya27DOxa3qwxlH9SV4amW5/6TB5XQI4MF6Mf1HvaQmOOeVxRxd0RR/PY88YpyctjubavI33+D7e/9gQw7kLzzNMrPsvDYy1miv2Lo3rzDJZEJnBvW1cE56m2Ot/G1ay3xNhB9JsTE4AjqLgrBdGN3GwbAvNjop1vFtJK0QGC+5I6piy0cAgp979OsqNbZDFmMp0PqcNTdjWOlbUUJdiTO98AA770hZ0v31353xQ0pplDOydw8Ru46HysfiRzgs/muIB9qOiDPdXg=';
     final encrypted = encrypter.encrypt(data.toString());
     final decrypted = encrypter.decrypt(encrypted);
 
-    print(decrypted); // Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    return await encrypted.base64;
+    if (kDebugMode) {
+      print(decrypted);
+    } // Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    return encrypted.base64;
   }
 }

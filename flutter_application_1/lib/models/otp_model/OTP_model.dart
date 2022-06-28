@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class OtpModel {
   bool status;
   String message;
@@ -7,7 +9,6 @@ class OtpModel {
     status = json['status'];
     message = json['message'];
     data = json['data'] != null ? UserData.fromJson(json['data']) : null;
-    // data = UserData.fromJson(json['data'] as Map<String, dynamic>);
   }
 }
 

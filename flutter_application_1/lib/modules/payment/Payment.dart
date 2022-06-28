@@ -1,6 +1,5 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: file_names
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/payment/pay_with_wallet.dart';
 
@@ -16,11 +15,6 @@ class _PaymentState extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     var feed = Gloablvar.feeds;
-
-    var price = Gloablvar.price;
-    var code = Gloablvar.service_code;
-    var total = Gloablvar.total;
-    var date = Gloablvar.date;
 
     return Scaffold(
       appBar: AppBar(
@@ -47,7 +41,7 @@ class _PaymentState extends State<Payment> {
                 height: 40,
               ),
               Row(
-                children: [Text('Date')],
+                children: const [Text('Date')],
               ),
               SizedBox(
                 height: 5,
@@ -67,7 +61,7 @@ class _PaymentState extends State<Payment> {
                 height: 20,
               ),
               Row(
-                children: [Text('Service name')],
+                children: const [Text('Service name')],
               ),
               SizedBox(
                 height: 5,
@@ -87,7 +81,7 @@ class _PaymentState extends State<Payment> {
                 height: 20,
               ),
               Row(
-                children: [Text('price')],
+                children: const [Text('price')],
               ),
               SizedBox(
                 height: 5,
@@ -107,7 +101,7 @@ class _PaymentState extends State<Payment> {
                 height: 20,
               ),
               Row(
-                children: [Text('Feeds')],
+                children: const [Text('Feeds')],
               ),
               SizedBox(
                 height: 5,
@@ -127,8 +121,7 @@ class _PaymentState extends State<Payment> {
                 height: 20,
               ),
               Row(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [Text('Total')],
+                children: const [Text('Total')],
               ),
               SizedBox(
                 height: 5,

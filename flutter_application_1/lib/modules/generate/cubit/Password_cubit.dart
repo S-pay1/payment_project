@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, file_names
 
 import 'dart:convert';
 
@@ -23,8 +23,8 @@ class PasswordCubit extends Cubit<passwordState> {
     var hashPassword = sha256.convert(pas);
     typeOfUser = 'user';
     emit(passwordloading());
+    // ignore: missing_required_param
     DioHelper.postData(
-      // url: passwords,
       data: {
         'phone': phone,
         'password': hashPassword.toString(),
@@ -32,13 +32,7 @@ class PasswordCubit extends Cubit<passwordState> {
         'typeOfUser': typeOfUser.toString()
       },
     ).then((value) {
-      // model = passwordModel.fromJson(value.data);
-      // print(model.status);
-      // print(model.message);
-      //print(model.data.token);
       print(value.data);
-
-      // emit(passwordsuccess(model));
     }).catchError((error) {
       emit(passworderror(error.toString()));
       print(error.toString());

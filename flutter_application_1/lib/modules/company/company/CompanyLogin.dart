@@ -1,6 +1,7 @@
-// ignore_for_file: missing_required_param, prefer_const_constructors, must_be_immutable, avoid_print
+// ignore_for_file: missing_required_param, file_names
 
 import 'package:conditional_builder/conditional_builder.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/company/company/cubit/company_cubit.dart';
@@ -9,8 +10,6 @@ import 'package:flutter_application_1/shared/components/components.dart';
 import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
-import '../../../layout/home/homePageLayout.dart';
 
 import '../../../shared/rejex.dart';
 import 'companyRecipts.dart';
@@ -21,10 +20,8 @@ class CompanyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var phoneController = TextEditingController();
     var emailadress = TextEditingController();
     var passwordController = TextEditingController();
-    var username = TextEditingController();
     var regexEmail = EmailAdrresValidator;
     return BlocProvider(
       create: (context) => CompanyCubit(),
@@ -33,12 +30,15 @@ class CompanyScreen extends StatelessWidget {
           if (state is Companysuccess) {
             if (state.model.status) {
               Gloablvar.id = state.model.data.id;
-              print(state.model.message);
-              //print(state.model.data.token);
+              if (kDebugMode) {
+                print(state.model.message);
+              }
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => CompanyRecipts()));
             } else {
-              print(state.model.message);
+              if (kDebugMode) {
+                print(state.model.message);
+              }
               Fluttertoast.showToast(
                 msg: state.model.message,
                 backgroundColor: Colors.red,
@@ -115,23 +115,6 @@ class CompanyScreen extends StatelessWidget {
                     SizedBox(
                       height: 5.0,
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //     Text(
-                    //       'Forget Password?',
-                    //     ),
-                    //     TextButton(
-                    //       onPressed: () {},
-                    //       child: Text(
-                    //         'Reset Now',
-                    //         style: TextStyle(
-                    //           color: Colors.red,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                     SizedBox(
                       height: 20.0,
                     ),
@@ -152,7 +135,6 @@ class CompanyScreen extends StatelessWidget {
                     SizedBox(
                       height: 30,
                     ),
-
                     SizedBox(
                       height: 30.0,
                     ),

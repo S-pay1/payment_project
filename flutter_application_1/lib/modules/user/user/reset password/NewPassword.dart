@@ -1,5 +1,7 @@
+// ignore_for_file: file_names, non_constant_identifier_names
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/shared/global.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 import '../../../../shared/components/components.dart';
@@ -82,13 +84,16 @@ class _NewPasswordState extends State<NewPassword> {
                         width: 350,
                         height: 150,
                         onSuccess: () {
-                          print("MATCHED");
+                          if (kDebugMode) {
+                            print("MATCHED");
+                          }
                           ScaffoldMessenger.of(context).showSnackBar(
-                              new SnackBar(
-                                  content: new Text("Password is matched")));
+                              SnackBar(content: Text("Password is matched")));
                         },
                         onFail: () {
-                          print("NOT MATCHED");
+                          if (kDebugMode) {
+                            print("NOT MATCHED");
+                          }
                         },
                       ),
                       SizedBox(

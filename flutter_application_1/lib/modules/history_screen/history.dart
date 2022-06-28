@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
-import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/history_model/histoy_model.dart';
 
 import 'package:flutter_application_1/modules/history_screen/cubit/History_cubit.dart';
 import 'package:flutter_application_1/modules/history_screen/cubit/History_state.dart';
+import 'package:flutter_application_1/shared/components/constants.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,10 +18,6 @@ class History extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
-              // leading: IconButton(
-              //   onPressed: () {},
-              //   icon: Icon(Icons.arrow_back, color: Color(0xff004B7d)),
-              // ),
               title: Text(
                 'History',
               ),
@@ -34,7 +30,20 @@ class History extends StatelessWidget {
                     )
                   : ListView.separated(
                       itemBuilder: ((context, index) =>
-                          Historyview(HistoryCubit.get(context).model)),
+                          HistoryCubit.get(context).model.data.payments == null
+                              ? SizedBox(
+                                  // width: 200,
+                                  height: 620,
+                                  child: Center(
+                                    child: Text(
+                                      'No Payment Yet',
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          color: DefaultColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ))
+                              : Historyview(HistoryCubit.get(context).model)),
                       separatorBuilder: (context, index) =>
                           SizedBox(height: 20),
                       itemCount: 1,
@@ -48,6 +57,9 @@ class History extends StatelessWidget {
 }
 
 Widget Historyview(HistoryModel model) {
+  // if (model.data == null) {
+  //   return Center(child: Text('No Payment Yet'));
+  // } else {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: model.data.payments.map(
@@ -68,7 +80,6 @@ Widget Historyview(HistoryModel model) {
               children: [
                 Expanded(
                   child: Text(
-                    // model.data.payments.map((e) => e.date).toString(),
                     e.date ?? 'null',
                     maxLines: 1,
                   ),
@@ -82,9 +93,7 @@ Widget Historyview(HistoryModel model) {
                         color: Colors.blue, shape: BoxShape.circle),
                   ),
                 ),
-                Text(
-                    // model.data.payments.map((e) => e.total).toString(),
-                    e.total + ' EG' ?? 'null'),
+                Text(e.total + ' EG' ?? 'null'),
               ],
             ),
             Divider(color: Colors.grey, thickness: 2)
@@ -94,3 +103,4 @@ Widget Historyview(HistoryModel model) {
     ).toList(),
   );
 }
+// }

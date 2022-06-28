@@ -1,9 +1,9 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: must_be_immutable, file_names
 
 import 'package:conditional_builder/conditional_builder.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/Otpss/Otp.dart';
-import 'package:flutter_application_1/modules/generate/paswword_generate.dart';
 
 import 'package:flutter_application_1/modules/user/user/signup/cubit/register_cubit.dart';
 import 'package:flutter_application_1/shared/global.dart';
@@ -17,7 +17,7 @@ import '../../../../shared/components/components.dart';
 class ResetPassword extends StatelessWidget {
   var phone = TextEditingController();
   var email = TextEditingController();
-  var _formkey = GlobalKey<FormState>();
+  final _formkey = GlobalKey<FormState>();
   final regexEmail = EmailAdrresValidator;
   @override
   Widget build(BuildContext context) {
@@ -91,7 +91,9 @@ class ResetPassword extends StatelessWidget {
                                 RegisterCubit.get(context)
                                     .SendOtp(email: email.text);
                                 Gloablvar.Email = email.text;
-                                print(Gloablvar.Email);
+                                if (kDebugMode) {
+                                  print(Gloablvar.Email);
+                                }
 
                                 Navigator.push(
                                     context,

@@ -1,4 +1,4 @@
-// ignore_for_file: missing_required_param, prefer_const_constructors, avoid_print
+// ignore_for_file: missing_required_param, non_constant_identifier_names, camel_case_types
 
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,6 @@ class _Service_ScreenState extends State<Service_Screen> {
   final _formKey = GlobalKey<FormState>();
 
   final priceregx = price;
-  // var itemDropDown;
 
   DataModel datamodel;
 
@@ -44,7 +43,6 @@ class _Service_ScreenState extends State<Service_Screen> {
         listener: (BuildContext context, state) {
           if (state is Servicesuccess) {
             if (state.model.status) {
-              var client_id = Gloablvar.id;
               Gloablvar.Paymentid = state.model.data.id;
               Navigator.push(
                 context,
@@ -52,8 +50,6 @@ class _Service_ScreenState extends State<Service_Screen> {
                   builder: (context) => Payment(),
                 ),
               );
-
-              // print(state.model.message);
             } else if (state is Serviceerror) {
               if (state.model.status) {
                 Fluttertoast.showToast(
@@ -63,24 +59,16 @@ class _Service_ScreenState extends State<Service_Screen> {
                   gravity: ToastGravity.BOTTOM,
                 );
               }
-              // print(state.model.message);
-
             }
           }
         },
         builder: (context, state) {
           var cubit = ServiceCubit.get(context);
-          // var succes = cubit.companyData(text);
-          // print(succes);
-          DataModel Companymodel;
-          // print(cubit.itemsOfDropDown);
 
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(
                   onPressed: () {
-                    // Navigator.pushReplacement(context,
-                    //     MaterialPageRoute(builder: (context) => Homelayout()));
                     Navigator.pop(context);
                   },
                   icon: Icon(Icons.arrow_back)),
@@ -158,8 +146,6 @@ class _Service_ScreenState extends State<Service_Screen> {
                         function: () {
                           if (_formKey.currentState.validate()) {
                             ServiceCubit.get(context).userService(
-                              // phone: phoneController.text,
-                              // password: passwordController.text
                               service_code: number.text,
                               price: double.parse(pricenumber.text),
                               company_name: Gloablvar.dropdownitem.toString(),
@@ -173,8 +159,6 @@ class _Service_ScreenState extends State<Service_Screen> {
                               client_id: Gloablvar.id,
                               pin: pinnumber.text,
                             );
-                            // print(Gloablvar.feeds);
-
                           }
                         },
                       ),

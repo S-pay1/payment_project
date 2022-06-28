@@ -1,12 +1,10 @@
-// ignore_for_file: unnecessary_new
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 import '../shared/components/components.dart';
 
 class AppHome extends StatelessWidget {
-  final TextEditingController controller = new TextEditingController();
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,19 +16,20 @@ class AppHome extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 2.0),
-              child: new TextField(
+              child: TextField(
                   controller: controller,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                       hintText: "Password",
-                      border:
-                          new OutlineInputBorder(borderSide: BorderSide()))),
+                      border: OutlineInputBorder(borderSide: BorderSide()))),
             ),
-            new SizedBox(
+            SizedBox(
               height: 30,
             ),
             defaultButton(
                 function: () {
-                  print('$controller');
+                  if (kDebugMode) {
+                    print('$controller');
+                  }
                 },
                 text: 'tetd')
           ],

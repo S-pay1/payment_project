@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, prefer_const_constructors
+// ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/modules/user/user/signup/Signup.dart';
@@ -27,7 +27,6 @@ class _termsUserState extends State<termsUser> {
                   style: TextStyle(color: Colors.blue[800]),
                 ))
           ],
-          leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
           title: Text(
             'Terms and Policies  ',
             style: TextStyle(
@@ -47,7 +46,6 @@ class _termsUserState extends State<termsUser> {
                         "  The service procedures are an integral part of the terms and conditions. By registering to use the Service, you agree to follow the Service Procedures, use the Service only for bona fide purposes that are lawful and permitted by the Terms and policies  ",
                         style: TextStyle(fontSize: 20)),
                     decoration: BoxDecoration(
-                        //color: Colors.cyan[50],
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                   ),
                   SizedBox(

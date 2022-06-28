@@ -1,5 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 
 class DioHelper {
   static Dio dio;
@@ -7,10 +9,7 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        //baseUrl: 'https://student.valuxapps.com/api/',
-        // baseUrl: 'http://10.0.2.2:8000/',
         baseUrl: 'http://3.131.228.191/',
-
         receiveDataWhenStatusError: true,
         followRedirects: false,
         validateStatus: (status) {
@@ -25,16 +24,8 @@ class DioHelper {
   }
 
   static Future<Response> getData(
-      {@required String url,
-      // Map<String, dynamic> query,
-      Map<String, dynamic> query
-      // String lang = 'ar',
-      // String token,
-      }) async {
-    dio.options.headers = {
-      // 'lang': lang,
-      // 'Authorization': token,
-    };
+      {@required String url, Map<String, dynamic> query}) async {
+    dio.options.headers = {};
 
     return await dio.get(
       url,
@@ -46,13 +37,8 @@ class DioHelper {
     @required String url,
     Map<String, dynamic> query,
     @required Map<String, dynamic> data,
-    // String lang = 'ar',
-    // String token,
   }) async {
-    dio.options.headers = {
-      // 'lang': lang,
-      // 'Authorization': token,
-    };
+    dio.options.headers = {};
 
     return dio.post(
       url,
@@ -65,13 +51,8 @@ class DioHelper {
     @required String url,
     Map<String, dynamic> query,
     @required Map<String, dynamic> data,
-    // String lang = 'ar',
-    // String token,
   }) async {
-    dio.options.headers = {
-      // 'lang': lang,
-      // 'Authorization': token,
-    };
+    dio.options.headers = {};
 
     return dio.put(
       url,
@@ -84,10 +65,14 @@ class DioHelper {
     try {
       Response response =
           await dio.get(BaseOptions().baseUrl + 'clients/{id}/payments');
-      print(response.data.toString());
+      if (kDebugMode) {
+        print(response.data.toString());
+      }
       return response.data;
     } catch (e) {
-      print(e.toString());
+      if (kDebugMode) {
+        print(e.toString());
+      }
       return [];
     }
   }

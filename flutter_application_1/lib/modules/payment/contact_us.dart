@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import '../../layout/home/homePageLayout.dart';
 
@@ -47,15 +49,12 @@ class _Contact_usState extends State<Contact_us> {
                 height: 300.0,
                 width: 300.0,
               ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  '11196',
-                  style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red),
-                ),
+              Text(
+                '11196',
+                style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red),
               ),
             ],
           ),
